@@ -1,0 +1,1 @@
+-- Don't have two <script> tags in your file.  leads to binding problems (Kept gettting a 'reactivity' problem)

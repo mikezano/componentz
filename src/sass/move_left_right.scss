@@ -1,0 +1,22 @@
+.move_left_right-enter-active{
+	transition: 
+		opacity .2s ease-in, 
+		transform .5s cubic-bezier(.6,1.6,.6,1);
+}
+.move_left_right-leave-active{
+	transition: 
+		opacity .3s ease-out .5s, 
+		transform .8s cubic-bezier(.33,.03,.42,-0.37);
+}
+.move_left_right-enter{
+	opacity:0;
+	transform:translateX(-100px);
+}
+.move_left_right-leave-to{
+	opacity:0;
+	transform:translateX(100px);
+}
+.move_left_right-enter-to, .move_left_right-leave{
+	opacity:1;
+	transform:translateX(0);
+}
