@@ -34,13 +34,6 @@ export default new Router({
 					path: '',
 					name: 'Home',
 					component: indexes.Home,
-					children: [
-						{
-							path: ':single_component',
-							name: 'Single Component',
-							component: indexes.SingleComponent,
-						},
-					],
 				},
 				{
 					path: ':components',
