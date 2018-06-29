@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { mapGetters, mapState, mapMutations } from 'vuex';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import Vuer from '@/components/vuer/Vuer.vue';
 // import vuer_transition from '@/components/vuer/vuer_transition';
 
@@ -33,6 +33,10 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 	},
 })
 export default class Components extends Vue {
+
+	@Prop({default: ""})
+	public components!: string;
+
 	public nextRoute: string = '';
 	public currentSet: any = null;
 	public hash: Map<string, string[]> = new Map<string, string[]>();
@@ -42,9 +46,11 @@ export default class Components extends Vue {
 		this.currentSet = this.hash.get(route.params.components) as string[];
 	}
 
+	public mounted() {
+		this.currentSet = this.hash.get(this.components);
+	}
 	public beforeMount() {
 		this.buildRegistry();
-		console.log(this.hash);
 	}
 
 	public buildRegistry() {

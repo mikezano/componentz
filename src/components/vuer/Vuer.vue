@@ -13,15 +13,15 @@
 		.vuer__header
 			| {{name.replace(/_/g,' ')}}
 		.vuer__component
-			component(:is="component")
+			component(v-if="component" :is="component.default")
 		.vuer__scss
 			label SCSS:
-			pre.language-css
-				code(v-html="scss" contenteditable="true")
+			pre
+				code.language-scss(v-html="scss" contenteditable="true")
 		.vuer__pug
 			label PUG:
-			pre.language-js
-				code(v-html="pug"  contenteditable="true")
+			pre
+				code.language-pug(v-html="pug"  contenteditable="true")
 </template>
 
 <script lang="ts">
@@ -56,6 +56,8 @@ export default class Vuer extends Vue {
 		this.route = `/style_guide/${this.$route.params.components}/${this.name}`;
 	}
 
+	public setTheEl(){}
+
 	public getSCSSPUG() {
 		// https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
 		const htmlSingleFile = this.getHtmlSingleFile(this.name);
@@ -73,7 +75,7 @@ export default class Vuer extends Vue {
 		document.body.removeChild(element);
 	}
 	public getSources() {
-		this.component = this.getComponent(this.name).default;
+		this.component = this.getComponent(this.name);
 		const source = this.component.source.replace(/\t/g, '  ');
 
 		this.pug = this.extractCode(source, this.pugRE);
