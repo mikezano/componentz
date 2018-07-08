@@ -56,7 +56,10 @@ export default class Vuer extends Vue {
 		this.route = `/style_guide/${this.$route.params.components}/${this.name}`;
 	}
 
-	public setTheEl(){}
+	public setTheEl() {
+		this.$store.commit('toggleIsTransitioning'); // true
+		this.$store.commit('setFromEl', this.$el);
+	}
 
 	public getSCSSPUG() {
 		// https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3

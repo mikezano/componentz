@@ -44,6 +44,7 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+@import './sass/prism.css';
 @import './sass/fade';
 
 html {

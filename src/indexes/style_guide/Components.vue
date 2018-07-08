@@ -34,7 +34,7 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 })
 export default class Components extends Vue {
 
-	@Prop({default: ""})
+	@Prop({default: ''})
 	public components!: string;
 
 	public nextRoute: string = '';
@@ -42,7 +42,6 @@ export default class Components extends Vue {
 	public hash: Map<string, string[]> = new Map<string, string[]>();
 
 	public routeChanged(route: any, old: any) {
-		console.log(' change ');
 		this.currentSet = this.hash.get(route.params.components) as string[];
 	}
 
