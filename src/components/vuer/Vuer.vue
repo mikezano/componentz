@@ -17,11 +17,11 @@
 		.vuer__scss
 			label SCSS:
 			pre
-				code.language-scss(v-html="scss" contenteditable="true")
+				code.language-css(v-html="scss" contenteditable="true")
 		.vuer__pug
 			label PUG:
 			pre
-				code.language-pug(v-html="pug"  contenteditable="true")
+				code.language-js(v-html="pug"  contenteditable="true")
 </template>
 
 <script lang="ts">

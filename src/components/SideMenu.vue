@@ -19,6 +19,7 @@
 				router-link(to="/style_guide/tabs" tag="li") Tabs
 				router-link(to="/style_guide/cards" tag="li") Cards
 				router-link(to="/style_guide/intros" tag="li") Intros
+				router-link(to="/style_guide/errors" tag="li") Errors
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
