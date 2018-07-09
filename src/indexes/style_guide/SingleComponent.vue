@@ -1,5 +1,5 @@
 <template lang="pug">
-	//vuer(:name="example" :class="{'dont-show' : single_component != null}")
+	vuer(:name="example" :class="{'dont-show' : $route.params.single_component != null}")
 	//vuer(:name="example")
 </template>
 
@@ -22,8 +22,6 @@ export default class SingleComponent extends Vue {
 	public example: any = null;
 	public isTransitioning: any;
 
-	//public isTransitioning: boolean = false;
-
 	public mounted() {
 		this.$store.commit('setToEl', this.$el);
 
@@ -39,7 +37,7 @@ export default class SingleComponent extends Vue {
 	}
 	public destroyed() {
 		this.$el.classList.add('dont-show');
-		//this.vuerFader.classList.add('dont-show');
+		this.vuerFader.classList.add('dont-show');
 	}
 	public reveal() {
 		this.$el.classList.remove('dont-show');
