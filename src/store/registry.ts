@@ -1,5 +1,9 @@
 const ctx = require.context('../../src/', true, /.*.vue$/);
-const ctxHtml = require.context('../../mixifier/', true, /.*.html$/);
+const ctxHtml = require.context(
+	'!!html-loader!../../mixifier/',
+	true,
+	/.*.html$/,
+);
 const ctxraw = require.context('!!raw-loader!../../src/', true, /.*.vue$/);
 
 const ctxrawHtml = require.context(
@@ -7,14 +11,14 @@ const ctxrawHtml = require.context(
 	true,
 	/.*.html$/,
 );
+
 interface Simple {
 	source: string;
 }
-
 const components: any = ctx.keys().map(ctx);
 const componentsSource = ctxraw.keys().map(ctxraw);
 
-const componentsHtml: any = ctxHtml.keys().map(ctxrawHtml);
+const componentsHtml: any = ctxHtml.keys().map(ctxHtml);
 
 // const componentsSourceHtml = ctxrawHtml.keys().map(ctxrawHtml);
 const files = require.context(`../components/style_guide/`, true, /\.vue$/);
@@ -40,7 +44,8 @@ function get(name: string) {
 	}
 }
 
-function geHtmlSingleFile(name: string) {
+function getHtmlSingleFile(name: string) {
+	debugger;
 	for (const c of componentsHtml) {
 		if (c.name === name) {
 			return c;

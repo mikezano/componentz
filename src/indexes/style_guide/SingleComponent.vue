@@ -9,12 +9,11 @@ import { mapState, mapMutations } from 'vuex';
 @Component({
 	computed: {
 		...mapState(['isTransitioning']),
-		...mapMutations(['setToEl']),
+		...mapMutations(['setToEl', 'setIsSingleComponentRoute']),
 	},
 })
 export default class SingleComponent extends Vue {
-	@Prop()
-	public singleComponent: any;
+	@Prop() public singleComponent: any;
 
 	public vuerFader: any = null;
 	public example: any = this.singleComponent + '_examples';
@@ -23,6 +22,7 @@ export default class SingleComponent extends Vue {
 
 	public mounted() {
 		this.$store.commit('setToEl', this.$el);
+		this.$store.commit('setIsSingleComponentRoute', true);
 
 		this.vuerFader = this.$el.querySelectorAll('.vuer__fader')[0];
 
@@ -34,8 +34,10 @@ export default class SingleComponent extends Vue {
 		}
 	}
 	public destroyed() {
+		debugger;
 		this.$el.classList.add('dont-show');
-		this.vuerFader.classList.add('dont-show');
+		//this.vuerFader.classList.add('dont-show');
+		this.$store.commit('setIsSingleComponentRoute', false);
 	}
 	public reveal() {
 		this.$el.classList.remove('dont-show');

@@ -10,6 +10,7 @@
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer(:name="item")
 		//vuer_transition
+		div {{isSingleComponentRoute}}
 </template>
 
 
@@ -23,7 +24,11 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 @Component({
 	computed: {
-		...mapGetters(['getComponent', 'getFiles']),
+		...mapGetters([
+			'getComponent',
+			'getFiles',
+			'getIsSingleComponentRoute',
+		]),
 		...mapState(['scrollPosition']),
 		...mapMutations(['setScrollPosition']),
 	},
@@ -33,13 +38,14 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 	},
 })
 export default class Components extends Vue {
-
-	@Prop({default: ''})
+	@Prop({ default: '' })
 	public components!: string;
 
 	public nextRoute: string = '';
 	public currentSet: any = null;
 	public hash: Map<string, string[]> = new Map<string, string[]>();
+	public isSingleComponentRoute: boolean = false;
+	public getIsSingleComponentRoute!: () => boolean;
 
 	public routeChanged(route: any, old: any) {
 		this.currentSet = this.hash.get(route.params.components) as string[];
@@ -47,6 +53,7 @@ export default class Components extends Vue {
 
 	public mounted() {
 		this.currentSet = this.hash.get(this.components);
+		this.isSingleComponentRoute = this.getIsSingleComponentRoute();
 	}
 	public beforeMount() {
 		this.buildRegistry();

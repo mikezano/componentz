@@ -1,0 +1,10 @@
+<template lang="pug">
+.rotating-btn
+	.rotating-btn__container
+		.rotating-btn__main
+			span Main
+			| 😊
+		.rotating-btn__alt
+			span  Alt
+			| 😮
+</template>

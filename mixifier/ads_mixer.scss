@@ -38,4 +38,284 @@
 		}
 	}
 }//flip end
+@mixin rollover($size, $backgroundColor, $textColor){
+	$selector: rollover;
+	.rollover{
+		width: 2 * $size;
+		height:$size;
+		overflow:hidden;
+		color:$textColor;
+		text-align:center;
+		&__container{
+			background-color:$backgroundColor;
+			transition: all .5s ease-in-out;
+		}
+		&:hover{
+			.rollover__container{
+				margin-top: -1 * $size;
+				cursor:pointer;
+			}
+		}
+		&__main{
+			height:$size;
+			line-height:$size;
+			font-size: $size/2;
+		}
+		&__sub{
+			height:$size;
+			line-height:$size;
+			font-size: $size/3;
+		}
+	}
+}//rollover end
+@mixin rotating-btn($width, $height, $color, $fontColor, $fontSize){
+
+	.rotating-btn{
+		width:$width;
+		height:$height;
+		cursor:pointer;
+		perspective:500px;
+		color:$fontColor;
+	}
+	.rotating-btn .rotating-btn__container{
+		height:100%;
+		transform-style:preserve-3d;
+		transition:0.25s;
+		position:relative;
+		border:1px solid blue;
+		font-size: $fontSize;
+	}
+	.rotating-btn__container:hover{
+		transform:rotateX(-90deg);
+	}
+	.rotating-btn__main, .rotating-btn__alt{
+		width:100%;
+		position:absolute;
+		box-sizing:border-box;
+		border: ($height * .05) solid $color;
+		line-height: ($height * .95);
+		text-align:center;
+		background-color:lighten($color, 20%);
+		display:flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.rotating-btn__main{
+		transform: translate3d(0, 0, $height/2);
+	}
+	.rotating-btn__alt{
+		transform: rotateX(90deg) translate3d(0, 0, $height/2);
+	}
+}//rotate_down end
+@mixin spin-btn($color, $scale){
+	$selector: spin-btn;
+	&.#{$selector}{
+		
+		border:none;
+		background:none;
+		color:$color;
+		transition: 
+			transform .5s ease-out, 
+			color .7s ease-out;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+
+		&:hover{
+			color:lighten($color,10%);
+			transform: rotate(360deg) scale($scale);
+			cursor: pointer;
+		}
+	}
+}//spin-btn end
+@mixin zoom-btn($scale, $textColor:white, $backgroundColor:blue) {
+  $selector: zoom-btn;
+  &.#{$selector} {
+    $shadow-color: black;
+    box-shadow: 2px 2px 4px $shadow-color;
+    transition: all 0.2s ease-in-out;
+    color: $textColor;
+    border: 3px solid darken($backgroundColor, 10%);
+    background-color: $backgroundColor;
+    &:hover {
+      transform: scale($scale);
+      box-shadow: 4px 4px 8px lighten($shadow-color, 20%);
+    }
+  }
+} //zoom-btn end
+@mixin drop_down_default($width:200px, $color:green){
+
+	.dd{
+		position:relative;
+		.dd-title{
+			color:white;
+			background-color: $color;
+			padding:8px 4px;
+			width: $width;
+			margin:0;
+			//position:relative;
+			font-size:16px;
+			text-transform: uppercase;
+
+			&:before{
+				content: "";
+				display: block;
+				border-top: 5px solid $color;
+				border-left: ($width / 2) solid transparent;
+				border-right: ($width / 2) solid transparent;
+				position: absolute;
+				top: 100%;
+				z-index: 101;
+			}
+		}
+		.dd-menu{
+			padding:0;
+			border-left:1px solid green;
+			border-right:1px solid green;
+			border-bottom:1px solid green;
+			margin:0;
+			position: absolute;
+			box-sizing:border-box;
+			z-index:99;
+			width:100%;
+			background: hsla(0, 0%, 92%, .98);
+
+		}
+		.dd-menu-item{
+			height:30px;
+			overflow:hidden;
+			line-height:30px;
+			cursor:pointer;
+			opacity:1;
+
+			transition: 
+				0.4s height cubic-bezier(.73,.32,.34,1.5),
+				0.2s padding cubic-bezier(.73,.32,.34,1.5),
+				0.2s margin cubic-bezier(.73,.32,.34,1.5),
+				0.2s background-color,
+				0.2s 0.2s opacity;
+
+			&:hover{background: rgba(0,0,0,0.1);}
+			&:first-child{margin-top:10px;}
+			&:last-child{margin-bottom:10px;}
+		}
+	}
+
+	.dd:not(:hover) {
+
+		.dd-menu {
+			border:none;
+			background-color:hsla(0,0,85%,1);
+			.dd-menu-item{
+				opacity: 0;
+				height:0;
+				padding:0;
+				margin: 0;
+				color: rgba(25,25,25,0);
+				transition: 
+					0.5s 0.1s height,
+					0.5s 0.1s padding,
+					0.5s 0.1s margin,
+					0.3s color;
+				z-index: 99;
+			}
+		}
+	}
+}//drop_down end
+@mixin draw_in($color) {
+	.draw-in {
+		$stroke-dash: 400;
+		$animation-speed: 1000ms;
+		$dot-size: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&__svg {
+			width: 15em;
+			height: 4em;
+			animation: shadow 1s 2s linear forwards;
+		}
+
+		&__ads {
+			fill: transparent;
+			font-family: 'Arial', Gadget, sans-serif;
+			font-weight: bold;
+			stroke-dashoffset: $stroke-dash;
+			stroke-width: 2;
+			stroke: $color;
+			stroke-dasharray: $stroke-dash;
+			animation: text 3s linear forwards;
+			font-size: 5em;
+			box-shadow: 2px 2px 3px black;
+		}
+
+		&__presents {
+			animation: go-up 1s 1s ease-in-out forwards;
+			opacity: 0;
+			color: #444;
+		}
+
+		&__dots {
+			display: flex;
+			justify-content: center;
+		}
+
+		&__dot {
+			width: $dot-size;
+			height: $dot-size;
+			border: ($dot-size / 5) solid gray;
+			border-radius: 50%;
+			float: left;
+			margin: 0 ($dot-size / 2);
+			transform: scale(0);
+
+			animation: fx $animation-speed ease infinite 2s;
+
+			&:nth-child(2) {
+				animation: fx $animation-speed ease infinite 2.3s;
+			}
+			&:nth-child(3) {
+				animation: fx $animation-speed ease infinite 2.6s;
+			}
+		}
+	}
+
+	@keyframes shadow {
+		0% {
+			filter: none;
+		}
+		100% {
+			filter: drop-shadow(1px 1px 4px #ccc);
+		}
+	}
+	@keyframes go-up {
+		from {
+			transform: translateY(1em);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	@keyframes text {
+		50% {
+			stroke-dashoffset: 0;
+			fill: transparent;
+		}
+		100% {
+			stroke-dashoffset: 0;
+			fill: lighten($color, 20%);
+		}
+	}
+	@keyframes fx {
+		50% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+} //draw_in end
 

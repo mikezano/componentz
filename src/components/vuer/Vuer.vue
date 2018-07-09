@@ -14,11 +14,11 @@
 			| {{name.replace(/_/g,' ')}}
 		.vuer__component
 			component(v-if="component" :is="component.default")
-		.vuer__scss
+		//.vuer__scss
 			label SCSS:
 			pre
 				code.language-css(v-html="scss" contenteditable="true")
-		.vuer__pug
+		//.vuer__pug
 			label PUG:
 			pre
 				code.language-js(v-html="pug"  contenteditable="true")
@@ -29,23 +29,27 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { mapGetters, mapMutations } from 'vuex';
 
 @Component({
-  computed: {
-	...mapGetters(['getComponent', 'getHtmlSingleFile']),
-	...mapMutations(['setFromEl']),
-  },
+	computed: {
+		...mapGetters(['getComponent', 'getHtmlSingleFile']),
+		...mapMutations(['setFromEl']),
+	},
 })
 export default class Vuer extends Vue {
-
-	@Prop()
-	public name!: string;
+	@Prop() public name!: string;
 
 	public component: any = null;
 	public scss: string = '';
-	public pug: string =  '';
+	public pug: string = '';
 	public mixin: string = '';
 	public route: string = '';
-	public pugRE: RegExp =  new RegExp('(?<=<template lang="pug">).*?(?=</template>)', 's');
-	public scssRE: RegExp =  new RegExp('(?<=<style lang="scss" scoped>).*?(?=</style>)', 's');
+	public pugRE: RegExp = new RegExp(
+		'(?<=<template lang="pug">).*?(?=</template>)',
+		's',
+	);
+	public scssRE: RegExp = new RegExp(
+		'(?<=<style lang="scss" scoped>).*?(?=</style>)',
+		's',
+	);
 
 	public getComponent!: (name: string) => any;
 	public getHtmlSingleFile!: (name: string) => any;
@@ -53,7 +57,9 @@ export default class Vuer extends Vue {
 
 	public mounted(): void {
 		this.getSources();
-		this.route = `/style_guide/${this.$route.params.components}/${this.name}`;
+		this.route = `/style_guide/${this.$route.params.components}/${
+			this.name
+		}`;
 	}
 
 	public setTheEl() {
@@ -64,6 +70,7 @@ export default class Vuer extends Vue {
 	public getSCSSPUG() {
 		// https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
 		const htmlSingleFile = this.getHtmlSingleFile(this.name);
+		console.log(htmlSingleFile);
 		// Create the textarea input to hold our text.
 		const element = document.createElement('textarea');
 		element.value = htmlSingleFile;

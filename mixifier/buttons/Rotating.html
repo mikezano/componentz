@@ -1,0 +1,46 @@
+<style type="text/css">
+.rotating-btn {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  perspective: 500px;
+  color: white; }
+
+.rotating-btn .rotating-btn__container {
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.25s;
+  position: relative;
+  border: 1px solid blue;
+  font-size: 1rem; }
+
+.rotating-btn__container:hover {
+  transform: rotateX(-90deg); }
+
+.rotating-btn__main, .rotating-btn__alt {
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  border: 3px solid #0071c5;
+  line-height: 57px;
+  text-align: center;
+  background-color: #2ca5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.rotating-btn__main {
+  transform: translate3d(0, 0, 30px); }
+
+.rotating-btn__alt {
+  transform: rotateX(90deg) translate3d(0, 0, 30px); }
+
+</style>
+
+
+<div class="rotating-btn">
+  <div class="rotating-btn__container">
+    <div class="rotating-btn__main"><span>Main</span>😊</div>
+    <div class="rotating-btn__alt"><span> Alt</span>😮</div>
+  </div>
+</div>
