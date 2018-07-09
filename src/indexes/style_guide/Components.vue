@@ -9,8 +9,7 @@
 			transition-group( name="list" tag="div")
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer(:name="item")
-		//vuer_transition
-		div {{isSingleComponentRoute}}
+		VuerTransition
 </template>
 
 
@@ -18,21 +17,22 @@
 import { mapGetters, mapState, mapMutations } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import Vuer from '@/components/vuer/Vuer.vue';
-// import vuer_transition from '@/components/vuer/vuer_transition';
+import VuerSimple from '@/components/vuer/VuerSimple.vue';
+import VuerTransition from '@/components/vuer/VuerTransition.vue';
 
 const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 
 @Component({
 	computed: {
-		...mapGetters([
-			'getComponent',
-			'getFiles',
-			'getIsSingleComponentRoute',
-		]),
+		...mapGetters(['getComponent', 'getFiles']),
 		...mapState(['scrollPosition']),
 		...mapMutations(['setScrollPosition']),
 	},
-	components: { Vuer },
+	components: { 
+		Vuer, 
+		VuerSimple, 
+		VuerTransition
+		},
 	watch: {
 		$route: 'routeChanged',
 	},
@@ -44,8 +44,6 @@ export default class Components extends Vue {
 	public nextRoute: string = '';
 	public currentSet: any = null;
 	public hash: Map<string, string[]> = new Map<string, string[]>();
-	public isSingleComponentRoute: boolean = false;
-	public getIsSingleComponentRoute!: () => boolean;
 
 	public routeChanged(route: any, old: any) {
 		this.currentSet = this.hash.get(route.params.components) as string[];
@@ -53,7 +51,6 @@ export default class Components extends Vue {
 
 	public mounted() {
 		this.currentSet = this.hash.get(this.components);
-		this.isSingleComponentRoute = this.getIsSingleComponentRoute();
 	}
 	public beforeMount() {
 		this.buildRegistry();

@@ -1,7 +1,7 @@
 <template lang="pug">
 	.vuer
 		.vuer__header
-			| {{name}}
+			| {{name | humanize}}
 		.vuer__component
 			component(:is="component" v-if="component != null")
 </template>
@@ -13,12 +13,10 @@ import { mapGetters } from 'vuex';
 	computed: { ...mapGetters(['getComponent']) },
 })
 export default class VuerSimple extends Vue {
-
 	public component: any = null;
 	public getComponent!: (name: string) => any;
 
-	@Prop()
-	private name!: string;
+	@Prop() private name!: string;
 
 	public mounted() {
 		this.component = this.getComponent(this.name).default;
@@ -45,7 +43,6 @@ export default class VuerSimple extends Vue {
 	}
 
 	&__header {
-		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 2rem;
 	}

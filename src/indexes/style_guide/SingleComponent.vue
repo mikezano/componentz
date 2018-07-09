@@ -1,43 +1,45 @@
 <template lang="pug">
-	vuer(:name="example" :class="{'dont-show' : single_component != null}")
+	//vuer(:name="example" :class="{'dont-show' : single_component != null}")
+	//vuer(:name="example")
 </template>
 
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapState, mapMutations } from 'vuex';
+import Vuer from '@/components/vuer/Vuer.vue';
 @Component({
 	computed: {
+		...mapMutations(['setToEl']),
 		...mapState(['isTransitioning']),
-		...mapMutations(['setToEl', 'setIsSingleComponentRoute']),
 	},
+	components: { Vuer },
 })
 export default class SingleComponent extends Vue {
 	@Prop() public singleComponent: any;
 
 	public vuerFader: any = null;
-	public example: any = this.singleComponent + '_examples';
+	public example: any = null;
+	public isTransitioning: any;
 
-	public isTransitioning: boolean = false;
+	//public isTransitioning: boolean = false;
 
 	public mounted() {
 		this.$store.commit('setToEl', this.$el);
-		this.$store.commit('setIsSingleComponentRoute', true);
 
 		this.vuerFader = this.$el.querySelectorAll('.vuer__fader')[0];
 
 		if (
 			this.$route.params.single_component != null &&
-			this.isTransitioning === false
+			this.isTransitioning == false
 		) {
 			this.reveal();
+			this.example = this.$route.params.single_component + 'examples';
 		}
 	}
 	public destroyed() {
-		debugger;
 		this.$el.classList.add('dont-show');
 		//this.vuerFader.classList.add('dont-show');
-		this.$store.commit('setIsSingleComponentRoute', false);
 	}
 	public reveal() {
 		this.$el.classList.remove('dont-show');

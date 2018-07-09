@@ -10,6 +10,10 @@ export default new Vuex.Store({
 		counter: 2,
 		check: registry,
 		isSingleComponentRoute: false,
+		fromEl: null,
+		toEl: null,
+		isTransitioning: false,
+		scrollPosition: 0,
 	},
 	getters: {
 		getFiles: (state: any, getters) => () => {
@@ -24,14 +28,23 @@ export default new Vuex.Store({
 			const result = state.check.singleFileHash.get(name);
 			return result;
 		},
-		getIsSingleComponentRoute: (state: any) => () => {
-			return state.isSingleComponentRoute;
+		getScrollPosition: (state, getters) => () => {
+			return state.scrollPosition;
 		},
 	},
 	mutations: {
-		setIsSingleComponentRoute(state: any, val: boolean) {
-			debugger;
-			state.isSingleComponentRoute = val;
+		setFromEl: (state, el) => {
+			state.fromEl = el;
+		},
+		setToEl: (state, el) => {
+			state.toEl = el;
+		},
+		setScrollPosition: (state, el) => {
+			console.log('store scroll pos:', el);
+			state.scrollPosition = el;
+		},
+		toggleIsTransitioning: state => {
+			state.isTransitioning = !state.isTransitioning;
 		},
 	},
 	actions: {},

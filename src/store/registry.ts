@@ -45,7 +45,6 @@ function get(name: string) {
 }
 
 function getHtmlSingleFile(name: string) {
-	debugger;
 	for (const c of componentsHtml) {
 		if (c.name === name) {
 			return c;

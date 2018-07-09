@@ -11,14 +11,14 @@
 				icon(name="copy" scale="2")
 
 		.vuer__header
-			| {{name.replace(/_/g,' ')}}
+			| {{name | humanize}}
 		.vuer__component
 			component(v-if="component" :is="component.default")
-		//.vuer__scss
+		.vuer__scss
 			label SCSS:
 			pre
 				code.language-css(v-html="scss" contenteditable="true")
-		//.vuer__pug
+		.vuer__pug
 			label PUG:
 			pre
 				code.language-js(v-html="pug"  contenteditable="true")
@@ -85,7 +85,9 @@ export default class Vuer extends Vue {
 		document.body.removeChild(element);
 	}
 	public getSources() {
-		this.component = this.getComponent(this.name);
+		this.component = this.getComponent(
+			this.name || this.$route.params.single_component + 'Examples',
+		);
 		const source = this.component.source.replace(/\t/g, '  ');
 
 		this.pug = this.extractCode(source, this.pugRE);
@@ -134,7 +136,6 @@ export default class Vuer extends Vue {
 	}
 
 	&__header {
-		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 2rem;
 	}
