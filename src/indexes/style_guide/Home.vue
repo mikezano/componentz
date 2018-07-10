@@ -15,7 +15,7 @@
 		span.de DE
 		//span.semi-colon ;
 		span.right_brace }
-	h1 
+	h1
 		span Need creative components to add into your 
 		span.ui UI
 		span.question_mark ?
