@@ -11,16 +11,7 @@ import Test from '../views/Test.vue';
 
 export default new Router({
 	routes: [
-		{
-			path: '/',
-			name: 'home',
-			component: Home,
-		},
-		{
-			path: '/about',
-			name: 'about',
-			component: About,
-		},
+		{ path: '/', redirect: '/style_guide' },
 		{
 			path: '/test',
 			name: 'test',
