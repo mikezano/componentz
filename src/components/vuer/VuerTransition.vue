@@ -54,7 +54,31 @@ export default class VuerTransition extends Vue {
 		let toHeight = this.toEl.getBoundingClientRect().height + 'px';
 	}
 
-	public endTransitionFromEl(e: any) {
+	public endTransitionFromEl(e:any) {
+		this.vuer = this.$el.querySelectorAll('.vuer')[0];
+
+		let elHeight = this.$el.getBoundingClientRect().height + 'px';
+		let vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
+		let fromHeight = this.vuerFader.getBoundingClientRect().height + 'px';
+		let toHeight = this.toEl.getBoundingClientRect().height + 'px';
+
+		this.toEl.style = 'display:none';
+
+		this.vuerFader.removeEventListener(
+			'animationend',
+			this.endTransitionFromEl
+		);
+		this.vuer.addEventListener('animationend', this.endTransitionToEl);
+
+		var idx = (document.styleSheets[0] as any).cssRules.length;
+		(document.styleSheets[0] as any).insertRule(
+			`@keyframes grow {0%{height:${vuerHeight};}100%{height:${toHeight};}}`,
+			idx
+		);
+		this.vuer.classList.add('growIt');
+	}
+
+	public endTransitionToEl(e:any) {
 		if (e.target != this.vuer) return;
 
 		this.toEl.style = 'display:block';
@@ -63,7 +87,7 @@ export default class VuerTransition extends Vue {
 		this.$el.classList.remove('fade-out');
 		this.vuer.classList.remove('grow');
 
-		this.$store.commit('toggleIsTransitioning'); // false
+		this.$store.commit('toggleIsTransitioning'); //false
 	}
 }
 </script>

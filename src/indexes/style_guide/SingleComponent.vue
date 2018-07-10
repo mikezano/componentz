@@ -14,6 +14,9 @@ import Vuer from '@/components/vuer/Vuer.vue';
 		...mapState(['isTransitioning']),
 	},
 	components: { Vuer },
+	watch: {
+		isTransitioning: 'isTransitioningChanged',
+	},
 })
 export default class SingleComponent extends Vue {
 	@Prop() public singleComponent: any;
@@ -32,16 +35,23 @@ export default class SingleComponent extends Vue {
 			this.isTransitioning == false
 		) {
 			this.reveal();
-			this.example = this.$route.params.single_component + 'examples';
+			this.example = this.$route.params.single_component + ' examples';
 		}
 	}
 	public destroyed() {
 		this.$el.classList.add('dont-show');
 		this.vuerFader.classList.add('dont-show');
 	}
+
 	public reveal() {
 		this.$el.classList.remove('dont-show');
 		this.vuerFader.classList.add('fade-in');
+	}
+
+	public isTransitioningChanged(newVal: boolean, oldVal: boolean){
+		if (newVal == false){
+			this.reveal();
+		}
 	}
 }
 </script>
