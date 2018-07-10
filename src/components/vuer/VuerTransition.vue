@@ -54,7 +54,7 @@ export default class VuerTransition extends Vue {
 		let toHeight = this.toEl.getBoundingClientRect().height + 'px';
 	}
 
-	public endTransitionFromEl(e:any) {
+	public endTransitionFromEl(e: any) {
 		this.vuer = this.$el.querySelectorAll('.vuer')[0];
 
 		let elHeight = this.$el.getBoundingClientRect().height + 'px';
@@ -66,19 +66,19 @@ export default class VuerTransition extends Vue {
 
 		this.vuerFader.removeEventListener(
 			'animationend',
-			this.endTransitionFromEl
+			this.endTransitionFromEl,
 		);
 		this.vuer.addEventListener('animationend', this.endTransitionToEl);
 
 		var idx = (document.styleSheets[0] as any).cssRules.length;
 		(document.styleSheets[0] as any).insertRule(
 			`@keyframes grow {0%{height:${vuerHeight};}100%{height:${toHeight};}}`,
-			idx
+			idx,
 		);
 		this.vuer.classList.add('growIt');
 	}
 
-	public endTransitionToEl(e:any) {
+	public endTransitionToEl(e: any) {
 		if (e.target != this.vuer) return;
 
 		this.toEl.style = 'display:block';
@@ -117,7 +117,7 @@ export default class VuerTransition extends Vue {
 
 @keyframes moveUp {
 	100% {
-		top: 76px;
+		top: 105px;
 	}
 }
 </style>

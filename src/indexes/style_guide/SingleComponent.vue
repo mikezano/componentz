@@ -1,7 +1,5 @@
 <template lang="pug">
-div
 	vuer(:name="example" :class="{'dont-show' : isTransitioning}")
-	//vuer(:name="example")
 </template>
 
 
@@ -27,8 +25,8 @@ export default class SingleComponent extends Vue {
 	public isTransitioning: any;
 
 	public mounted() {
+		debugger;
 		this.$store.commit('setToEl', this.$el);
-
 		this.vuerFader = this.$el.querySelectorAll('.vuer__fader')[0];
 		if (
 			this.$route.params.single_component != null &&
@@ -49,8 +47,8 @@ export default class SingleComponent extends Vue {
 		this.vuerFader.classList.add('fade-in');
 	}
 
-	public isTransitioningChanged(newVal: boolean, oldVal: boolean){
-		if (newVal == false){
+	public isTransitioningChanged(newVal: boolean, oldVal: boolean) {
+		if (newVal == false) {
 			this.reveal();
 		}
 	}

@@ -11,7 +11,7 @@
 				icon(name="copy" scale="2")
 
 		.vuer__header
-			| {{name | humanize}}
+			| {{displayName | humanize}}
 		.vuer__component
 			component(v-if="component" :is="component.default")
 		.vuer__scss
@@ -33,6 +33,9 @@ import { mapGetters, mapMutations } from 'vuex';
 		...mapGetters(['getComponent', 'getHtmlSingleFile']),
 		...mapMutations(['setFromEl']),
 	},
+	watch: {
+		name: 'nameChanged',
+	},
 })
 export default class Vuer extends Vue {
 	@Prop() public name!: string;
@@ -42,6 +45,8 @@ export default class Vuer extends Vue {
 	public pug: string = '';
 	public mixin: string = '';
 	public route: string = '';
+	public displayName: string = '';
+
 	public pugRE: RegExp = new RegExp(
 		'(?<=<template lang="pug">).*?(?=</template>)',
 		's',
@@ -55,8 +60,13 @@ export default class Vuer extends Vue {
 	public getHtmlSingleFile!: (name: string) => any;
 	public setFromEl!: (name: string) => any;
 
+	public nameChanged(newName: string, oldName: string) {
+		debugger;
+	}
 	public mounted(): void {
+		debugger;
 		this.getSources();
+		this.displayName = this.name || this.$route.params.single_component;
 		this.route = `/style_guide/${this.$route.params.components}/${
 			this.name
 		}`;
