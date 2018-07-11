@@ -4,10 +4,10 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component as ComponentDecorator, Prop, Vue } from 'vue-property-decorator';
 import { mapState, mapMutations } from 'vuex';
 import Vuer from '@/components/vuer/Vuer.vue';
-@Component({
+@ComponentDecorator({
 	computed: {
 		...mapMutations(['setToEl']),
 		...mapState(['isTransitioning']),
@@ -17,7 +17,7 @@ import Vuer from '@/components/vuer/Vuer.vue';
 		isTransitioning: 'isTransitioningChanged',
 	},
 })
-export default class SingleComponent extends Vue {
+export default class Component extends Vue {
 	@Prop() public singleComponent: any;
 
 	public vuerFader: any = null;

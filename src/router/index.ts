@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import indexes from './indexes';
-// import Test from '../views/Test.vue';
 
 Vue.use(Router);
 
@@ -35,15 +34,10 @@ export default new Router({
 						{
 							path: ':single_component',
 							name: 'Single Component',
-							component: indexes.SingleComponent,
+							component: indexes.Component,
 							props: true,
 						},
 					],
-				},
-				{
-					path: 'xyz',
-					name: 'xyz',
-					component: indexes.XYZ,
 				},
 			],
 		},

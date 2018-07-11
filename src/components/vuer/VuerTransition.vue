@@ -21,6 +21,7 @@ export default class VuerTransition extends Vue {
 	public toEl: any;
 
 	public fromElChanged(newEl: any, oldEl: any) {
+		debugger;
 		if (newEl == null) return;
 
 		// vuer = old element, which will be null at the start
@@ -100,7 +101,7 @@ export default class VuerTransition extends Vue {
 	animation: grow 0.5s ease-in-out forwards;
 }
 .move-up {
-	animation: moveUp 0.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
+	animation: moveUp 10.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 }
 // .fade-out div[class^='vuer__']{
 // 	animation: fadeOut 1s ease-in-out forwards;
@@ -117,7 +118,7 @@ export default class VuerTransition extends Vue {
 
 @keyframes moveUp {
 	100% {
-		top: 105px;
+		top: 100px;
 	}
 }
 </style>
