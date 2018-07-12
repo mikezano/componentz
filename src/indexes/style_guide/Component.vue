@@ -25,9 +25,8 @@ export default class Component extends Vue {
 	public isTransitioning: any;
 
 	public mounted() {
-		debugger;
 		this.$store.commit('setToEl', this.$el);
-		this.vuerFader = this.$el.querySelectorAll('.vuer__fader')[0];
+		this.vuerFader = this.$el.querySelectorAll('.vuer__content')[0];
 		if (
 			this.$route.params.single_component != null &&
 			this.isTransitioning == false
@@ -61,7 +60,7 @@ export default class Component extends Vue {
 }
 </style>
 <style lang="scss">
-.vuer__fader {
+.vuer__content {
 	&.fade-in {
 		animation: fadeIn 2.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 	}

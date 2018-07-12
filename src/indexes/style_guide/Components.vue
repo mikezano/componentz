@@ -1,5 +1,5 @@
 <template lang="pug">
-	div(style="width:40rem;")
+	div
 		h1.title {{$route.params.components}}
 		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
 			router-view

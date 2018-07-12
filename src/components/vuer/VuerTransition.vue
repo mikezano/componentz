@@ -15,13 +15,13 @@ import { mapGetters, mapMutations, mapState } from 'vuex';
 	},
 })
 export default class VuerTransition extends Vue {
-	public vuerFader: any = null;
+	public vuerContent: any = null; // the selected component being faded
 	public vuer: any = null;
 	public fromEl: any;
 	public toEl: any;
 
 	public fromElChanged(newEl: any, oldEl: any) {
-		debugger;
+
 		if (newEl == null) return;
 
 		// vuer = old element, which will be null at the start
@@ -40,32 +40,34 @@ export default class VuerTransition extends Vue {
 		this.$el.style.top = rect.top + 'px';
 		this.$el.style.left = rect.left + 'px';
 
-		this.vuerFader = this.$el.querySelectorAll('.vuer__fader')[0];
-		this.vuerFader.addEventListener(
+		this.vuerContent = this.$el.querySelectorAll('.vuer__content')[0]; //selecting the inside of the current el
+		this.vuerContent.addEventListener(
 			'animationend',
 			this.endTransitionFromEl,
 		);
 
 		// start animations by adding classes
 		this.$el.classList.add('move-up');
-		this.vuerFader.classList.add('fade-out');
+		this.vuerContent.classList.add('fade-out');
 
-		let elHeight = this.$el.getBoundingClientRect().height + 'px';
-		let fromHeight = this.vuerFader.getBoundingClientRect().height + 'px';
-		let toHeight = this.toEl.getBoundingClientRect().height + 'px';
+		//let elHeight = this.$el.getBoundingClientRect().height + 'px';
+		//let fromHeight = this.vuerContent.getBoundingClientRect().height + 'px';
+		//let toHeight = this.toEl.getBoundingClientRect().height + 'px';
 	}
 
 	public endTransitionFromEl(e: any) {
+
 		this.vuer = this.$el.querySelectorAll('.vuer')[0];
 
 		let elHeight = this.$el.getBoundingClientRect().height + 'px';
 		let vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
-		let fromHeight = this.vuerFader.getBoundingClientRect().height + 'px';
-		let toHeight = this.toEl.getBoundingClientRect().height + 'px';
+		// VUER CONTENT!!!!! ...IS WHAT NEEDS TO BE SELECTED
+		let fromHeight = this.vuerContent.getBoundingClientRect().height + 'px';
+		let toHeight = (this.toEl.querySelectorAll('.vuer__content')[0].getBoundingClientRect().height)  + 'px';
 
-		this.toEl.style = 'display:none';
-
-		this.vuerFader.removeEventListener(
+		//this.toEl.style = 'display:none';
+		//debugger;
+		this.vuerContent.removeEventListener(
 			'animationend',
 			this.endTransitionFromEl,
 		);
@@ -101,12 +103,12 @@ export default class VuerTransition extends Vue {
 	animation: grow 0.5s ease-in-out forwards;
 }
 .move-up {
-	animation: moveUp 10.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
+	animation: moveUp 0.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 }
 // .fade-out div[class^='vuer__']{
 // 	animation: fadeOut 1s ease-in-out forwards;
 // }
-.vuer__fader.fade-out {
+.vuer__content.fade-out {
 	animation: fadeOut 0.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 }
 

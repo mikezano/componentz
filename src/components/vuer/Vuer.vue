@@ -1,6 +1,6 @@
 <template lang="pug">
 .vuer
-	.vuer__fader
+	.vuer__content
 		.vuer__links(v-if="$route.params.single_component == null")
 			button.vuer__examples(title="See examples" @click="setTheEl")
 				router-link(:to="route" tag="div")
@@ -61,10 +61,9 @@ export default class Vuer extends Vue {
 	public setFromEl!: (name: string) => any;
 
 	public nameChanged(newName: string, oldName: string) {
-		debugger;
+		//debugger;
 	}
 	public mounted(): void {
-		debugger;
 		this.getSources();
 		this.displayName = this.name || this.$route.params.single_component;
 		this.route = `/style_guide/${this.$route.params.components}/${
