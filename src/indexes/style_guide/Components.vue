@@ -1,7 +1,7 @@
 <template lang="pug">
 	div
 		h1.title {{$route.params.components}}
-		transition(name="fade" v-if="$route.params.single_component != null" mode="in-out")
+		transition(name="fade" v-if="$route.params.single_component != null" mode="out-in")
 			router-view
 		transition(name="fade" 
 					v-if="$route.params.single_component == null" 
@@ -28,11 +28,11 @@ const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
 		...mapState(['scrollPosition']),
 		...mapMutations(['setScrollPosition']),
 	},
-	components: { 
-		Vuer, 
-		VuerSimple, 
-		VuerTransition
-		},
+	components: {
+		Vuer,
+		VuerSimple,
+		VuerTransition,
+	},
 	watch: {
 		$route: 'routeChanged',
 	},
