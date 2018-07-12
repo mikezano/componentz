@@ -21,7 +21,6 @@ export default class VuerTransition extends Vue {
 	public toEl: any;
 
 	public fromElChanged(newEl: any, oldEl: any) {
-
 		if (newEl == null) return;
 
 		// vuer = old element, which will be null at the start
@@ -56,14 +55,16 @@ export default class VuerTransition extends Vue {
 	}
 
 	public endTransitionFromEl(e: any) {
-
 		this.vuer = this.$el.querySelectorAll('.vuer')[0];
 
 		let elHeight = this.$el.getBoundingClientRect().height + 'px';
 		let vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
 		// VUER CONTENT!!!!! ...IS WHAT NEEDS TO BE SELECTED
 		let fromHeight = this.vuerContent.getBoundingClientRect().height + 'px';
-		let toHeight = (this.toEl.querySelectorAll('.vuer__content')[0].getBoundingClientRect().height)  + 'px';
+		let toHeight =
+			this.toEl
+				.querySelectorAll('.vuer__content')[0]
+				.getBoundingClientRect().height + 'px';
 
 		//this.toEl.style = 'display:none';
 		//debugger;
@@ -120,7 +121,7 @@ export default class VuerTransition extends Vue {
 
 @keyframes moveUp {
 	100% {
-		top: 100px;
+		top: 105px;
 	}
 }
 </style>
