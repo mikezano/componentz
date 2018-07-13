@@ -1,7 +1,7 @@
-import StyleGuide from '@/indexes/style_guide/StyleGuide.vue';
-import Home from '@/indexes/style_guide/Home.vue';
-import Component from '@/indexes/style_guide/Component.vue';
-import Components from '@/indexes/style_guide/Components.vue';
+import StyleGuide from '@/indexes/StyleGuide/StyleGuide.vue';
+import Home from '@/indexes/StyleGuide/Home.vue';
+import Component from '@/indexes/StyleGuide/Component.vue';
+import Components from '@/indexes/StyleGuide/Components.vue';
 
 export default {
 	Home,

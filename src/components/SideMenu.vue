@@ -4,7 +4,7 @@
 			//icon(name="close" class="close-icon")
 		.side-menu__header
 			img(src="./../assets/logo.png")
-			router-link(to="/style_guide" tag="p") Style Guide
+			router-link(to="/StyleGuide" tag="p") Style Guide
 		
 		.side-menu__sections
 			.side-menu__section-header Usage
@@ -14,16 +14,16 @@
 			.divider
 			.side-menu__section-header Components
 			ul.side-menu__section-list
-				router-link(to="/style_guide/drop_downs" tag="li") Drop Downs
-				router-link(to="/style_guide/buttons" tag="li") Buttons
-				router-link(to="/style_guide/tabs" tag="li") Tabs
-				router-link(to="/style_guide/cards" tag="li") Cards
-				router-link(to="/style_guide/intros" tag="li") Intros
-				router-link(to="/style_guide/errors" tag="li") Errors
+				router-link(to="/StyleGuide/DropDowns" tag="li") Drop Downs
+				router-link(to="/StyleGuide/Buttons" tag="li") Buttons
+				router-link(to="/StyleGuide/Tabs" tag="li") Tabs
+				router-link(to="/StyleGuide/Cards" tag="li") Cards
+				router-link(to="/StyleGuide/Intros" tag="li") Intros
+				router-link(to="/StyleGuide/Errors" tag="li") Errors
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
-				router-link(to="/style_guide/grid_layouts" tag="li") CSS Grid
+				router-link(to="/StyleGuide/Gridlayouts" tag="li") CSS Grid
 			.divider
 			.side-menu__section-header Naming
 			ul.side-menu__section-list
@@ -31,12 +31,9 @@
 </template>
 
 <script lang="ts">
-// import 'vue-awesome/icons/close';
-// import icon from 'vue-awesome/components/Icon';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class ComponentCarousel extends Vue {
-
 	public close() {
 		this.$emit('closeMenu');
 	}
@@ -67,10 +64,11 @@ $base2: hsla(211, 28%, 29%, 1);
 				circle farthest-side at 0% 50%,
 				$yellow2 23.5%,
 				$yellow3 0
-			)21px 30px,
+			)
+			21px 30px,
 		radial-gradient(circle farthest-side at 0% 50%, $yellow 24%, $yellow3 0)
 			19px 30px,
-		linear-gradient($yellow2 14%, $yellow3 0, $yellow3 85%, $yellow2 0)0 0,
+		linear-gradient($yellow2 14%, $yellow3 0, $yellow3 85%, $yellow2 0) 0 0,
 		linear-gradient(
 				150deg,
 				$yellow2 24%,
@@ -81,7 +79,8 @@ $base2: hsla(211, 28%, 29%, 1);
 				$yellow 0,
 				$yellow 76%,
 				$yellow2 0
-			)0 0,
+			)
+			0 0,
 		linear-gradient(
 				30deg,
 				$yellow2 24%,
@@ -92,9 +91,10 @@ $base2: hsla(211, 28%, 29%, 1);
 				$yellow 0,
 				$yellow 76%,
 				$yellow2 0
-			)0 0,
-		linear-gradient(90deg, $yellow 2%, $yellow2 0, $yellow2 98%, $yellow 0%)0
-			0 $yellow2;
+			)
+			0 0,
+		linear-gradient(90deg, $yellow 2%, $yellow2 0, $yellow2 98%, $yellow 0%)
+			0 0 $yellow2;
 	background-size: 40px 60px;
 	color: white;
 	box-shadow: 2px 2px 20px gray;

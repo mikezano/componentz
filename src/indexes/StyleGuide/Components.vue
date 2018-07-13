@@ -20,7 +20,7 @@ import Vuer from '@/components/vuer/Vuer.vue';
 import VuerSimple from '@/components/vuer/VuerSimple.vue';
 import VuerTransition from '@/components/vuer/VuerTransition.vue';
 
-const files = require.context(`../../components/style_guide/`, true, /\.vue$/);
+const files = require.context(`../../components/StyleGuide/`, true, /\.vue$/);
 
 @Component({
 	computed: {

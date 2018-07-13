@@ -66,7 +66,7 @@ export default class Vuer extends Vue {
 	public mounted(): void {
 		this.getSources();
 		this.displayName = this.name || this.$route.params.single_component;
-		this.route = `/style_guide/${this.$route.params.components}/${
+		this.route = `/StyleGuide/${this.$route.params.components}/${
 			this.name
 		}`;
 	}

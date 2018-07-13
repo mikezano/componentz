@@ -28,7 +28,7 @@ export default class VuerTransition extends Vue {
 		this.animate();
 	}
 
-	public reset(element:HTMLElement){
+	public reset(element: HTMLElement) {
 		// vuer = old element, which will be null at the start
 		if (this.vuer != null) {
 			this.$el.removeChild(this.vuer);
@@ -38,15 +38,17 @@ export default class VuerTransition extends Vue {
 		this.vuerContent = this.$el.querySelectorAll('.vuer__content')[0];
 	}
 
-	public position(element:HTMLElement){
+	public position(element: HTMLElement) {
 		let rect = element.getBoundingClientRect();
 		this.$el.style.top = rect.top + 'px';
 		this.$el.style.left = rect.left + 'px';
 		this.$el.style.display = 'block';
 		this.$el.style.position = 'fixed';
+
+		window.scrollTo(0, 0);
 	}
 
-	public animate(){
+	public animate() {
 		this.vuerContent.addEventListener(
 			'animationend',
 			this.endTransitionFromEl,
@@ -58,7 +60,6 @@ export default class VuerTransition extends Vue {
 	}
 
 	public endTransitionFromEl(e: any) {
-
 		let elHeight = this.$el.getBoundingClientRect().height + 'px';
 		let vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
 		// VUER CONTENT!!!!! ...IS WHAT NEEDS TO BE SELECTED

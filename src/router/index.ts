@@ -10,14 +10,14 @@ import Test from '../views/Test.vue';
 
 export default new Router({
 	routes: [
-		{ path: '/', redirect: '/style_guide' },
+		{ path: '/', redirect: '/StyleGuide' },
 		{
 			path: '/test',
 			name: 'test',
 			component: Test,
 		},
 		{
-			path: '/style_guide',
+			path: '/StyleGuide',
 			component: indexes.StyleGuide,
 			children: [
 				{

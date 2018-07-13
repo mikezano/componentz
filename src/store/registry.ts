@@ -21,7 +21,7 @@ const componentsSource = ctxraw.keys().map(ctxraw);
 const componentsHtml: any = ctxHtml.keys().map(ctxHtml);
 
 // const componentsSourceHtml = ctxrawHtml.keys().map(ctxrawHtml);
-const files = require.context(`../components/style_guide/`, true, /\.vue$/);
+const files = require.context(`../components/StyleGuide/`, true, /\.vue$/);
 
 const htmlFiles = require.context(`../../mixifier/`, true, /\.html$/);
 
