@@ -101,7 +101,7 @@ export default class DropDown extends Vue {}
 			}
 		}
 	}
-} //drop_down end
+} // drop_down end
 
 @include drop_down_default(200px, $vue_green);
 </style>

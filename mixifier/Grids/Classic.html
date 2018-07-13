@@ -1,0 +1,61 @@
+/* tslint:disable */
+<div>
+
+  <style type="text/css">
+    .grid-container {
+      display: grid;
+      grid-template-columns: 20% 60% 20%;
+      grid-gap: 0;
+    }
+    
+    .grid-container .cell {
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    
+    .grid-container .cell.a, .grid-container .cell.e {
+      grid-column: 1/4;
+    }
+    
+    .grid-container .cell.b, .grid-container .cell.c, .grid-container .cell.d {
+      height: 100%;
+    }
+    
+    .grid-container .cell.a {
+      background-color: #0071c5;
+    }
+    
+    .grid-container .cell.b {
+      background-color: #f3d54e;
+    }
+    
+    .grid-container .cell.c {
+      background-color: #ed1c24;
+    }
+    
+    .grid-container .cell.d {
+      background-color: #ffa300;
+    }
+    
+    .grid-container .cell.e {
+      background-color: #3db881;
+    }
+    
+  </style>
+  
+  <div class="grid-container">
+    <div class="cell a">Header</div>
+    <div class="cell b">Left</div>
+    <div class="cell c"> 
+      <p>
+        Veggies es bonus vobis, proinde vos
+        postulo essum magis kohlrabi welsh onion 
+        daikon amaranth tatsoi tomatillo melon azuki bean garlic.
+      </p>
+    </div>
+    <div class="cell d">Right</div>
+    <div class="cell e">Footer</div>
+  </div>
+
+</div>

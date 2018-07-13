@@ -19,7 +19,7 @@ export default class Classic extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import '../../../sass/colors.scss';
+@import '../../../sass/colors';
 
 @mixin classic_grid_layout() {
 	.grid-container {
@@ -58,7 +58,7 @@ export default class Classic extends Vue {}
 			}
 		}
 	}
-} //classic_grid_layout end
+} // classic_grid_layout end
 
 @include classic_grid_layout();
 </style>

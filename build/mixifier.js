@@ -70,6 +70,10 @@ function createMarkupFile(path, markup) {
 //================================================
 
 let mixins_result = '';
+
+//add the colors
+var colors = fs.readFileSync('./src/sass/colors.scss', 'utf8');
+mixins_result += colors;
 let files = walkSync(styleGuidePath);
 console.log(files);
 files.forEach(function(file) {
@@ -100,6 +104,7 @@ files.forEach(function(file) {
 });
 
 const ads_mixer = './mixifier/ads_mixer.scss';
+
 mkdirp(getDirName(ads_mixer), function(err) {
 	if (err) return cb(err);
 	fs.writeFile('./mixifier/ads_mixer.scss', mixins_result, function(err) {

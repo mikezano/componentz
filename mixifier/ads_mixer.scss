@@ -1,3 +1,36 @@
+$vue_green: hsla(153, 50%, 48%, 1);
+$vue_green_dark: hsla(211, 28%, 29%, 1);
+
+//Bootstraps
+$bs_blue: #007bff;
+$bs_red: #cc0000;
+$bs_orange: #ff8800;
+$bs_green: #007e33;
+
+$colors: (
+	'blue': #0071c5,
+	'indigo': #6610f2,
+	'purple': #6f42c1,
+	'pink': #e83e8c,
+	'red': #ed1c24,
+	'orange': #ffa300,
+	'yellow': #f3d54e,
+	'green': #c4d600,
+	'teal': #20c997,
+	'cyan': #00aeef,
+	'white': #fff,
+	'vue-green': hsla(153, 50%, 48%, 1),
+	'gray': #6c757d,
+	'gray-dark': #343a40,
+	'primary': #0071c5,
+	'secondary': #fff,
+	'success': #c4d600,
+	'info': #00aeef,
+	'warning': #f3d54e,
+	'danger': #ed1c24,
+	'light': #f8f9fa,
+	'dark': #343a40,
+);
 @mixin btn-circle($color:#ccc, $size:20px) {
 	$selector: btn-circle;
 	&.#{$selector} {
@@ -236,22 +269,21 @@
 		}
 	}
 } //side-card end
-@mixin drop_down_default($width:200px, $color:green){
-
-	.dd{
-		position:relative;
-		.dd-title{
-			color:white;
+@mixin drop_down_default($width: 200px, $color: green) {
+	.dd {
+		position: relative;
+		.dd-title {
+			color: white;
 			background-color: $color;
-			padding:8px 4px;
+			padding: 8px 4px;
 			width: $width;
-			margin:0;
+			margin: 0;
 			//position:relative;
-			font-size:16px;
+			font-size: 16px;
 			text-transform: uppercase;
 
-			&:before{
-				content: "";
+			&:before {
+				content: '';
 				display: block;
 				border-top: 5px solid $color;
 				border-left: ($width / 2) solid transparent;
@@ -261,60 +293,124 @@
 				z-index: 101;
 			}
 		}
-		.dd-menu{
-			padding:0;
-			border-left:1px solid green;
-			border-right:1px solid green;
-			border-bottom:1px solid green;
-			margin:0;
+		.dd-menu {
+			padding: 0;
+			border-left: 1px solid green;
+			border-right: 1px solid green;
+			border-bottom: 1px solid green;
+			margin: 0;
 			position: absolute;
-			box-sizing:border-box;
-			z-index:99;
-			width:100%;
-			background: hsla(0, 0%, 92%, .98);
-
+			box-sizing: border-box;
+			z-index: 99;
+			width: 100%;
+			width: $width;
+			background: hsla(0, 0%, 92%, 0.98);
 		}
-		.dd-menu-item{
-			height:30px;
-			overflow:hidden;
-			line-height:30px;
-			cursor:pointer;
-			opacity:1;
+		.dd-menu-item {
+			height: 30px;
+			overflow: hidden;
+			line-height: 30px;
+			cursor: pointer;
+			opacity: 1;
 
-			transition: 
-				0.4s height cubic-bezier(.73,.32,.34,1.5),
-				0.2s padding cubic-bezier(.73,.32,.34,1.5),
-				0.2s margin cubic-bezier(.73,.32,.34,1.5),
-				0.2s background-color,
-				0.2s 0.2s opacity;
+			transition: 0.4s height cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s padding cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s margin cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s background-color, 0.2s 0.2s opacity;
 
-			&:hover{background: rgba(0,0,0,0.1);}
-			&:first-child{margin-top:10px;}
-			&:last-child{margin-bottom:10px;}
+			&:hover {
+				background: rgba(0, 0, 0, 0.1);
+			}
+			&:first-child {
+				margin-top: 10px;
+			}
+			&:last-child {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
 	.dd:not(:hover) {
-
 		.dd-menu {
-			border:none;
-			background-color:hsla(0,0,85%,1);
-			.dd-menu-item{
+			border: none;
+			background-color: hsla(0, 0, 85%, 1);
+			.dd-menu-item {
 				opacity: 0;
-				height:0;
-				padding:0;
+				height: 0;
+				padding: 0;
 				margin: 0;
-				color: rgba(25,25,25,0);
-				transition: 
-					0.5s 0.1s height,
-					0.5s 0.1s padding,
-					0.5s 0.1s margin,
-					0.3s color;
+				color: rgba(25, 25, 25, 0);
+				transition: 0.5s 0.1s height, 0.5s 0.1s padding,
+					0.5s 0.1s margin, 0.3s color;
 				z-index: 99;
 			}
 		}
 	}
-}//drop_down end
+} // drop_down end
+@mixin classic_grid_layout() {
+	.grid-container {
+		display: grid;
+		grid-template-columns: 20% 60% 20%;
+		grid-gap: 0;
+		.cell {
+			color: white;
+			text-align: center;
+			padding: 10px;
+			//background-color: hsla(153, 50%, 48%, 1);
+			&.a,
+			&.e {
+				grid-column: 1/4;
+			}
+			&.b,
+			&.c,
+			&.d {
+				height: 100%;
+			}
+
+			&.a {
+				background-color: map-get($colors, 'blue');
+			}
+			&.b {
+				background-color: map-get($colors, 'yellow');
+			}
+			&.c {
+				background-color: map-get($colors, 'red');
+			}
+			&.d {
+				background-color: map-get($colors, 'orange');
+			}
+			&.e {
+				background-color: map-get($colors, 'vue-green');
+			}
+		}
+	}
+} // classic_grid_layout end
+@mixin leftColumnGrid() {
+	.grid-container {
+		display: grid;
+		grid-template-columns: 30% 70%;
+		grid-gap: 2px;
+		.cell {
+			height: 50px;
+			color: white;
+			border: 1px solid lightgrey;
+			text-align: center;
+			background-color: hsla(153, 50%, 48%, 1);
+			&.a {
+				grid-column: 1/3;
+				background-color: map-get($colors, 'red');
+			}
+			&.b,
+			&.c {
+				height: 100%;
+				background-color: map-get($colors, 'yellow');
+			}
+			&.c {
+				background-color: map-get($colors, 'vue-green');
+			}
+		}
+	}
+} // leftColumnGrid end
 @mixin draw_in($color) {
 	.draw-in {
 		$stroke-dash: 400;
@@ -411,6 +507,153 @@
 		}
 	}
 } //draw_in end
+@mixin intro(
+	$scale: 1,
+	$dot_color: orange,
+	$ads_color: hsla(0, 0%, 27%, 1),
+	$presents_color: hsla(0, 0%, 50%, 1)
+) {
+	$travel_distance: 235px;
+
+	.intro {
+		display: flex;
+		align-items: flex-start;
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 2em * $scale;
+		position: relative;
+
+		&__travel-dot,
+		&__dot1,
+		&__dot2,
+		&__dot3 {
+			width: 10px * $scale;
+			height: 10px * $scale;
+			border-radius: 5px * $scale;
+		}
+		&__travel-dot {
+			background-color: $dot_color;
+			position: absolute;
+			margin-top: 1em;
+			animation: move-dot 1.5s ease-in-out forwards;
+		}
+		&__words {
+			display: flex;
+			align-items: flex-start;
+			width: $travel_distance * $scale;
+		}
+		&__a,
+		&__d,
+		&__amp,
+		&__s {
+			font-weight: bold;
+			opacity: 0;
+			text-shadow: (2px * $scale) (4px * $scale) hsla(0, 0%, 83%, 0.7);
+			color: $ads_color;
+			animation: slide-down 0.2s ease-in-out forwards;
+		}
+		&__a {
+			animation-delay: 0.1s;
+		}
+		&__d {
+			animation-delay: 0.2s;
+		}
+		&__amp {
+			animation-delay: 0.3s;
+		}
+		&__s {
+			animation-delay: 0.4s;
+		}
+
+		&__presents {
+			opacity: 0;
+			animation: fade-in-presents 1s ease-in-out 0.5s forwards;
+			margin: 0 10px;
+			color: $presents_color;
+		}
+
+		&__dots {
+			display: flex;
+			justify-content: space-between;
+			width: 40px * $scale;
+		}
+
+		&__dot1,
+		&__dot2,
+		&__dot3 {
+			background-color: $dot_color;
+			margin-top: 0.8em;
+			opacity: 0;
+			animation: jump 1s ease-in-out infinite;
+		}
+
+		&__dot1 {
+			animation-delay: 1.44s;
+		}
+		&__dot2 {
+			animation-delay: 1.54s;
+		}
+		&__dot3 {
+			animation-delay: 1.64s;
+		}
+	}
+
+	@keyframes slide-down {
+		0% {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes jump {
+		0% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(-10px);
+			opacity: 1;
+		}
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-in-presents {
+		0% {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes move-dot {
+		0% {
+			transform: translateX(0);
+		}
+		80% {
+			transform: translateX($travel_distance * $scale);
+			margin-top: 1em;
+		}
+		95% {
+			transform: translateX($travel_distance * $scale);
+			margin-top: 0.8em;
+			opacity: 1;
+		}
+		100% {
+			transform: translateX($travel_distance * $scale);
+			margin-top: 0.8em;
+			opacity: 0;
+		}
+	}
+} //intro end
 @mixin underlined_tabs() {
 	.content > div {
 		display: none;

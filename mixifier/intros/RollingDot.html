@@ -1,0 +1,163 @@
+/* tslint:disable */
+<div>
+
+  <style type="text/css">
+    .intro {
+      display: flex;
+      align-items: flex-start;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 2em;
+      position: relative;
+    }
+    
+    .intro__travel-dot, .intro__dot1, .intro__dot2, .intro__dot3 {
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+    }
+    
+    .intro__travel-dot {
+      background-color: orange;
+      position: absolute;
+      margin-top: 1em;
+      animation: move-dot 1.5s ease-in-out forwards;
+    }
+    
+    .intro__words {
+      display: flex;
+      align-items: flex-start;
+      width: 235px;
+    }
+    
+    .intro__a, .intro__d, .intro__amp, .intro__s {
+      font-weight: bold;
+      opacity: 0;
+      text-shadow: 2px 4px rgba(212, 212, 212, 0.7);
+      color: #454545;
+      animation: slide-down 0.2s ease-in-out forwards;
+    }
+    
+    .intro__a {
+      animation-delay: 0.1s;
+    }
+    
+    .intro__d {
+      animation-delay: 0.2s;
+    }
+    
+    .intro__amp {
+      animation-delay: 0.3s;
+    }
+    
+    .intro__s {
+      animation-delay: 0.4s;
+    }
+    
+    .intro__presents {
+      opacity: 0;
+      animation: fade-in-presents 1s ease-in-out 0.5s forwards;
+      margin: 0 10px;
+      color: gray;
+    }
+    
+    .intro__dots {
+      display: flex;
+      justify-content: space-between;
+      width: 40px;
+    }
+    
+    .intro__dot1, .intro__dot2, .intro__dot3 {
+      background-color: orange;
+      margin-top: 0.8em;
+      opacity: 0;
+      animation: jump 1s ease-in-out infinite;
+    }
+    
+    .intro__dot1 {
+      animation-delay: 1.44s;
+    }
+    
+    .intro__dot2 {
+      animation-delay: 1.54s;
+    }
+    
+    .intro__dot3 {
+      animation-delay: 1.64s;
+    }
+    
+    @keyframes slide-down {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes jump {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fade-in-presents {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes move-dot {
+      0% {
+        transform: translateX(0);
+      }
+      80% {
+        transform: translateX(235px);
+        margin-top: 1em;
+      }
+      95% {
+        transform: translateX(235px);
+        margin-top: 0.8em;
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(235px);
+        margin-top: 0.8em;
+        opacity: 0;
+      }
+    }
+    
+  </style>
+  
+  <div class="intro">
+    <div class="intro__travel-dot"></div>
+    <div class="intro__words">
+      <div class="intro__a">A</div>
+      <div class="intro__d">D</div>
+      <div class="intro__amp">&</div>
+      <div class="intro__s">S</div>
+      <div class="intro__presents">Presents</div>
+    </div>
+    <div class="intro__dots">
+      <div class="intro__dot1"></div>
+      <div class="intro__dot2"></div>
+      <div class="intro__dot3"></div>
+    </div>
+  </div>
+
+</div>
