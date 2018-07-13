@@ -10,7 +10,6 @@
 			.side-menu__section-header Usage
 			ul.side-menu__section-list
 				router-link(to="/how_to_use" tag="li") How to use
-				router-link(to="/test" tag="li") Test
 			.divider
 			.side-menu__section-header Components
 			ul.side-menu__section-list
@@ -20,6 +19,7 @@
 				router-link(to="/StyleGuide/Cards" tag="li") Cards
 				router-link(to="/StyleGuide/Intros" tag="li") Intros
 				router-link(to="/StyleGuide/Errors" tag="li") Errors
+				router-link(to="/StyleGuide/Grids" tag="li") Grids
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -28,6 +28,7 @@
 			.side-menu__section-header Naming
 			ul.side-menu__section-list
 				router-link(to="/bem", tag="li") B.E.M
+				router-link(to="/test" tag="li") Test
 </template>
 
 <script lang="ts">

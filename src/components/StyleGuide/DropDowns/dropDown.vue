@@ -13,7 +13,7 @@
 			a(href="http://yahoo.com") Yahoo
 </template>
 
-<script lang="ts">
+<script>
 import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class DropDown extends Vue {}
@@ -24,22 +24,21 @@ export default class DropDown extends Vue {}
 <style lang="scss" scoped>
 @import '../../../sass/colors';
 
-@mixin drop_down_default($width:200px, $color:green){
-
-	.dd{
-		position:relative;
-		.dd-title{
-			color:white;
+@mixin drop_down_default($width: 200px, $color: green) {
+	.dd {
+		position: relative;
+		.dd-title {
+			color: white;
 			background-color: $color;
-			padding:8px 4px;
+			padding: 8px 4px;
 			width: $width;
-			margin:0;
+			margin: 0;
 			//position:relative;
-			font-size:16px;
+			font-size: 16px;
 			text-transform: uppercase;
 
-			&:before{
-				content: "";
+			&:before {
+				content: '';
 				display: block;
 				border-top: 5px solid $color;
 				border-left: ($width / 2) solid transparent;
@@ -49,60 +48,60 @@ export default class DropDown extends Vue {}
 				z-index: 101;
 			}
 		}
-		.dd-menu{
-			padding:0;
-			border-left:1px solid green;
-			border-right:1px solid green;
-			border-bottom:1px solid green;
-			margin:0;
+		.dd-menu {
+			padding: 0;
+			border-left: 1px solid green;
+			border-right: 1px solid green;
+			border-bottom: 1px solid green;
+			margin: 0;
 			position: absolute;
-			box-sizing:border-box;
-			z-index:99;
-			width:100%;
-			background: hsla(0, 0%, 92%, .98);
-
+			box-sizing: border-box;
+			z-index: 99;
+			width: 100%;
+			width: $width;
+			background: hsla(0, 0%, 92%, 0.98);
 		}
-		.dd-menu-item{
-			height:30px;
-			overflow:hidden;
-			line-height:30px;
-			cursor:pointer;
-			opacity:1;
+		.dd-menu-item {
+			height: 30px;
+			overflow: hidden;
+			line-height: 30px;
+			cursor: pointer;
+			opacity: 1;
 
-			transition: 
-				0.4s height cubic-bezier(.73,.32,.34,1.5),
-				0.2s padding cubic-bezier(.73,.32,.34,1.5),
-				0.2s margin cubic-bezier(.73,.32,.34,1.5),
-				0.2s background-color,
-				0.2s 0.2s opacity;
+			transition: 0.4s height cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s padding cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s margin cubic-bezier(0.73, 0.32, 0.34, 1.5),
+				0.2s background-color, 0.2s 0.2s opacity;
 
-			&:hover{background: rgba(0,0,0,0.1);}
-			&:first-child{margin-top:10px;}
-			&:last-child{margin-bottom:10px;}
+			&:hover {
+				background: rgba(0, 0, 0, 0.1);
+			}
+			&:first-child {
+				margin-top: 10px;
+			}
+			&:last-child {
+				margin-bottom: 10px;
+			}
 		}
 	}
 
 	.dd:not(:hover) {
-
 		.dd-menu {
-			border:none;
-			background-color:hsla(0,0,85%,1);
-			.dd-menu-item{
+			border: none;
+			background-color: hsla(0, 0, 85%, 1);
+			.dd-menu-item {
 				opacity: 0;
-				height:0;
-				padding:0;
+				height: 0;
+				padding: 0;
 				margin: 0;
-				color: rgba(25,25,25,0);
-				transition: 
-					0.5s 0.1s height,
-					0.5s 0.1s padding,
-					0.5s 0.1s margin,
-					0.3s color;
+				color: rgba(25, 25, 25, 0);
+				transition: 0.5s 0.1s height, 0.5s 0.1s padding,
+					0.5s 0.1s margin, 0.3s color;
 				z-index: 99;
 			}
 		}
 	}
-}//drop_down end
+} //drop_down end
 
 @include drop_down_default(200px, $vue_green);
 </style>

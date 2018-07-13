@@ -39,16 +39,21 @@ export default class RotatingExamples extends Vue {}
 @import 'mixifier/ads_mixer.scss';
 @import '../sass/colors';
 
-$indigo: map-get($colors, indigo);
-$teal: map-get($colors, teal);
-$gray: map-get($colors, gray);
-.default{@include rotating-btn(200px, 60px, $indigo, white, 2rem);}
-.save{@include rotating-btn(90px, 90px, $teal, white, 1rem);}
-.dead-alive{@include rotating-btn(120px, 60px, $gray, white, 1rem);}
-
-.examples{
-	display:flex;
-	justify-content: space-around;
+$indigo: map-get($colors, 'indigo');
+$teal: map-get($colors, 'teal');
+$gray: map-get($colors, 'gray');
+.default {
+	@include rotating-btn(200px, 60px, $indigo, white, 2rem);
+}
+.save {
+	@include rotating-btn(90px, 90px, $teal, white, 1rem);
+}
+.dead-alive {
+	@include rotating-btn(120px, 60px, $gray, white, 1rem);
 }
 
+.examples {
+	display: flex;
+	justify-content: space-around;
+}
 </style>

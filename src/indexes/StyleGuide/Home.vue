@@ -30,7 +30,7 @@
 import { mapGetters } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-import RotateDownButton from '@/components/rotateDownBtn.vue';
+import RotateDownButton from '@/components/RotateDownBtn.vue';
 import Player from '@/components/Player.vue';
 import Carousel from '@/components/Carousel.vue';
 
