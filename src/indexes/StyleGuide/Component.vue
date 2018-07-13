@@ -29,7 +29,7 @@ export default class Component extends Vue {
 		this.vuerFader = this.$el.querySelectorAll('.vuer__content')[0];
 		if (
 			this.$route.params.single_component != null &&
-			this.isTransitioning == false
+			this.isTransitioning === false
 		) {
 			this.reveal();
 			this.example = this.$route.params.single_component + 'Examples';
@@ -47,7 +47,7 @@ export default class Component extends Vue {
 	}
 
 	public isTransitioningChanged(newVal: boolean, oldVal: boolean) {
-		if (newVal == false) {
+		if (newVal === false) {
 			this.reveal();
 		}
 	}

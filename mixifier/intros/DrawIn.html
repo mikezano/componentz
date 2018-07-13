@@ -1,87 +1,118 @@
-<style type="text/css">
-.draw-in {
-  display: flex;
-  flex-direction: column;
-  align-items: center; }
-  .draw-in__svg {
-    width: 15em;
-    height: 4em;
-    animation: shadow 1s 2s linear forwards; }
-  .draw-in__ads {
-    fill: transparent;
-    font-family: 'Arial', Gadget, sans-serif;
-    font-weight: bold;
-    stroke-dashoffset: 400;
-    stroke-width: 2;
-    stroke: orange;
-    stroke-dasharray: 400;
-    animation: text 3s linear forwards;
-    font-size: 5em;
-    box-shadow: 2px 2px 3px black; }
-  .draw-in__presents {
-    animation: go-up 1s 1s ease-in-out forwards;
-    opacity: 0;
-    color: #444; }
-  .draw-in__dots {
-    display: flex;
-    justify-content: center; }
-  .draw-in__dot {
-    width: 10px;
-    height: 10px;
-    border: 2px solid gray;
-    border-radius: 50%;
-    float: left;
-    margin: 0 5px;
-    transform: scale(0);
-    animation: fx 1000ms ease infinite 2s; }
+/* tslint:disable */
+<div>
+
+  <style type="text/css">
+    .draw-in {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .draw-in__svg {
+      width: 15em;
+      height: 4em;
+      animation: shadow 1s 2s linear forwards;
+    }
+    
+    .draw-in__ads {
+      fill: transparent;
+      font-family: 'Arial', Gadget, sans-serif;
+      font-weight: bold;
+      stroke-dashoffset: 400;
+      stroke-width: 2;
+      stroke: orange;
+      stroke-dasharray: 400;
+      animation: text 3s linear forwards;
+      font-size: 5em;
+      box-shadow: 2px 2px 3px black;
+    }
+    
+    .draw-in__presents {
+      animation: go-up 1s 1s ease-in-out forwards;
+      opacity: 0;
+      color: #444;
+    }
+    
+    .draw-in__dots {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .draw-in__dot {
+      width: 10px;
+      height: 10px;
+      border: 2px solid gray;
+      border-radius: 50%;
+      float: left;
+      margin: 0 5px;
+      transform: scale(0);
+      animation: fx 1000ms ease infinite 2s;
+    }
+    
     .draw-in__dot:nth-child(2) {
-      animation: fx 1000ms ease infinite 2.3s; }
+      animation: fx 1000ms ease infinite 2.3s;
+    }
+    
     .draw-in__dot:nth-child(3) {
-      animation: fx 1000ms ease infinite 2.6s; }
-
-@keyframes shadow {
-  0% {
-    filter: none; }
-  100% {
-    filter: drop-shadow(1px 1px 4px #ccc); } }
-
-@keyframes go-up {
-  from {
-    transform: translateY(1em);
-    opacity: 0; }
-  to {
-    transform: translateY(0);
-    opacity: 1; } }
-
-@keyframes text {
-  50% {
-    stroke-dashoffset: 0;
-    fill: transparent; }
-  100% {
-    stroke-dashoffset: 0;
-    fill: #ffc966; } }
-
-@keyframes fx {
-  50% {
-    transform: scale(1);
-    opacity: 1; }
-  100% {
-    opacity: 0; } }
-
-</style>
-
-
-<div class="draw-in">
-  <svg class="draw-in__svg">
-    <symbol id="text">
-      <text class="draw-in__ads" x="50%" y="98%" text-anchor="middle">AD&S</text>
-    </symbol>
-    <use class="text" xlink:href="#text"></use>
-  </svg>
-  <div class="draw-in__presents">Presents</div>
-  <div class="draw-in__dots">
-    <div class="draw-in__dot"></div>
-    <div class="draw-in__dot"></div>
-    <div class="draw-in__dot"></div>
+      animation: fx 1000ms ease infinite 2.6s;
+    }
+    
+    @keyframes shadow {
+      0% {
+        filter: none;
+      }
+      100% {
+        filter: drop-shadow(1px 1px 4px #ccc);
+      }
+    }
+    
+    @keyframes go-up {
+      from {
+        transform: translateY(1em);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes text {
+      50% {
+        stroke-dashoffset: 0;
+        fill: transparent;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        fill: #ffc966;
+      }
+    }
+    
+    @keyframes fx {
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    
+  </style>
+  
+  <div class="draw-in">
+    <svg class="draw-in__svg">
+      <symbol id="text">
+        <text class="draw-in__ads" x="50%" y="98%" text-anchor="middle">AD&S</text>
+      </symbol>
+      <use class="text" xlink:href="#text"></use>
+    </svg>
+    <div class="draw-in__presents">Presents</div>
+    <div class="draw-in__dots">
+      <div class="draw-in__dot"></div>
+      <div class="draw-in__dot"></div>
+      <div class="draw-in__dot"></div>
+    </div>
   </div>
+
 </div>

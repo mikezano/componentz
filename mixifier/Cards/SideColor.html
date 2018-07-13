@@ -1,0 +1,90 @@
+/* tslint:disable */
+<div>
+
+  <style type="text/css">
+    .fruits.scard {
+      display: flex;
+      width: 160px;
+      border: 1px solid #cccccc;
+      margin: 10px;
+      background-color: white;
+    }
+    
+    .fruits.scard .scard__indicator {
+      background-color: #007bff;
+      width: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .fruits.scard .scard__indicator__text {
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      margin-left: 18px;
+      margin-top: 10px;
+      transform: rotate(90deg);
+      transform-origin: 0 0;
+    }
+    
+    .fruits.scard .scard__content {
+      width: 100%;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    .fruits .red {
+      color: #cc0000;
+    }
+    
+    .fruits .blue {
+      color: #007bff;
+    }
+    
+    .fruits .orange {
+      color: #ff8800;
+    }
+    
+    .fruits .green {
+      color: #007e33;
+    }
+    
+    .fruits dl {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .fruits dt {
+      font-weight: bold;
+      width: 40%;
+    }
+    
+    .fruits dd {
+      color: black;
+      width: 60%;
+      margin: 0;
+    }
+    
+  </style>
+  
+  <div class="container">
+    <div class="fruits scard">
+      <div class="scard__indicator"> 
+        <div class="scard__indicator__text">Fruits</div>
+      </div>
+      <div class="scard__content"> 
+        <dl>
+          <dt>🍊:</dt>
+          <dd>Tangerine</dd>
+          <dt>🍓:</dt>
+          <dd>Strawberry</dd>
+          <dt>🍎:</dt>
+          <dd>Apple</dd>
+          <dt>🍌:</dt>
+          <dd>Banana</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+</div>

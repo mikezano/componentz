@@ -60,9 +60,6 @@ export default class Vuer extends Vue {
 	public getHtmlSingleFile!: (name: string) => any;
 	public setFromEl!: (name: string) => any;
 
-	public nameChanged(newName: string, oldName: string) {
-		//debugger;
-	}
 	public mounted(): void {
 		this.getSources();
 		this.displayName = this.name || this.$route.params.single_component;
@@ -79,7 +76,6 @@ export default class Vuer extends Vue {
 	public getSCSSPUG() {
 		// https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
 		const htmlSingleFile = this.getHtmlSingleFile(this.name);
-		console.log(htmlSingleFile);
 		// Create the textarea input to hold our text.
 		const element = document.createElement('textarea');
 		element.value = htmlSingleFile;

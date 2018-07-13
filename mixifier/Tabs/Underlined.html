@@ -1,0 +1,61 @@
+/* tslint:disable */
+<div>
+
+  <style type="text/css">
+    .content > div {
+      display: none;
+      font-size: 14px;
+      padding: 10px;
+      height: 300px;
+      border-bottom: 1px solid lightgray;
+    }
+    
+    input {
+      display: none;
+    }
+    
+    label {
+      display: inline-block;
+      padding: 5px 10px;
+      text-align: center;
+      margin: 0 2px;
+      border-bottom: 4px solid #bebebe;
+      transition: all 0.2s ease-out;
+    }
+    
+    label:hover {
+      cursor: pointer;
+      border-bottom: 4px solid #3db881;
+    }
+    
+    input:checked + label {
+      border-bottom: 4px solid #3db881;
+    }
+    
+    #tab1:checked ~ .content .content1,
+    #tab2:checked ~ .content .content2,
+    #tab3:checked ~ .content .content3,
+    #tab4:checked ~ .content .content4 {
+      display: block;
+    }
+    
+  </style>
+  
+  <div class="container">
+    <input id="tab1" type="radio" name="tabs" checked="checked"/>
+    <label for="tab1">Tab 1</label>
+    <input id="tab2" type="radio" name="tabs"/>
+    <label for="tab2">Tab 2</label>
+    <input id="tab3" type="radio" name="tabs"/>
+    <label for="tab3">Tab 3</label>
+    <input id="tab4" type="radio" name="tabs"/>
+    <label for="tab4">Tab 4</label>
+    <div class="content">
+      <div class="content1">Content for Tab 1</div>
+      <div class="content2">Content for Tab 2</div>
+      <div class="content3"><img src="https://tinyurl.com/y8n2spmr" width="200" height="200"/></div>
+      <div class="content4">Content for Tab 4</div>
+    </div>
+  </div>
+
+</div>

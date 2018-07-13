@@ -128,21 +128,114 @@
 		}
 	}
 }//spin-btn end
-@mixin zoom-btn($scale, $textColor:white, $backgroundColor:blue) {
-  $selector: zoom-btn;
-  &.#{$selector} {
-    $shadow-color: black;
-    box-shadow: 2px 2px 4px $shadow-color;
-    transition: all 0.2s ease-in-out;
-    color: $textColor;
-    border: 3px solid darken($backgroundColor, 10%);
-    background-color: $backgroundColor;
-    &:hover {
-      transform: scale($scale);
-      box-shadow: 4px 4px 8px lighten($shadow-color, 20%);
-    }
-  }
+@mixin zoom-btn($scale, $textColor: white, $backgroundColor: blue) {
+	$selector: zoom-btn;
+	&.#{$selector} {
+		$shadow-color: black;
+		box-shadow: 2px 2px 4px $shadow-color;
+		transition: all 0.2s ease-in-out;
+		color: $textColor;
+		border: 3px solid darken($backgroundColor, 10%);
+		background-color: $backgroundColor;
+		&:hover {
+			transform: scale($scale);
+			box-shadow: 4px 4px 8px lighten($shadow-color, 20%);
+		}
+	}
 } //zoom-btn end
+@mixin corner-card($color, $width) {
+	$gray: hsla(0, 0%, 80%, 1);
+	$el: card;
+	&.#{$el} {
+		border: 1px solid $gray;
+		background-color: white;
+		width: $width;
+		margin: 8px;
+		padding: 2px;
+		transition: box-shadow 0.2s ease-out;
+		&:hover {
+			box-shadow: 2px 2px 4px $gray;
+		}
+		.#{$el}__header {
+			&__indicator {
+				position: absolute;
+				border-style: solid;
+				border-width: 30px 30px 0 0;
+				border-color: $color transparent transparent transparent;
+			}
+			&__text {
+				text-align: center;
+				font-weight: bold;
+				line-height: 30px;
+			}
+		}
+		.#{$el}__content {
+			text-align: left;
+			padding: 4px;
+			font-size: 14px;
+		}
+	}
+} //corner-card end
+@mixin indicator-card() {
+	$selector: indicator-card;
+	&.#{$selector} {
+		$color: darkgray;
+		border: 1px solid darken($color, 20%);
+		transition: all 0.2s ease-out;
+		width: 100%;
+		margin: 10px;
+		&:hover {
+			box-shadow: 2px 2px 4px black;
+		}
+		.#{$selector}__header {
+			background-color: darkgray;
+			padding: 10px;
+		}
+		.#{$selector}__content {
+			background-color: white;
+			color: black;
+			padding: 10px;
+		}
+
+		.circle {
+			//@include circle-button(lightblue, 24px);
+			float: right;
+			margin-top: 16px;
+		}
+	}
+} //indicator-card end
+@mixin side-card($color, $titleSize, $width) {
+	$gray: hsla(0, 0%, 80%, 1);
+	$el: scard;
+	&.#{$el} {
+		display: flex;
+		width: $width;
+		border: 1px solid $gray;
+		margin: 10px;
+		background-color: white;
+		.#{$el}__indicator {
+			background-color: $color;
+			width: $titleSize + ($titleSize/2px);
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			&__text {
+				color: white;
+				font-weight: bold;
+				font-size: $titleSize;
+				margin-left: $titleSize + ($titleSize/8px);
+				margin-top: 10px;
+				transform: rotate(90deg);
+				transform-origin: 0 0;
+			}
+		}
+		.#{$el}__content {
+			width: 100%;
+			padding: 8px;
+			text-align: left;
+		}
+	}
+} //side-card end
 @mixin drop_down_default($width:200px, $color:green){
 
 	.dd{
@@ -318,4 +411,38 @@
 		}
 	}
 } //draw_in end
+@mixin underlined_tabs() {
+	.content > div {
+		display: none;
+		font-size: 14px;
+		padding: 10px;
+		height: 300px;
+		border-bottom: 1px solid lightgray;
+	}
+	input {
+		display: none;
+	}
+	label {
+		display: inline-block;
+		padding: 5px 10px;
+		text-align: center;
+		margin: 0 2px;
+		border-bottom: 4px solid #bebebe;
+		transition: all 0.2s ease-out;
+	}
+	label:hover {
+		cursor: pointer;
+		border-bottom: 4px solid $vue_green;
+	}
+	input:checked + label {
+		border-bottom: 4px solid $vue_green;
+	}
+
+	#tab1:checked ~ .content .content1,
+	#tab2:checked ~ .content .content2,
+	#tab3:checked ~ .content .content3,
+	#tab4:checked ~ .content .content4 {
+		display: block;
+	}
+} //underlined_tabs end
 

@@ -21,7 +21,9 @@ export default class VuerTransition extends Vue {
 	public toEl: any;
 
 	public fromElChanged(element: HTMLElement) {
-		if (element == null) return;
+		if (element == null) {
+			return;
+		}
 
 		this.reset(element);
 		this.position(element);
@@ -39,7 +41,7 @@ export default class VuerTransition extends Vue {
 	}
 
 	public position(element: HTMLElement) {
-		let rect = element.getBoundingClientRect();
+		const rect = element.getBoundingClientRect();
 		this.$el.style.top = rect.top + 'px';
 		this.$el.style.left = rect.left + 'px';
 		this.$el.style.display = 'block';
@@ -60,24 +62,23 @@ export default class VuerTransition extends Vue {
 	}
 
 	public endTransitionFromEl(e: any) {
-		let elHeight = this.$el.getBoundingClientRect().height + 'px';
-		let vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
+		const elHeight = this.$el.getBoundingClientRect().height + 'px';
+		const vuerHeight = this.vuer.getBoundingClientRect().height + 'px';
 		// VUER CONTENT!!!!! ...IS WHAT NEEDS TO BE SELECTED
-		let fromHeight = this.vuerContent.getBoundingClientRect().height + 'px';
-		let toHeight =
+		const fromHeight =
+			this.vuerContent.getBoundingClientRect().height + 'px';
+		const toHeight =
 			this.toEl
 				.querySelectorAll('.vuer__content')[0]
 				.getBoundingClientRect().height + 'px';
 
-		//this.toEl.style = 'display:none';
-		//debugger;
 		this.vuerContent.removeEventListener(
 			'animationend',
 			this.endTransitionFromEl,
 		);
 		this.vuer.addEventListener('animationend', this.endTransitionToEl);
 
-		var idx = (document.styleSheets[0] as any).cssRules.length;
+		const idx = (document.styleSheets[0] as any).cssRules.length;
 		(document.styleSheets[0] as any).insertRule(
 			`@keyframes grow {0%{height:${vuerHeight};}100%{height:${toHeight};}}`,
 			idx,
@@ -86,7 +87,9 @@ export default class VuerTransition extends Vue {
 	}
 
 	public endTransitionToEl(e: any) {
-		if (e.target != this.vuer) return;
+		if (e.target !== this.vuer) {
+			return;
+		}
 
 		this.toEl.style = 'display:block';
 		this.$el.style.display = 'none';
@@ -94,7 +97,7 @@ export default class VuerTransition extends Vue {
 		this.$el.classList.remove('fade-out');
 		this.vuer.classList.remove('grow');
 
-		this.$store.commit('toggleIsTransitioning'); //false
+		this.$store.commit('toggleIsTransitioning'); // false
 	}
 }
 </script>

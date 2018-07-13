@@ -26,6 +26,7 @@ function walkSync(dir, filelist) {
 function compile_sass(contents) {
 	let sass_code = contents.match(sass_regex);
 	return sass.renderSync({
+		outputStyle: 'expanded',
 		data: sass_code[1],
 		importer: function(url, prev, done) {
 			var contents = fs.readFileSync(
@@ -44,7 +45,10 @@ function compile_pug(contents) {
 }
 
 function write_single_file(css, html, path) {
-	let data = `<style type="text/css">\n${css}\n</style>\n\n${html}`;
+	let data = `/* tslint:disable */\n<div>\n\n  <style type="text/css">\n${css.replace(
+		/^/gm,
+		'    ',
+	)}\n  </style>\n${html.replace(/^/gm, '  ')}\n\n</div>`;
 	console.log('Zano', path);
 	mkdirp(getDirName(path), function(err) {
 		if (err) return cb(err);
