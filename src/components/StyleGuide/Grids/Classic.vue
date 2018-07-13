@@ -25,11 +25,11 @@ export default class Classic extends Vue {}
 	.grid-container {
 		display: grid;
 		grid-template-columns: 20% 60% 20%;
-		grid-gap: 2px;
+		grid-gap: 0;
 		.cell {
 			color: white;
-			border: 1px solid lightgrey;
 			text-align: center;
+			padding: 10px;
 			//background-color: hsla(153, 50%, 48%, 1);
 			&.a,
 			&.e {
@@ -48,13 +48,13 @@ export default class Classic extends Vue {}
 				background-color: map-get($colors, 'yellow');
 			}
 			&.c {
-				background-color: map-get($colors, 'indigo');
+				background-color: map-get($colors, 'red');
 			}
 			&.d {
 				background-color: map-get($colors, 'orange');
 			}
 			&.e {
-				background-color: map-get($colors, 'teal');
+				background-color: map-get($colors, 'vue-green');
 			}
 		}
 	}

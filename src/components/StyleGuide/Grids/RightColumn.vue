@@ -1,9 +1,8 @@
 <template lang="pug">
-.container
-	.grid-container
-		.cell.a A
-		.cell.b B
-		.cell.c C
+.grid-container
+	.cell.a A
+	.cell.b B
+	.cell.c C
 </template>
 
 
@@ -14,10 +13,7 @@ export default class RightColumn extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-.container {
-	width: 100%;
-	margin: 20px;
-}
+@import '../../../sass/colors';
 @mixin right_column_grid() {
 	.grid-container {
 		display: grid;
@@ -32,6 +28,13 @@ export default class RightColumn extends Vue {}
 			background-color: hsla(153, 50%, 48%, 1);
 			&.a {
 				grid-column: 1/3;
+				background-color: map-get($colors, 'blue');
+			}
+			&.b {
+				background-color: map-get($colors, 'yellow');
+			}
+			&.c {
+				background-color: map-get($colors, 'red');
 			}
 		}
 	}
