@@ -24,9 +24,9 @@ const files = require.context(`../../components/StyleGuide/`, true, /\.vue$/);
 
 @Component({
 	computed: {
-		...mapGetters(['getComponent', 'getFiles']),
+		...mapGetters(['getComponent', 'getFiles', 'getComponents']),
 		...mapState(['scrollPosition']),
-		...mapMutations(['setScrollPosition']),
+		...mapMutations(['setScrollPosition', 'setComponents']),
 	},
 	components: {
 		Vuer,
@@ -46,11 +46,15 @@ export default class Components extends Vue {
 	public hash: Map<string, string[]> = new Map<string, string[]>();
 
 	public routeChanged(route: any, old: any) {
-		this.currentSet = this.hash.get(route.params.components) as string[];
+		this.currentSet = this.hash.get(this.components) as string[];
+		console.log(this.currentSet);
+		this.$store.commit('setComponents', this.currentSet);
+		
 	}
 
 	public mounted() {
 		this.currentSet = this.hash.get(this.components);
+		
 	}
 	public beforeMount() {
 		this.buildRegistry();

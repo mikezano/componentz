@@ -14,6 +14,7 @@ export default new Vuex.Store({
 		toEl: null,
 		isTransitioning: false,
 		scrollPosition: 0,
+		components: [],
 	},
 	getters: {
 		getFiles: (state: any, getters) => () => {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
 		getScrollPosition: (state, getters) => () => {
 			return state.scrollPosition;
 		},
+		getComponents: (state, getters) => () => {
+			return state.components;
+		},
 	},
 	mutations: {
 		setFromEl: (state, el) => {
@@ -42,8 +46,11 @@ export default new Vuex.Store({
 		setScrollPosition: (state, el) => {
 			state.scrollPosition = el;
 		},
-		toggleIsTransitioning: (state) => {
+		toggleIsTransitioning: state => {
 			state.isTransitioning = !state.isTransitioning;
+		},
+		setComponents: (state, components: string[]) => {
+			state.components = components;
 		},
 	},
 	actions: {},

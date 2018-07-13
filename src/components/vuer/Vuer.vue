@@ -1,14 +1,12 @@
 <template lang="pug">
-.vuer
+.vuer(:id="displayName")
 	.vuer__content
 		.vuer__links(v-if="$route.params.single_component == null")
 			button.vuer__examples(title="See examples" @click="setTheEl")
 				router-link(:to="route" tag="div")
-					icon(name="code" scale="2")
+					icon(name="code" scale="1.6")
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				icon(name="copy" scale="2")
-			button.vuer__copy(title="Copy HTML+CSS")
-				icon(name="copy" scale="2")
+				icon(name="copy" scale="1.6")
 
 		.vuer__header
 			| {{displayName | humanize}}
@@ -115,17 +113,21 @@ export default class Vuer extends Vue {
 	display: flex;
 	position: absolute;
 	justify-content: flex-end;
-	top: 1.5rem;
+	top: 1rem;
 	right: 1rem;
-	.vuer__examples,
-	.vuer__copy {
-		width: 50px;
-	}
 }
 .vuer__examples,
 .vuer__copy {
 	border: none;
 	background: none;
+	transition: transform 0.1s ease-in;
+	text-shadow: 2px 2px 4px gray;
+
+	&:hover {
+		color: map-get($colors, 'vue-green');
+		cursor: pointer;
+		transform: scale(1.2);
+	}
 }
 
 .vuer {

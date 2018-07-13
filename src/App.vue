@@ -7,16 +7,19 @@
 			SideMenu(
 				v-if="isShowingSideMenu" 
 				v-on:closeMenu="toggleSideMenu")
+		SideSubMenu
 		transition(name="fade" mode="out-in")
 			router-view
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import SideMenu from '@/components/SideMenu.vue';
+import SideSubMenu from '@/components/SideSubMenu.vue';
 
 @Component({
 	components: {
 		SideMenu,
+		SideSubMenu,
 	},
 })
 export default class App extends Vue {
