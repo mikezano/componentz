@@ -20,26 +20,34 @@ export default class VuerTransition extends Vue {
 	public fromEl: any;
 	public toEl: any;
 
-	public fromElChanged(newEl: any, oldEl: any) {
-		if (newEl == null) return;
+	public fromElChanged(element: HTMLElement) {
+		if (element == null) return;
 
+		this.reset(element);
+		this.size();
+		this.animate();
+	}
+
+	public reset(element:HTMLElement){
 		// vuer = old element, which will be null at the start
 		if (this.vuer != null) {
 			this.$el.removeChild(this.vuer);
 		}
 
-		this.vuer = newEl; // vuer is the fromEl
+		this.$el.appendChild(element.cloneNode(true));
+		this.vuer = this.$el.querySelectorAll('.vuer')[0];
+		this.vuerContent = this.$el.querySelectorAll('.vuer__content')[0];
+	}
 
-		// Set up this element with the 'old'
-		this.$el.appendChild(this.vuer.cloneNode(true));
-		this.$el.style.display = 'block';
-		this.$el.style.position = 'fixed';
-
+	public size(){
 		let rect = this.vuer.getBoundingClientRect();
 		this.$el.style.top = rect.top + 'px';
 		this.$el.style.left = rect.left + 'px';
+		this.$el.style.display = 'block';
+		this.$el.style.position = 'fixed';
+	}
 
-		this.vuerContent = this.$el.querySelectorAll('.vuer__content')[0]; //selecting the inside of the current el
+	public animate(){
 		this.vuerContent.addEventListener(
 			'animationend',
 			this.endTransitionFromEl,
@@ -48,10 +56,6 @@ export default class VuerTransition extends Vue {
 		// start animations by adding classes
 		this.$el.classList.add('move-up');
 		this.vuerContent.classList.add('fade-out');
-
-		//let elHeight = this.$el.getBoundingClientRect().height + 'px';
-		//let fromHeight = this.vuerContent.getBoundingClientRect().height + 'px';
-		//let toHeight = this.toEl.getBoundingClientRect().height + 'px';
 	}
 
 	public endTransitionFromEl(e: any) {
