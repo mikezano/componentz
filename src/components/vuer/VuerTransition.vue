@@ -24,7 +24,7 @@ export default class VuerTransition extends Vue {
 		if (element == null) return;
 
 		this.reset(element);
-		this.size();
+		this.position();
 		this.animate();
 	}
 
@@ -39,7 +39,7 @@ export default class VuerTransition extends Vue {
 		this.vuerContent = this.$el.querySelectorAll('.vuer__content')[0];
 	}
 
-	public size(){
+	public position(){
 		let rect = this.vuer.getBoundingClientRect();
 		this.$el.style.top = rect.top + 'px';
 		this.$el.style.left = rect.left + 'px';
