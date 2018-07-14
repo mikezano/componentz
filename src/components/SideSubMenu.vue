@@ -1,9 +1,7 @@
 <template lang="pug">
 .side-sub-menu
 	.side-sub-menu__item(v-for="i in ids")
-		a(:href="i.id") {{i.name}}
-
-
+		a(:href="i.i") {{i.n}}
 </template>
 
 <script lang="ts">
@@ -20,15 +18,10 @@ import { mapGetters, mapState} from 'vuex';
 })
 export default class SideSubMenu extends Vue {
 
-	public components!:string[];
-	public ids!:any[];
-	// public mounted(){
+	public ids:any[] = [];
 
-	// }
 	public componentsChanged(newComponents: string[]){
-		this.components = newComponents;
-		this.ids = this.components.map(x =>{return{name: x, id:"#" + x}});
-		debugger;
+		this.ids = newComponents.map( (x: string) => ({n: x, i:"#" + x}));
 	}
 }
 </script>
