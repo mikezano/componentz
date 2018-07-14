@@ -46,7 +46,7 @@ export default new Vuex.Store({
 		setScrollPosition: (state, el) => {
 			state.scrollPosition = el;
 		},
-		toggleIsTransitioning: state => {
+		toggleIsTransitioning: (state) => {
 			state.isTransitioning = !state.isTransitioning;
 		},
 		setComponents: (state, components: string[]) => {

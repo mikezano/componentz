@@ -1,9 +1,8 @@
 <template lang="pug">
 .side-sub-menu
-	.side-sub-menu__item
-		a(href="#LeftColumn") Sample1
-	.side-sub-menu__item
-		a(href="") Sample2
+	.side-sub-menu__item(v-for="i in ids")
+		a(:href="i.id") {{i.name}}
+
 
 </template>
 
@@ -11,16 +10,25 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapGetters, mapState} from 'vuex';
 @Component({
-	...mapGetters(['getComponents']),
-	...mapState(['components']),
+	computed:{
+		...mapGetters(['getComponents']),
+		...mapState(['components']),
+	},
 	watch: {
-
-	}
+		components: 'componentsChanged'
+	},
 })
 export default class SideSubMenu extends Vue {
 
-	public mounted(){
+	public components!:string[];
+	public ids!:any[];
+	// public mounted(){
 
+	// }
+	public componentsChanged(newComponents: string[]){
+		this.components = newComponents;
+		this.ids = this.components.map(x =>{return{name: x, id:"#" + x}});
+		debugger;
 	}
 }
 </script>

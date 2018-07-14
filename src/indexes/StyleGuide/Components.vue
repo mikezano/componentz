@@ -47,14 +47,11 @@ export default class Components extends Vue {
 
 	public routeChanged(route: any, old: any) {
 		this.currentSet = this.hash.get(this.components) as string[];
-		console.log(this.currentSet);
 		this.$store.commit('setComponents', this.currentSet);
-		
 	}
 
 	public mounted() {
 		this.currentSet = this.hash.get(this.components);
-		
 	}
 	public beforeMount() {
 		this.buildRegistry();
