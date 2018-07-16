@@ -28,7 +28,20 @@ export default class SideSubMenu extends Vue {
 		let element = document.getElementById(id);
 		let top = element!.getBoundingClientRect().top;
 
-		window.scrollTo(0, window.pageYOffset + top);
+		//window.scrollTo(0, window.pageYOffset + top);
+		this.smoothScrollTo(element!, top, 200);
+	}
+
+	public smoothScrollTo(element: HTMLElement, to: number, duration: number) {
+
+		if (duration < 0) return;
+		var difference = to - window.pageYOffset;
+		var perTick = difference / duration * 10;
+		
+		setTimeout(()=> {
+			window.scrollTo(0, window.pageYOffset + perTick);
+			this.smoothScrollTo(element, to, duration - 10);
+		}, 10);
 	}
 }
 </script>
