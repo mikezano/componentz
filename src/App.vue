@@ -49,13 +49,14 @@ export default class App extends Vue {
 <style lang="scss">
 @import './sass/prism.css';
 @import './sass/fade';
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 html {
 	overflow-y: scroll;
 }
 
 #app {
-	font-family: 'Intel Clear', 'Avenir', Helvetica, Arial, sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
