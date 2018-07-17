@@ -21,6 +21,7 @@ import SideSubMenu from '@/components/SideSubMenu.vue';
 		SideMenu,
 		SideSubMenu,
 	},
+	name: 'different',
 })
 export default class App extends Vue {
 	public isShowingSideMenu: boolean = false;

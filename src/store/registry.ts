@@ -1,16 +1,8 @@
 const ctx = require.context('../../src/', true, /.*.vue$/);
-const ctxHtml = require.context(
-	'!!html-loader!../../mixifier/',
-	true,
-	/.*.html$/,
-);
+const ctxHtml = require.context('!!html-loader!', true, /.*.html$/);
 const ctxraw = require.context('!!raw-loader!../../src/', true, /.*.vue$/);
 
-const ctxrawHtml = require.context(
-	'!!raw-loader!../../mixifier/',
-	true,
-	/.*.html$/,
-);
+const ctxrawHtml = require.context('!!raw-loader!', true, /.*.html$/);
 
 interface Simple {
 	source: string;
@@ -23,7 +15,7 @@ const componentsHtml: any = ctxHtml.keys().map(ctxHtml);
 // const componentsSourceHtml = ctxrawHtml.keys().map(ctxrawHtml);
 const files = require.context(`../components/StyleGuide/`, true, /\.vue$/);
 
-const htmlFiles = require.context(`../../mixifier/`, true, /\.html$/);
+const htmlFiles = require.context(``, true, /\.html$/);
 
 for (let i = 0; i < components.length; i++) {
 	components[i].source = componentsSource[i];
@@ -38,7 +30,7 @@ htmlFiles.keys().forEach((key: string, index: number) => {
 
 function get(name: string) {
 	for (const c of components) {
-		if (c.default.name === name) {
+		if (c.default.options.name === name) {
 			return c;
 		}
 	}

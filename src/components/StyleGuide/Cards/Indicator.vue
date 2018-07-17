@@ -10,7 +10,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'Indicator' })
 export default class Indicator extends Vue {}
 </script>
 

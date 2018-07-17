@@ -19,6 +19,12 @@ export default class VuerSimple extends Vue {
 	@Prop() private name!: string;
 
 	public mounted() {
+		console.log(
+			'name: ',
+			this.name,
+			'component: ',
+			this.getComponent(this.name),
+		);
 		this.component = this.getComponent(this.name).default;
 	}
 }

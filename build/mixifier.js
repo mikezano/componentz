@@ -98,8 +98,8 @@ files.forEach(function(file) {
 	mkdirp(getDirName(package_path), function(err) {
 		if (err) return err;
 
-		createMarkupFile(`${package_path}.pug`, pug_markup[1]);
-		createMarkupFile(`${package_path}.vue`, vue_markup);
+		//createMarkupFile(`${package_path}.pug`, pug_markup[1]);
+		//createMarkupFile(`${package_path}.vue`, vue_markup);
 	});
 });
 

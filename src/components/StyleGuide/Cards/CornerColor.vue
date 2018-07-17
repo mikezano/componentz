@@ -13,7 +13,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'CornerColor' })
 export default class CornerColor extends Vue {}
 </script>
 

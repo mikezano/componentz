@@ -5,7 +5,7 @@ div
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'Zoom' })
 export default class Zoom extends Vue {}
 </script>
 

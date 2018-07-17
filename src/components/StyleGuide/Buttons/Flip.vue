@@ -6,7 +6,9 @@ button.btn.btn-primary.btn-flip Watch this!
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({
+	name: 'Flip'
+})
 export default class Flip extends Vue {}
 </script>
 

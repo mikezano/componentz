@@ -17,7 +17,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'SideColor' })
 export default class SideColor extends Vue {}
 </script>
 

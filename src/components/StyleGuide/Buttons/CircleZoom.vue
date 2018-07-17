@@ -5,23 +5,23 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'CircleZoom' })
 export default class CircleZoom extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin btn-circle($color:#ccc, $size:20px) {
+@mixin btn-circle($color: #ccc, $size: 20px) {
 	$selector: btn-circle;
 	&.#{$selector} {
 		border: 1px solid darken($color, 20%);
 		background-color: $color;
 		color: black;
-		width: $size*2;
-		height: $size*2;
+		width: $size * 2;
+		height: $size * 2;
 		text-align: center;
 		margin: 4px;
 		font-size: $size;
-		line-height: $size*2;
+		line-height: $size * 2;
 		border-radius: $size;
 		//box-shadow:2px 2px 4px hsla(0,0%,0%,1);
 		transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;

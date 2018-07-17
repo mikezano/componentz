@@ -22,7 +22,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'Underlined' })
 export default class Underlined extends Vue {}
 </script>
 

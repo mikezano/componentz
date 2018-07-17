@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'LeftColumn' })
 export default class LeftColumn extends Vue {}
 </script>
 

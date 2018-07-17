@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'DrawIn' })
 export default class DrawIn extends Vue {}
 </script>
 

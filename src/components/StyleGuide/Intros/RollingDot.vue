@@ -16,7 +16,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'RollingDot' })
 export default class RollingDot extends Vue {}
 </script>
 
