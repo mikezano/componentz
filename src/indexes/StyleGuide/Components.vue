@@ -1,6 +1,5 @@
 <template lang="pug">
 	div
-		h1.title {{$route.params.components}}
 		transition(name="fade" v-if="$route.params.single_component != null" mode="out-in")
 			router-view
 		transition(name="fade" 
@@ -46,13 +45,19 @@ export default class Components extends Vue {
 	public hash: Map<string, string[]> = new Map<string, string[]>();
 
 	public routeChanged(route: any, old: any) {
-		this.currentSet = this.hash.get(this.components) as string[];
-		this.$store.commit('setComponents', this.currentSet);
+		this.setCurrentComponents();
 	}
 
 	public mounted() {
-		this.currentSet = this.hash.get(this.components);
+		this.setCurrentComponents();
 	}
+
+	public setCurrentComponents(){
+		window.scrollTo(0,0);
+		this.currentSet = this.hash.get(this.components);
+		this.$store.commit('setComponents', this.currentSet);
+	}
+
 	public beforeMount() {
 		this.buildRegistry();
 	}
@@ -79,11 +84,6 @@ export default class Components extends Vue {
 
 <style lang="scss" scoped>
 @import '../../sass/fade';
-
-.title {
-	text-transform: uppercase;
-	font-weight: bold;
-}
 
 .list-enter-active {
 	transition: all 0.5s;

@@ -1,5 +1,7 @@
 <template lang="pug">
 .side-sub-menu
+	.side-sub-menu__title
+		| {{$route.params.components}}
 	.side-sub-menu__item(v-for="i in ids")
 		button(:href="i.id" @click="scrollTo(i.name)") {{i.name}}
 </template>
@@ -26,21 +28,17 @@ export default class SideSubMenu extends Vue {
 
 	public scrollTo(id: string){
 		let element = document.getElementById(id);
-		let top = element!.getBoundingClientRect().top;
-
-		//window.scrollTo(0, window.pageYOffset + top);
-		this.smoothScrollTo(element!, top, 200);
+		this.smoothScrollTo(element!, 200);
 	}
 
-	public smoothScrollTo(element: HTMLElement, to: number, duration: number) {
+	public smoothScrollTo(element: HTMLElement, duration: number) {
 
-		if (duration < 0) return;
-		var difference = to - window.pageYOffset;
+		if (duration < 1) return;
+		var difference = element!.getBoundingClientRect().top;
 		var perTick = difference / duration * 10;
-		
 		setTimeout(()=> {
 			window.scrollTo(0, window.pageYOffset + perTick);
-			this.smoothScrollTo(element, to, duration - 10);
+			this.smoothScrollTo(element,  duration - 10);
 		}, 10);
 	}
 }
@@ -52,11 +50,24 @@ export default class SideSubMenu extends Vue {
 	top: 6rem;
 	left: 2rem;
 
+	&__title, &__item{
+		padding: .1rem;
+	}
+
+	&__title{
+		font-size:1.5em;
+	}
+
 	&__item{
 		button{
 			border: none;
-			padding: .2rem;
+			background: none;
 			cursor: pointer;
+			
+			&:focus{
+				font-weight:bold;
+				outline:none;
+			}
 		}
 	}
 }
