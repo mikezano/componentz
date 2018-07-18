@@ -47,7 +47,7 @@ export default class VuerTransition extends Vue {
 		this.$el.style.display = 'block';
 		this.$el.style.position = 'fixed';
 
-		window.scrollTo(0, 0);
+		//window.scrollTo(0, 0);
 	}
 
 	public animate() {

@@ -79,7 +79,7 @@ console.log(files);
 files.forEach(function(file) {
 	var contents = fs.readFileSync(file.path, 'utf8');
 	let result = contents.match(mixin_regex);
-	let package_path = `./mixifier/${file.path
+	let package_path = `./src/mixifier/${file.path
 		.replace(styleGuidePath, '')
 		.replace('.vue', '')}`;
 

@@ -20,7 +20,12 @@ import { mapGetters, mapState } from 'vuex';
 })
 export default class SideSubMenu extends Vue {
 	public ids: any[] = [];
+	public getComponents!: () => string[];
 
+	public mounted() {
+		const components = this.getComponents();
+		this.ids = components.map((x: string) => ({ name: x, id: '#' + x }));
+	}
 	public componentsChanged(newComponents: string[]) {
 		this.ids = newComponents.map((x: string) => ({ name: x, id: '#' + x }));
 	}

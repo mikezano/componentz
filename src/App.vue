@@ -7,7 +7,7 @@
 			SideMenu(
 				v-if="isShowingSideMenu" 
 				v-on:closeMenu="toggleSideMenu")
-		SideSubMenu
+		SideSubMenu(v-if="!$route.params.single_component")
 		transition(name="fade" mode="out-in")
 			router-view
 </template>

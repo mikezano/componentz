@@ -1,7 +1,9 @@
-const ctx = require.context('../../src/', true, /.*.vue$/);
-const ctxHtml = require.context('!!html-loader!', true, /.*.html$/);
-const ctxraw = require.context('!!raw-loader!../../src/', true, /.*.vue$/);
+import { debug } from 'util';
 
+const ctx = require.context('../../src/', true, /.*.vue$/);
+const ctxHtml = require.context('!!html-loader!../../src', true, /.*.html$/);
+const ctxraw = require.context('!!raw-loader!../../src/', true, /.*.vue$/);
+debugger;
 const ctxrawHtml = require.context('!!raw-loader!', true, /.*.html$/);
 
 interface Simple {
@@ -15,13 +17,14 @@ const componentsHtml: any = ctxHtml.keys().map(ctxHtml);
 // const componentsSourceHtml = ctxrawHtml.keys().map(ctxrawHtml);
 const files = require.context(`../components/StyleGuide/`, true, /\.vue$/);
 
-const htmlFiles = require.context(``, true, /\.html$/);
-
+const htmlFiles = require.context(`../mixifier/`, true, /\.html$/);
 for (let i = 0; i < components.length; i++) {
 	components[i].source = componentsSource[i];
 }
 const singleFileHash = new Map<string, string>();
+
 htmlFiles.keys().forEach((key: string, index: number) => {
+	debugger;
 	const path = key.replace(/(\.\/|\.html)/g, '');
 	const file = path.substr(path.indexOf('/') + 1, path.length);
 
