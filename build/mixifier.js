@@ -45,7 +45,7 @@ function compile_pug(contents) {
 }
 
 function write_single_file(css, html, path) {
-	let data = `/* tslint:disable */\n<div>\n\n  <style type="text/css">\n${css.replace(
+	let data = `<div>\n\n  <style type="text/css">\n${css.replace(
 		/^/gm,
 		'    ',
 	)}\n  </style>\n${html.replace(/^/gm, '  ')}\n\n</div>`;
@@ -103,11 +103,11 @@ files.forEach(function(file) {
 	});
 });
 
-const ads_mixer = './mixifier/ads_mixer.scss';
+const ads_mixer = './src/mixifier/ads_mixer.scss';
 
 mkdirp(getDirName(ads_mixer), function(err) {
 	if (err) return cb(err);
-	fs.writeFile('./mixifier/ads_mixer.scss', mixins_result, function(err) {
+	fs.writeFile('./src/mixifier/ads_mixer.scss', mixins_result, function(err) {
 		if (err) {
 			return console.log(err);
 		}

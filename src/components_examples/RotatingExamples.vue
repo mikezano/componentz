@@ -36,7 +36,7 @@ export default class RotatingExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'mixifier/ads_mixer.scss';
+@import 'src/mixifier/ads_mixer.scss';
 @import '../sass/colors';
 
 $indigo: map-get($colors, 'indigo');

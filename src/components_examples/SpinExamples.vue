@@ -13,7 +13,7 @@ export default class SpinExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'mixifier/ads_mixer.scss';
+@import 'src/mixifier/ads_mixer.scss';
 @import '../sass/colors';
 
 .soccer-ball {

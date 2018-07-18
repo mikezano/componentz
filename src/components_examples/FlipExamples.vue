@@ -13,7 +13,7 @@ export default class FlipExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'mixifier/ads_mixer.scss';
+@import 'src/mixifier/ads_mixer.scss';
 
 .watch-this{ @include flip-btn(200px); }
 .three-sixty{ @include flip-btn(100px); }

@@ -18,7 +18,7 @@ export default class CircleZoomExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'mixifier/ads_mixer.scss';
+@import 'src/mixifier/ads_mixer.scss';
 .default {
   @include btn-circle();
 }

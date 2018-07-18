@@ -26,7 +26,6 @@ export default new Vuex.Store({
 			return result;
 		},
 		getHtmlSingleFile: (state: any, getters) => (name: string) => {
-			debugger;
 			const result = state.check.singleFileHash.get(name);
 			return result;
 		},
@@ -47,7 +46,7 @@ export default new Vuex.Store({
 		setScrollPosition: (state, el) => {
 			state.scrollPosition = el;
 		},
-		toggleIsTransitioning: state => {
+		toggleIsTransitioning: (state) => {
 			state.isTransitioning = !state.isTransitioning;
 		},
 		setComponents: (state, components: string[]) => {

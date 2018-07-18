@@ -73,7 +73,6 @@ export default class Vuer extends Vue {
 
 	public getSCSSPUG() {
 		// https://hackernoon.com/you-need-to-discover-the-awesome-clipboard-web-api-12b248d05dd3
-		
 		const htmlSingleFile = this.getHtmlSingleFile(this.name);
 		// Create the textarea input to hold our text.
 		const element = document.createElement('textarea');

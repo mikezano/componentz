@@ -38,7 +38,7 @@ export default class LeftColumnExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'mixifier/ads_mixer.scss';
+@import 'src/mixifier/ads_mixer.scss';
 
 .small {
 	@include leftColumnGrid();
