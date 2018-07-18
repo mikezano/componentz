@@ -52,8 +52,8 @@ export default class Components extends Vue {
 		this.setCurrentComponents();
 	}
 
-	public setCurrentComponents(){
-		window.scrollTo(0,0);
+	public setCurrentComponents() {
+		window.scrollTo(0, 0);
 		this.currentSet = this.hash.get(this.components);
 		this.$store.commit('setComponents', this.currentSet);
 	}

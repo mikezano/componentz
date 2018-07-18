@@ -127,7 +127,7 @@ export default class VuerTransition extends Vue {
 
 @keyframes moveUp {
 	100% {
-		top: 105px;
+		top: 20px;
 	}
 }
 </style>

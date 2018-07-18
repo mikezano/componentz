@@ -8,37 +8,37 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { mapGetters, mapState} from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 @Component({
-	computed:{
+	computed: {
 		...mapGetters(['getComponents']),
 		...mapState(['components']),
 	},
 	watch: {
-		components: 'componentsChanged'
+		components: 'componentsChanged',
 	},
 })
 export default class SideSubMenu extends Vue {
+	public ids: any[] = [];
 
-	public ids:any[] = [];
-
-	public componentsChanged(newComponents: string[]){
-		this.ids = newComponents.map( (x: string) => ({name: x, id:"#" + x}));
+	public componentsChanged(newComponents: string[]) {
+		this.ids = newComponents.map((x: string) => ({ name: x, id: '#' + x }));
 	}
 
-	public scrollTo(id: string){
-		let element = document.getElementById(id);
-		this.smoothScrollTo(element!, 200);
+	public scrollTo(id: string) {
+		const el = document.getElementById(id);
+		this.smoothScrollTo(el!, 200);
 	}
 
 	public smoothScrollTo(element: HTMLElement, duration: number) {
-
-		if (duration < 1) return;
-		var difference = element!.getBoundingClientRect().top;
-		var perTick = difference / duration * 10;
-		setTimeout(()=> {
+		if (duration < 1) {
+			return;
+		}
+		const difference = element!.getBoundingClientRect().top;
+		const perTick = difference / duration * 10;
+		setTimeout(() => {
 			window.scrollTo(0, window.pageYOffset + perTick);
-			this.smoothScrollTo(element,  duration - 10);
+			this.smoothScrollTo(element, duration - 10);
 		}, 10);
 	}
 }
@@ -50,23 +50,24 @@ export default class SideSubMenu extends Vue {
 	top: 6rem;
 	left: 2rem;
 
-	&__title, &__item{
-		padding: .1rem;
+	&__title,
+	&__item {
+		padding: 0.1rem;
 	}
 
-	&__title{
-		font-size:1.5em;
+	&__title {
+		font-size: 1.5em;
 	}
 
-	&__item{
-		button{
+	&__item {
+		button {
 			border: none;
 			background: none;
 			cursor: pointer;
-			
-			&:focus{
-				font-weight:bold;
-				outline:none;
+
+			&:focus {
+				font-weight: bold;
+				outline: none;
 			}
 		}
 	}

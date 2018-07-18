@@ -7,24 +7,21 @@ button.btn.btn-primary.btn-flip Watch this!
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component({
-	name: 'Flip'
+	name: 'Flip',
 })
 export default class Flip extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-
-@mixin flip-btn($width: auto){
+@mixin flip-btn($width: auto) {
 	$selector: btn-flip;
-	&.#{$selector}{
-
+	&.#{$selector} {
 		width: $width;
 		transition: all 1s ease-in-out;
-		&:hover{
+		&:hover {
 			transform: rotateX(360deg);
 		}
 	}
-}//flip end
+} //flip end
 @include flip-btn();
-
 </style>
