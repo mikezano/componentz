@@ -3,4 +3,5 @@ module.exports = {
 	configureWebpack: {
 		plugins: [],
 	},
+	baseUrl: './',
 };
