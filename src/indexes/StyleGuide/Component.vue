@@ -4,9 +4,14 @@
 
 
 <script lang="ts">
-import { Component as ComponentDecorator, Prop, Vue } from 'vue-property-decorator';
+import {
+	Component as ComponentDecorator,
+	Prop,
+	Vue,
+} from 'vue-property-decorator';
 import { mapState, mapMutations } from 'vuex';
 import Vuer from '@/components/vuer/Vuer.vue';
+import { setTimeout } from 'timers';
 @ComponentDecorator({
 	computed: {
 		...mapMutations(['setToEl']),

@@ -32,7 +32,7 @@ export default class SideSubMenu extends Vue {
 
 	public scrollTo(id: string) {
 		const el = document.getElementById(id);
-		//this.smoothScrollTo(el!, 200);
+		this.smoothScrollTo(el!, 200);
 	}
 
 	public smoothScrollTo(element: HTMLElement, duration: number) {

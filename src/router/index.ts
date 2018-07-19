@@ -42,4 +42,10 @@ export default new Router({
 			],
 		},
 	],
+	scrollBehavior(to, from, savedPosition) {
+		if (to.name == 'Single Component') {
+			return { x: 0, y: 0 };
+		}
+		return { selector: to.hash };
+	},
 });
