@@ -7,7 +7,8 @@
 			SideMenu(
 				v-if="isShowingSideMenu" 
 				v-on:closeMenu="toggleSideMenu")
-		SideSubMenu(v-if="!$route.params.single_component")
+		transition(name="slideInOut")
+			SideSubMenu(v-if="!$route.params.single_component")
 		transition(name="fade" mode="out-in")
 			router-view
 </template>
@@ -50,6 +51,7 @@ export default class App extends Vue {
 <style lang="scss">
 @import './sass/prism.css';
 @import './sass/fade';
+@import './sass/slideInOut';
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 html {

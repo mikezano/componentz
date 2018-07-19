@@ -16,7 +16,7 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator';
 @Component
-export default class DropDown extends Vue {}
+export default class DropDownc extends Vue {}
 </script>
 
 <!-- https://codepen.io/kkrueger/pen/qfoLa -->

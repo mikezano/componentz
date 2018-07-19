@@ -4,7 +4,7 @@
 		button.circle
 			icon(name="truck" scale="1")
 		button.circle
-			icon(name="refresh" scale="1")
+			icon(name="truck" scale="1")
 	.indicator-card__content All your content goes here
 </template>
 
@@ -21,8 +21,7 @@ export default class Indicator extends Vue {}
 		$color: darkgray;
 		border: 1px solid darken($color, 20%);
 		transition: all 0.2s ease-out;
-		width: 100%;
-		margin: 10px;
+
 		&:hover {
 			box-shadow: 2px 2px 4px black;
 		}
