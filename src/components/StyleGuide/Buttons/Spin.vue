@@ -31,6 +31,6 @@ export default class Spin extends Vue {}
 	}
 } //spin-btn end
 .plus {
-	@include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 3.5);
 }
 </style>

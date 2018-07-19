@@ -8,7 +8,7 @@
 				v-if="isShowingSideMenu" 
 				v-on:closeMenu="toggleSideMenu")
 		transition(name="slideInOut")
-			SideSubMenu(v-if="!$route.params.single_component")
+			SideSubMenu(v-if="isComponentsPage()")
 		transition(name="fade" mode="out-in")
 			router-view
 </template>
@@ -27,9 +27,14 @@ import SideSubMenu from '@/components/SideSubMenu.vue';
 export default class App extends Vue {
 	public isShowingSideMenu: boolean = false;
 	public app: HTMLElement | null = null;
+	public static COMPONENTS: string = 'Components';
 
 	public mounted(): void {
 		this.app = document.getElementById('app');
+	}
+
+	public isComponentsPage() {
+		return this.$route.name == App.COMPONENTS;
 	}
 
 	public toggleSideMenu() {

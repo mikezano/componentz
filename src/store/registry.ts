@@ -28,10 +28,14 @@ htmlFiles.keys().forEach((key: string, index: number) => {
 
 function get(name: string) {
 	for (const c of components) {
+		if (!c.default.options) {
+			continue;
+		}
 		if (c.default.options.name === name) {
 			return c;
 		}
 	}
+	return null;
 }
 
 function getHtmlSingleFile(name: string) {

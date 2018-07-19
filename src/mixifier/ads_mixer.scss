@@ -212,8 +212,7 @@ $colors: (
 		$color: darkgray;
 		border: 1px solid darken($color, 20%);
 		transition: all 0.2s ease-out;
-		width: 100%;
-		margin: 10px;
+
 		&:hover {
 			box-shadow: 2px 2px 4px black;
 		}
@@ -408,7 +407,7 @@ $colors: (
 		}
 	}
 } // leftColumnGrid end
-@mixin draw_in($color) {
+@mixin draw_in($color, $text) {
 	.draw-in {
 		$stroke-dash: 400;
 		$animation-speed: 1000ms;
@@ -430,7 +429,7 @@ $colors: (
 			stroke-width: 2;
 			stroke: $color;
 			stroke-dasharray: $stroke-dash;
-			animation: text 3s linear forwards;
+			animation: text + $text 3s linear forwards;
 			font-size: 5em;
 			box-shadow: 2px 2px 3px black;
 		}
@@ -484,7 +483,7 @@ $colors: (
 			opacity: 1;
 		}
 	}
-	@keyframes text {
+	@keyframes text#{$text} {
 		50% {
 			stroke-dashoffset: 0;
 			fill: transparent;

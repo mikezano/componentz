@@ -18,7 +18,7 @@ export default class DrawIn extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin draw_in($color) {
+@mixin draw_in($color, $text) {
 	.draw-in {
 		$stroke-dash: 400;
 		$animation-speed: 1000ms;
@@ -40,7 +40,7 @@ export default class DrawIn extends Vue {}
 			stroke-width: 2;
 			stroke: $color;
 			stroke-dasharray: $stroke-dash;
-			animation: text 3s linear forwards;
+			animation: text + $text 3s linear forwards;
 			font-size: 5em;
 			box-shadow: 2px 2px 3px black;
 		}
@@ -94,7 +94,7 @@ export default class DrawIn extends Vue {}
 			opacity: 1;
 		}
 	}
-	@keyframes text {
+	@keyframes text#{$text} {
 		50% {
 			stroke-dashoffset: 0;
 			fill: transparent;
@@ -115,5 +115,5 @@ export default class DrawIn extends Vue {}
 	}
 } //draw_in end
 
-@include draw_in(orange);
+@include draw_in(orange, 'ads');
 </style>

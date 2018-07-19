@@ -1,9 +1,9 @@
 <template lang="pug">
 .examples
-    button.soccer-ball.spin-btn ⚽
-    button.plus.spin-btn ➕
-    button.sun.spin-btn 🌞
-    button.hello.spin-btn Hi
+	.soccer-ball.spin-btn ⚽
+	button.plus.spin-btn ➕
+	.sun.spin-btn 🌞
+	textarea.hello.spin-btn Hi There
 </template>
 
 <script>
@@ -20,10 +20,10 @@ export default class SpinExamples extends Vue {}
 	@include spin-btn($bs_green, 1.5);
 }
 .plus {
-	@include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 6);
 }
 .sun {
-	@include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 4);
 }
 .hello {
 	@include spin-btn($bs_green, 1.5);

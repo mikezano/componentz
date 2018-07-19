@@ -2,7 +2,7 @@
 .vuer(:id="displayName")
 	.vuer__content
 		.vuer__links(v-if="$route.params.single_component == null")
-			button.vuer__examples(title="See examples" @click="setTheEl")
+			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
 				router-link(:to="route" tag="div")
 					icon(name="code" scale="1.6")
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
@@ -32,7 +32,7 @@ import { mapGetters, mapMutations } from 'vuex';
 		...mapMutations(['setFromEl']),
 	},
 	watch: {
-		name: 'nameChanged',
+		name: 'doExamplesExist',
 	},
 })
 export default class Vuer extends Vue {
@@ -44,6 +44,7 @@ export default class Vuer extends Vue {
 	public mixin: string = '';
 	public route: string = '';
 	public displayName: string = '';
+	public doExamplesExist: boolean = false;
 
 	public pugRE: RegExp = new RegExp(
 		'(?<=<template lang="pug">).*?(?=</template>)',
@@ -64,6 +65,9 @@ export default class Vuer extends Vue {
 		this.route = `/StyleGuide/${this.$route.params.components}/${
 			this.name
 		}`;
+
+		this.doExamplesExist =
+			this.getComponent(this.displayName + 'Examples') != null;
 	}
 
 	public setTheEl() {
@@ -87,6 +91,17 @@ export default class Vuer extends Vue {
 		// Remove the element to keep the document clear.
 		document.body.removeChild(element);
 	}
+
+	// public doExamplesExist(): boolean {
+	// 	console.log('Zano: ', name);
+	// 	if (this.name == ' ') {
+	// 		return false;
+	// 	}
+
+	// 	const result = this.getComponent(this.name + 'Examples');
+	// 	console.log(result);
+	// 	return result != null;
+	// }
 	public getSources() {
 		this.component = this.getComponent(
 			this.name || this.$route.params.single_component + 'Examples',

@@ -36,7 +36,6 @@ export default class SideSubMenu extends Vue {
 	}
 
 	public smoothScrollTo(element: HTMLElement, duration: number) {
-		debugger;
 		if (duration < 1) {
 			return;
 		}

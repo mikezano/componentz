@@ -1,13 +1,18 @@
-.slideInOut-enter-active,
+.slideInOut-enter-active {
+	transition: opacity 0.1s ease-in,
+		transform 0.5s cubic-bezier(0.6, 1.6, 0.6, 1);
+}
 .slideInOut-leave-active {
-	transition: opacity 0.5s ease-in transform 0.5s ease-in;
+	transition: opacity 0.1s ease-out 0.5s,
+		transform 0.8s cubic-bezier(0.33, 0.03, 0.42, -0.37);
 }
 .slideInOut-enter,
 .slideInOut-leave-to {
 	opacity: 0;
-	transform: translateX(-3rem);
+	transform: translateX(-50px);
 }
 .slideInOut-enter-to,
 .slideInOut-leave {
 	opacity: 1;
+	transform: translateX(0);
 }
