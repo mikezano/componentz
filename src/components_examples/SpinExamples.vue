@@ -8,7 +8,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'SpinExamples' })
 export default class SpinExamples extends Vue {}
 </script>
 
@@ -17,21 +17,21 @@ export default class SpinExamples extends Vue {}
 @import '../sass/colors';
 
 .soccer-ball {
-  @include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 1.5);
 }
 .plus {
-  @include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 1.5);
 }
 .sun {
-  @include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 1.5);
 }
 .hello {
-  @include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 1.5);
 }
 
 .examples {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 </style>

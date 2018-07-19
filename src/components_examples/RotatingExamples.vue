@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'RotatingExamples' })
 export default class RotatingExamples extends Vue {}
 </script>
 

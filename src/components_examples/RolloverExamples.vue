@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'RolloverExamples' })
 export default class RolloverExamples extends Vue {}
 </script>
 

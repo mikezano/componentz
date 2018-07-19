@@ -33,7 +33,7 @@ div
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'LeftColumnExamples' })
 export default class LeftColumnExamples extends Vue {}
 </script>
 

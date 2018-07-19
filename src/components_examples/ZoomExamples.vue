@@ -6,7 +6,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+@Component({ name: 'ZoomExmaples' })
 export default class ZoomExamples extends Vue {}
 </script>
 
