@@ -7,6 +7,7 @@ Vue.use(Router);
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Test from '../views/Test.vue';
+import Bem from '../views/Bem';
 
 export default new Router({
 	routes: [
@@ -15,6 +16,10 @@ export default new Router({
 			path: '/test',
 			name: 'test',
 			component: Test,
+		},
+		{
+			path: '/bem',
+			component: Bem,
 		},
 		{
 			path: '/StyleGuide',

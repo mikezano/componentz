@@ -19,14 +19,11 @@
 		span Need creative components to add into your 
 		span.ui UI
 		span.question_mark ?
-	div(@click="collectMixins()")
-		RotateDownButton
 	.container-carousel
 		Carousel
 </template>
 
 <script lang="ts">
-
 import { mapGetters } from 'vuex';
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
@@ -39,25 +36,25 @@ import Carousel from '@/components/Carousel.vue';
 	components: { Carousel, RotateDownButton },
 })
 export default class Home extends Vue {
-		public files!: string[];
-		public mixinRE: RegExp = new RegExp('@mixin.*?end', 's');
-		public allMixins: string = '';
-		public words: string =  'Play';
-		public isPaused: boolean =  false;
-		public getFiles!: () => Map<string, string[]>;
+	public files!: string[];
+	public mixinRE: RegExp = new RegExp('@mixin.*?end', 's');
+	public allMixins: string = '';
+	public words: string = 'Play';
+	public isPaused: boolean = false;
+	public getFiles!: () => Map<string, string[]>;
 
-		public mounted() {
-				const styleGuideFiles = this.getFiles();
+	public mounted() {
+		const styleGuideFiles = this.getFiles();
 
-				if (!styleGuideFiles) {
-					return;
-				}
-
-				this.files = [];
-				styleGuideFiles.forEach((values: string[], key: string) => {
-					this.files = this.files.concat(values);
-				});
+		if (!styleGuideFiles) {
+			return;
 		}
+
+		this.files = [];
+		styleGuideFiles.forEach((values: string[], key: string) => {
+			this.files = this.files.concat(values);
+		});
+	}
 }
 </script>
 
