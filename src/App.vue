@@ -10,7 +10,7 @@
 		transition(name="slideInOut")
 			SideSubMenu(v-if="isComponentsPage()")
 		transition(name="fade" mode="out-in")
-			router-view
+			router-view( :key="$route.fullPath")
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
@@ -22,19 +22,19 @@ import SideSubMenu from '@/components/SideSubMenu.vue';
 		SideMenu,
 		SideSubMenu,
 	},
-	name: 'different',
+	name: 'App',
 })
 export default class App extends Vue {
+	public static COMPONENTS: string = 'Components';
 	public isShowingSideMenu: boolean = false;
 	public app: HTMLElement | null = null;
-	public static COMPONENTS: string = 'Components';
 
 	public mounted(): void {
 		this.app = document.getElementById('app');
 	}
 
 	public isComponentsPage() {
-		return this.$route.name == App.COMPONENTS;
+		return this.$route.name === App.COMPONENTS;
 	}
 
 	public toggleSideMenu() {

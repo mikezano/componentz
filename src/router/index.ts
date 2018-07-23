@@ -73,7 +73,7 @@ export default new Router({
 		},
 	],
 	scrollBehavior(to, from, savedPosition) {
-		if (to.name != 'Components') {
+		if (to.name !== 'Components') {
 			return { x: 0, y: 0 };
 		}
 
