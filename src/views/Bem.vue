@@ -23,7 +23,7 @@
 
 <script lang="ts">
 const bem = require.context('!!raw-loader!../../src/views/', true, /.*.md/);
-debugger;
+
 import { Component, Vue } from 'vue-property-decorator';
 @Component({ name: 'Bem' })
 export default class Bem extends Vue {
