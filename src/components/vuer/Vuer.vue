@@ -4,9 +4,13 @@
 		.vuer__links(v-if="$route.params.single_component == null")
 			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
 				router-link(:to="route" tag="div")
-					icon(name="code" scale="1.6")
+					.vuer-link
+						icon(name="code" scale="1.6")
+						span See Examples
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				icon(name="copy" scale="1.6")
+				.vuer-link
+					icon(name="copy" scale="1.6")
+					span Copy Code
 
 		.vuer__header
 			| {{displayName | humanize}}
@@ -176,6 +180,16 @@ export default class Vuer extends Vue {
 			max-height: 20rem;
 			overflow: auto;
 		}
+	}
+}
+
+.vuer-link {
+	display: flex;
+	align-items: center;
+	text-shadow: none;
+
+	.fa-icon {
+		padding: 0 4px;
 	}
 }
 </style>

@@ -20,6 +20,7 @@
 				router-link(to="/StyleGuide/Intros" tag="li") Intros
 				router-link(to="/StyleGuide/Errors" tag="li") Errors
 				router-link(to="/StyleGuide/Grids" tag="li") Grids
+				router-link(to="/StyleGuide/AnimatedBorders" tag="li") Animate Boder
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -34,7 +35,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
-export default class ComponentCarousel extends Vue {
+export default class SideMenu extends Vue {
 	public close() {
 		this.$emit('closeMenu');
 	}

@@ -26,6 +26,7 @@ import SideSubMenu from '@/components/SideSubMenu.vue';
 })
 export default class App extends Vue {
 	public static COMPONENTS: string = 'Components';
+	public static SINGLE_COMPONENT: string = 'Single Component';
 	public isShowingSideMenu: boolean = false;
 	public app: HTMLElement | null = null;
 
@@ -34,7 +35,11 @@ export default class App extends Vue {
 	}
 
 	public isComponentsPage() {
-		return this.$route.name === App.COMPONENTS;
+		console.log(this.$route.name);
+		return (
+			this.$route.name === App.COMPONENTS ||
+			this.$route.name === App.SINGLE_COMPONENT
+		);
 	}
 
 	public toggleSideMenu() {

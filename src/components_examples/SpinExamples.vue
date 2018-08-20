@@ -17,9 +17,11 @@ export default class SpinExamples extends Vue {}
 @import '../sass/colors';
 
 .soccer-ball {
+	font-size: 40px;
 	@include spin-btn($bs_green, 1.5);
 }
 .plus {
+	font-size: 20px;
 	@include spin-btn($bs_green, 6);
 }
 .sun {

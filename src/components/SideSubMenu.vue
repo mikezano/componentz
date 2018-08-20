@@ -31,6 +31,14 @@ export default class SideSubMenu extends Vue {
 	}
 
 	public scrollTo(id: string) {
+		console.log(this.$router);
+		const componentsRoute = this.$route.fullPath.replace(
+			this.$route.params.single_component,
+			'',
+		);
+
+		this.$router.push(componentsRoute);
+
 		const el = document.getElementById(id);
 		this.smoothScrollTo(el!, 200);
 	}

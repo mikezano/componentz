@@ -2,6 +2,7 @@
 
 .container
 	vue-markdown(:source="markdown") 
+	
 </template>
 
 <script lang="ts">
