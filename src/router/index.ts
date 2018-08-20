@@ -73,14 +73,15 @@ export default new Router({
 		},
 	],
 	scrollBehavior(to, from, savedPosition) {
-		if (to.name !== 'Components') {
-			return { x: 0, y: 0 };
-		}
+		return { x: 0, y: 0 };
+		// if (to.name !== 'Components') {
+		// 	return { x: 0, y: 0 };
+		// }
 
-		return new Promise((resolve, reject) => {
-			setTimeout(() => {
-				resolve(savedPosition);
-			}, 250);
-		});
+		// return new Promise((resolve, reject) => {
+		// 	setTimeout(() => {
+		// 		resolve(savedPosition);
+		// 	}, 250);
+		// });
 	},
 });

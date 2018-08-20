@@ -10,7 +10,7 @@
 		transition(name="slideInOut")
 			SideSubMenu(v-if="isComponentsPage()")
 		transition(name="fade" mode="out-in")
-			router-view( :key="$route.fullPath")
+			router-view
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';

@@ -24,7 +24,6 @@ export default class VuerTransition extends Vue {
 		if (element == null) {
 			return;
 		}
-
 		this.reset(element);
 		this.position(element);
 		this.animate();
@@ -106,17 +105,18 @@ export default class VuerTransition extends Vue {
 
 
 <style lang="scss">
+$duration: 0.5s;
 .growIt {
-	animation: grow 0.5s ease-in-out forwards;
+	animation: grow $duration ease-in-out forwards;
 }
 .move-up {
-	animation: moveUp 0.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
+	animation: moveUp $duration cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 }
 // .fade-out div[class^='vuer__']{
 // 	animation: fadeOut 1s ease-in-out forwards;
 // }
 .vuer__content.fade-out {
-	animation: fadeOut 0.5s cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
+	animation: fadeOut $duration cubic-bezier(0.32, 1, 0.48, 0.98) forwards;
 }
 
 @keyframes fadeOut {

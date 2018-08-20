@@ -32,7 +32,7 @@ import { mapGetters, mapMutations } from 'vuex';
 		...mapMutations(['setFromEl']),
 	},
 	watch: {
-		name: 'doExamplesExist',
+		//name: 'doExamplesExist',
 	},
 })
 export default class Vuer extends Vue {
@@ -80,15 +80,15 @@ export default class Vuer extends Vue {
 		const htmlSingleFile = this.getHtmlSingleFile(this.name);
 		// Create the textarea input to hold our text.
 		const element = document.createElement('textarea');
+		// Add the text.
 		element.value = htmlSingleFile;
-		// Add it to the document so that it can be focused.
+		// Add it to the document so that it can be selected.
 		document.body.appendChild(element);
-		// Focus on the element so that it can be copied.
-		element.focus();
-		element.setSelectionRange(0, element.value.length);
+		// select all content of element
+		element.select();
 		// Execute the copy command.
 		document.execCommand('copy');
-		// Remove the element to keep the document clear.
+		// Remove the element to keep the document clean.
 		document.body.removeChild(element);
 	}
 

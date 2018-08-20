@@ -38,6 +38,7 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		setFromEl: (state, el) => {
+			console.log(el, 'SetFromEl store.ts');
 			state.fromEl = el;
 		},
 		setToEl: (state, el) => {
@@ -46,7 +47,7 @@ export default new Vuex.Store({
 		setScrollPosition: (state, el) => {
 			state.scrollPosition = el;
 		},
-		toggleIsTransitioning: (state) => {
+		toggleIsTransitioning: state => {
 			state.isTransitioning = !state.isTransitioning;
 		},
 		setComponents: (state, components: string[]) => {
