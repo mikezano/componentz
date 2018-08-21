@@ -52,6 +52,7 @@ export default class Clockwise extends Vue {}
 			border-right: 0.2rem solid $bs_blue;
 			transition: width 0.25s ease-in, height 0.25s ease-out 0.25s;
 		}
+
 		&::after {
 			width: 100%;
 			height: 100%;
