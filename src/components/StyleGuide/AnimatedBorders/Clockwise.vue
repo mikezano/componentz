@@ -1,5 +1,6 @@
 <template lang="pug">
-.clockwise Hello
+.clockwise
+	.words Hello
 </template>
 
 <script lang="ts">
@@ -15,7 +16,7 @@ export default class Clockwise extends Vue {}
 	height: 6rem;
 	width: 10rem;
 
-	box-shadow: inset 0 0 0 .1rem $bs_red;
+	box-shadow: inset 0 0 0 0.1rem $bs_red;
 	position: relative;
 	box-sizing: border-box;
 
@@ -32,13 +33,11 @@ export default class Clockwise extends Vue {}
 	&::before {
 		top: 0;
 		left: 0;
-		transition: width 0.25s ease-in, height 0.25s ease-out 0.25s;
 	}
 
 	&::after {
 		bottom: 0;
 		right: 0;
-		transition: width 0.25s ease-in 0.5s, height 0.25s ease-out 0.75s;
 	}
 
 	&:hover {
@@ -49,14 +48,16 @@ export default class Clockwise extends Vue {}
 		&::before {
 			width: 100%;
 			height: 100%;
-			border-top: 0.1rem solid $bs_green;
-			border-right: 0.1rem solid $bs_green;
+			border-top: 0.2rem solid $bs_blue;
+			border-right: 0.2rem solid $bs_blue;
+			transition: width 0.25s ease-in, height 0.25s ease-out 0.25s;
 		}
 		&::after {
 			width: 100%;
 			height: 100%;
-			border-bottom: 0.1rem solid $bs_green;
-			border-left: 0.1rem solid $bs_green;
+			border-bottom: 0.2rem solid $bs_blue;
+			border-left: 0.2rem solid $bs_blue;
+			transition: width 0.25s ease-in 0.5s, height 0.25s ease-out 0.75s;
 		}
 	}
 }
