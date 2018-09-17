@@ -74,7 +74,7 @@ button {
 	box-sizing: border-box;
 	margin: 1em;
 	padding: 1em 2em;
-	box-shadow: inset 0 0 0 4px red;
+	box-shadow: inset 0 0 0 2px red;
 	color: red;
 	font-size: inherit;
 	font-weight: 700;
@@ -96,7 +96,7 @@ button {
 	&::before,
 	&::after {
 		// Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
-		border: 4px solid transparent;
+		border: 2px solid transparent;
 		width: 0;
 		height: 0;
 	}
