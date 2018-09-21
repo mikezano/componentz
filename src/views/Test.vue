@@ -1,7 +1,12 @@
 <template lang="pug">
 	div
 		h1 Test Page {{message}}
-		FadeTransition(mode="out-in")
+		FadeTransition(
+			mode="out-in"
+			v-on:after-leave="afterLeave"
+			duration="1000ms"
+			v-on:before-enter="beforeEnter"
+		)
 			div.box(key="a" v-if="show") The Fade
 			div.box(key="b" v-else) The Other
 
@@ -25,6 +30,14 @@ export default class Test extends Vue {
 
 	public toggleShow(): void {
 		this.show = !this.show;
+	}
+
+	public afterLeave(): void {
+		alert('after leave');
+	}
+
+	public beforeEnter(): void {
+		alert('before enter');
 	}
 }
 </script>
