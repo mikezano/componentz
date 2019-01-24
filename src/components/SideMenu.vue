@@ -21,6 +21,7 @@
 				router-link(to="/StyleGuide/Errors" tag="li") Errors
 				router-link(to="/StyleGuide/Grids" tag="li") Grids
 				router-link(to="/StyleGuide/AnimatedBorders" tag="li") Animate Boder
+				router-link(to="/StyleGuide/Checkboxes" tag="li") Checkboxes
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
