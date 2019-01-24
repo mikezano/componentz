@@ -23,7 +23,7 @@ export default class SquareBox extends Vue {}
 		&__label {
 			position: relative;
 			cursor: pointer;
-			padding: 0;
+			//padding: 0;
 		}
 		&__label:before {
 			content: "";
@@ -31,10 +31,11 @@ export default class SquareBox extends Vue {}
 			width: 1rem;
 			height: 1rem;
 			background-color: white;
-			margin-right: 0.2rem;
+			margin: 0 .2rem 0 1rem;
 		}
 		&__button {
 			opacity: 0;
+			position: absolute;
 		}
 		&__button:hover + .checkbox__label:before {
 			background-color: whitesmoke;
