@@ -1,13 +1,17 @@
 <div>
 
   <style type="text/css">
-    .checkbox__label {
+    .container .checkbox {
+      transform: scale(1);
+    }
+    
+    .container .checkbox__label {
       position: relative;
       cursor: pointer;
       padding: 0;
     }
     
-    .checkbox__label:before {
+    .container .checkbox__label:before {
       content: "";
       display: inline-block;
       width: 1rem;
@@ -16,19 +20,19 @@
       margin-right: 0.2rem;
     }
     
-    .checkbox__button {
+    .container .checkbox__button {
       opacity: 0;
     }
     
-    .checkbox__button:hover + .checkbox__label:before {
+    .container .checkbox__button:hover + .checkbox__label:before {
       background-color: whitesmoke;
     }
     
-    .checkbox__button:focus + .checkbox__label:before {
+    .container .checkbox__button:focus + .checkbox__label:before {
       box-shadow: 0 0 0 0.1rem rgba(0, 0, 0, 0.12);
     }
     
-    .checkbox__button:checked + .checkbox__label:after {
+    .container .checkbox__button:checked + .checkbox__label:after {
       content: "";
       position: absolute;
       left: 0.25rem;
@@ -36,7 +40,7 @@
       background: black;
       width: 0.1rem;
       height: 0.1rem;
-      box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black, 0.2rem -0.1rem 0 black,     0.2rem -0.2rem 0 black, 0.2rem -0.3rem 0 black,     0.2rem -0.4rem 0 black;
+      box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,     0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,     0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
       transform: rotate(45deg);
     }
     
