@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from "vue-property-decorator";
 @Component
 export default class StyleGuide extends Vue {}
 </script>
@@ -13,8 +13,7 @@ export default class StyleGuide extends Vue {}
 .container {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	//justify-content: center;
 	flex-direction: column;
-
 }
 </style>
