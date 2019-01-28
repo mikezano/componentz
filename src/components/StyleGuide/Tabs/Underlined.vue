@@ -35,7 +35,7 @@ export default class Underlined extends Vue {}
 	flex-direction: row;
 }
 
-@mixin underlined_tabs($tabCount: 2) {
+@mixin underlined_tabs($tabCount: 4) {
 	.tabs {
 		&__content > div {
 			display: none;
@@ -64,7 +64,7 @@ export default class Underlined extends Vue {}
 		}
 
 		@for $i from 1 through $tabCount {
-			#tab#{$i} ~ .content .content#{$i} {
+			#tab#{$i}:checked ~ .tabs__content .content#{$i} {
 				display: block;
 			}
 		}
