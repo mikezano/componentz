@@ -72,14 +72,14 @@ $colors: (
 	}
 } //flip end
 @mixin rollover($size, $backgroundColor, $textColor) {
-	$selector: rollover;
-	.rollover {
+	$s: rollover;
+	&.#{$s} {
 		width: 2 * $size;
 		height: $size;
 		overflow: hidden;
 		color: $textColor;
 		text-align: center;
-		&__container {
+		.#{$s}__container {
 			background-color: $backgroundColor;
 			transition: all 0.5s ease-in-out;
 		}
@@ -89,12 +89,12 @@ $colors: (
 				cursor: pointer;
 			}
 		}
-		&__main {
+		.#{$s}__main {
 			height: $size;
 			line-height: $size;
 			font-size: $size/2;
 		}
-		&__sub {
+		.#{$s}__sub {
 			height: $size;
 			line-height: $size;
 			font-size: $size/3;
@@ -140,6 +140,32 @@ $colors: (
 		transform: rotateX(90deg) translate3d(0, 0, $height/2);
 	}
 }//rotate_down end
+@mixin simpleButton($color: #ddd, $size: 1rem) {
+	$selector: simple-button;
+	&.#{$selector} {
+		border: 0.1rem solid darken($color, 10%);
+		background-color: $color;
+		color: black;
+		text-align: center;
+		margin: 1rem;
+		padding: 0 1.5rem;
+		font-size: $size;
+		line-height: $size * 2;
+		transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+		&:hover {
+			transform: scale(1.01);
+			box-shadow: 0.1rem 0.1rem 0.4rem hsla(0, 0%, 0%, 0.2);
+			background-color: lighten($color, 3%);
+			cursor: pointer;
+		}
+		&:active {
+			transform: scale(0.9);
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+} //cricle-btn end
 @mixin spin-btn($color, $scale) {
 	$selector: spin-btn;
 	&.#{$selector} {
@@ -276,7 +302,7 @@ $colors: (
 		}
 		&__label {
 			cursor: pointer;
-			padding: 0 0.5rem 0 0.5rem;
+			padding: 0 0.7rem 0 0.6rem;
 		}
 		&__label:before {
 			content: "";
@@ -304,14 +330,14 @@ $colors: (
 			transform: rotate(45deg);
 		}
 	}
-}// checkbox end
+} // checkbox end
 @mixin checkbox-group($scale: 1) {
 	.checkbox-group {
 		display: flex;
 		transform: scale($scale);
 		@include checkbox();
 	}
-}// checkbox-group end
+} // checkbox-group end
 @mixin drop_down_default($width: 200px, $color: green) {
 	.dd {
 		position: relative;
@@ -697,13 +723,14 @@ $colors: (
 		}
 	}
 } //intro end
-@mixin underlined_tabs($tabCount: 4) {
-	.tabs {
+@mixin underlined_tabs($tabCount: 2) {
+	$selector: tabs;
+	&.#{$selector} {
 		&__content > div {
 			display: none;
 			font-size: 14px;
 			padding: 10px;
-			height: 300px;
+			//height: 300px;
 			border-bottom: 1px solid lightgray;
 		}
 		&__tab {
@@ -726,7 +753,7 @@ $colors: (
 		}
 
 		@for $i from 1 through $tabCount {
-			#tab#{$i} ~ .content .content#{$i} {
+			#tab#{$i}:checked ~ .tabs__content .content#{$i} {
 				display: block;
 			}
 		}

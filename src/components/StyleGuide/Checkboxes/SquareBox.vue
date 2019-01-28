@@ -1,6 +1,15 @@
 <template lang="pug">
 .container
-
+	.checkbox-group
+		.checkbox
+			input#one.checkbox__button(type='radio' name='test', value='one')
+			label.checkbox__label(for='one') One
+		.checkbox
+			input#two.checkbox__button(type='radio' name='test', value='two')
+			label.checkbox__label(for='two') Two
+		.checkbox
+			input#three.checkbox__button(type='radio' name='test', value='three')
+			label.checkbox__label(for='three') Three
 </template>
 
 
@@ -22,7 +31,7 @@ export default class SquareBox extends Vue {}
 		}
 		&__label {
 			cursor: pointer;
-			padding: 0 0.5rem 0 0.5rem;
+			padding: 0 0.7rem 0 0.6rem;
 		}
 		&__label:before {
 			content: "";
@@ -50,14 +59,14 @@ export default class SquareBox extends Vue {}
 			transform: rotate(45deg);
 		}
 	}
-}// checkbox end
+} // checkbox end
 @mixin checkbox-group($scale: 1) {
 	.checkbox-group {
 		display: flex;
 		transform: scale($scale);
 		@include checkbox();
 	}
-}// checkbox-group end
+} // checkbox-group end
 
 @include checkbox-group(1);
 </style>

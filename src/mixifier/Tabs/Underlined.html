@@ -9,7 +9,6 @@
       display: none;
       font-size: 14px;
       padding: 10px;
-      height: 300px;
       border-bottom: 1px solid lightgray;
     }
     
@@ -35,26 +34,26 @@
       border-bottom: 4px solid #3db881;
     }
     
-    .tabs #tab1 ~ .content .content1 {
+    .tabs #tab1:checked ~ .tabs__content .content1 {
       display: block;
     }
     
-    .tabs #tab2 ~ .content .content2 {
+    .tabs #tab2:checked ~ .tabs__content .content2 {
       display: block;
     }
     
-    .tabs #tab3 ~ .content .content3 {
+    .tabs #tab3:checked ~ .tabs__content .content3 {
       display: block;
     }
     
-    .tabs #tab4 ~ .content .content4 {
+    .tabs #tab4:checked ~ .tabs__content .content4 {
       display: block;
     }
     
   </style>
   
   <div class="container">
-    <div class="tabs">
+    <div class="ex1 tabs">
       <input class="tabs__tab" id="tab1" type="radio" name="tabs" checked="checked"/>
       <label class="tabs__label" for="tab1">Tab 1</label>
       <input class="tabs__tab" id="tab2" type="radio" name="tabs"/>

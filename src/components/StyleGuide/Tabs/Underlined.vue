@@ -1,6 +1,6 @@
 <template lang="pug">
 .container
-	.tabs
+	.ex1.tabs
 		input.tabs__tab#tab1(type="radio" name="tabs" checked)
 		label.tabs__label(for="tab1") Tab 1
 		input.tabs__tab#tab2(type="radio" name="tabs")
@@ -35,13 +35,14 @@ export default class Underlined extends Vue {}
 	flex-direction: row;
 }
 
-@mixin underlined_tabs($tabCount: 4) {
-	.tabs {
+@mixin underlined_tabs($tabCount: 2) {
+	$selector: tabs;
+	&.#{$selector} {
 		&__content > div {
 			display: none;
 			font-size: 14px;
 			padding: 10px;
-			height: 300px;
+			//height: 300px;
 			border-bottom: 1px solid lightgray;
 		}
 		&__tab {
@@ -71,5 +72,5 @@ export default class Underlined extends Vue {}
 	}
 } //underlined_tabs end
 
-@include underlined_tabs();
+@include underlined_tabs(4);
 </style>
