@@ -1,7 +1,11 @@
 <div>
 
   <style type="text/css">
-    .another .ex1.rollover {
+    .container {
+      flex-direction: row;
+    }
+    
+    .ex1.rollover {
       width: 100px;
       height: 50px;
       overflow: hidden;
@@ -9,23 +13,53 @@
       text-align: center;
     }
     
-    .another .ex1.rollover .rollover__container {
+    .ex1.rollover .rollover__container {
       background-color: #007bff;
       transition: all 0.5s ease-in-out;
     }
     
-    .another .ex1.rollover:hover .rollover__container {
+    .ex1.rollover:hover .rollover__container {
       margin-top: -50px;
       cursor: pointer;
     }
     
-    .another .ex1.rollover .rollover__main {
+    .ex1.rollover .rollover__main {
       height: 50px;
       line-height: 50px;
       font-size: 25px;
     }
     
-    .another .ex1.rollover .rollover__sub {
+    .ex1.rollover .rollover__sub {
+      height: 50px;
+      line-height: 50px;
+      font-size: 16.66667px;
+    }
+    
+    .ex2.rollover {
+      width: 100px;
+      height: 50px;
+      overflow: hidden;
+      color: white;
+      text-align: center;
+    }
+    
+    .ex2.rollover .rollover__container {
+      background-color: #cc0000;
+      transition: all 0.5s ease-in-out;
+    }
+    
+    .ex2.rollover:hover .rollover__container {
+      margin-top: -50px;
+      cursor: pointer;
+    }
+    
+    .ex2.rollover .rollover__main {
+      height: 50px;
+      line-height: 50px;
+      font-size: 25px;
+    }
+    
+    .ex2.rollover .rollover__sub {
       height: 50px;
       line-height: 50px;
       font-size: 16.66667px;
@@ -33,11 +67,20 @@
     
   </style>
   
-  <div class="ex1 rollover">
-    <div class="rollover__container">
-      <div class="rollover__main">GOOD</div>
-      <div class="rollover__sub">
-         💚</div>
+  <div class="container">
+    <div class="ex1 rollover">
+      <div class="rollover__container">
+        <div class="rollover__main">GOOD</div>
+        <div class="rollover__sub">
+           💚</div>
+      </div>
+    </div>
+    <div class="ex2 rollover">
+      <div class="rollover__container">
+        <div class="rollover__main">Bad</div>
+        <div class="rollover__sub">
+           😈</div>
+      </div>
     </div>
   </div>
 

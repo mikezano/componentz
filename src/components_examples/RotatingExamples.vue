@@ -1,47 +1,44 @@
 <template lang="pug">
 .examples
-	.default
-		.rotating-btn
-			.rotating-btn__container
-				.rotating-btn__main
-					span Main
-					| 😊
-				.rotating-btn__alt
-					span  Alt
-					| 😮
+	.default.rotating-btn
+		.rotating-btn__container
+			.rotating-btn__main
+				span Main
+				| 😊
+			.rotating-btn__alt
+				span  Alt
+				| 😮
 
-	.save
-		.rotating-btn
-			.rotating-btn__container
-				.rotating-btn__main
-					span Save
-				.rotating-btn__alt
-					span  💾
+	.save.rotating-btn
+		.rotating-btn__container
+			.rotating-btn__main
+				span Save
+			.rotating-btn__alt
+				span  💾
 
-	.dead-alive
-		.rotating-btn
-			.rotating-btn__container
-				.rotating-btn__main
-					span Dead...
-					|💀
-				.rotating-btn__alt
-					span Or Alive!
-					|🤠
+	.dead-alive.rotating-btn
+		.rotating-btn__container
+			.rotating-btn__main
+				span Dead...
+				|💀
+			.rotating-btn__alt
+				span Or Alive!
+				|🤠
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({ name: 'RotatingExamples' })
+import { Component, Vue } from "vue-property-decorator";
+@Component({ name: "RotatingExamples" })
 export default class RotatingExamples extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import 'src/mixifier/ads_mixer.scss';
-@import '../sass/colors';
+@import "src/mixifier/ads_mixer.scss";
+@import "../sass/colors";
 
-$indigo: map-get($colors, 'indigo');
-$teal: map-get($colors, 'teal');
-$gray: map-get($colors, 'gray');
+$indigo: map-get($colors, "indigo");
+$teal: map-get($colors, "teal");
+$gray: map-get($colors, "gray");
 .default {
 	@include rotating-btn(200px, 60px, $indigo, white, 2rem);
 }
