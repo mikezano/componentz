@@ -5,18 +5,19 @@
       flex-direction: row;
     }
     
-    .tabs__content > div {
+    .ex1.tabs .tabs__content > div {
       display: none;
       font-size: 14px;
       padding: 10px;
+      margin-top: 1rem;
       border-bottom: 1px solid lightgray;
     }
     
-    .tabs__tab {
+    .ex1.tabs .tabs__tab {
       display: none;
     }
     
-    .tabs__label {
+    .ex1.tabs .tabs__label {
       display: inline;
       padding: 5px 10px;
       text-align: center;
@@ -25,28 +26,28 @@
       transition: all 0.2s ease-out;
     }
     
-    .tabs__label:hover {
+    .ex1.tabs .tabs__label:hover {
       cursor: pointer;
       border-bottom: 4px solid #3db881;
     }
     
-    .tabs__tab:checked + label {
+    .ex1.tabs .tabs__tab:checked + label {
       border-bottom: 4px solid #3db881;
     }
     
-    .tabs #tab1:checked ~ .tabs__content .content1 {
+    .ex1.tabs #tab1:checked ~ .tabs__content .content1 {
       display: block;
     }
     
-    .tabs #tab2:checked ~ .tabs__content .content2 {
+    .ex1.tabs #tab2:checked ~ .tabs__content .content2 {
       display: block;
     }
     
-    .tabs #tab3:checked ~ .tabs__content .content3 {
+    .ex1.tabs #tab3:checked ~ .tabs__content .content3 {
       display: block;
     }
     
-    .tabs #tab4:checked ~ .tabs__content .content4 {
+    .ex1.tabs #tab4:checked ~ .tabs__content .content4 {
       display: block;
     }
     

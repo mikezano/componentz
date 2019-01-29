@@ -151,7 +151,7 @@ $colors: (
 		background-color: $color;
 		color: black;
 		text-align: center;
-		margin: 1rem;
+		margin: 0.5rem;
 		padding: 0 1.5rem;
 		font-size: $size;
 		line-height: $size * 2;
@@ -728,19 +728,19 @@ $colors: (
 	}
 } //intro end
 @mixin underlined_tabs($tabCount: 2) {
-	$selector: tabs;
-	&.#{$selector} {
-		&__content > div {
+	$s: tabs;
+	&.#{$s} {
+		.#{$s}__content > div {
 			display: none;
 			font-size: 14px;
 			padding: 10px;
-			//height: 300px;
+			margin-top: 1rem;
 			border-bottom: 1px solid lightgray;
 		}
-		&__tab {
+		.#{$s}__tab {
 			display: none;
 		}
-		&__label {
+		.#{$s}__label {
 			display: inline;
 			padding: 5px 10px;
 			text-align: center;
@@ -748,11 +748,11 @@ $colors: (
 			border-bottom: 4px solid #bebebe;
 			transition: all 0.2s ease-out;
 		}
-		&__label:hover {
+		.#{$s}__label:hover {
 			cursor: pointer;
 			border-bottom: 4px solid $vue_green;
 		}
-		&__tab:checked + label {
+		.#{$s}__tab:checked + label {
 			border-bottom: 4px solid $vue_green;
 		}
 

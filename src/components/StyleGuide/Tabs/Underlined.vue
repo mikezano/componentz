@@ -36,19 +36,19 @@ export default class Underlined extends Vue {}
 }
 
 @mixin underlined_tabs($tabCount: 2) {
-	$selector: tabs;
-	&.#{$selector} {
-		&__content > div {
+	$s: tabs;
+	&.#{$s} {
+		.#{$s}__content > div {
 			display: none;
 			font-size: 14px;
 			padding: 10px;
-			//height: 300px;
+			margin-top: 1rem;
 			border-bottom: 1px solid lightgray;
 		}
-		&__tab {
+		.#{$s}__tab {
 			display: none;
 		}
-		&__label {
+		.#{$s}__label {
 			display: inline;
 			padding: 5px 10px;
 			text-align: center;
@@ -56,11 +56,11 @@ export default class Underlined extends Vue {}
 			border-bottom: 4px solid #bebebe;
 			transition: all 0.2s ease-out;
 		}
-		&__label:hover {
+		.#{$s}__label:hover {
 			cursor: pointer;
 			border-bottom: 4px solid $vue_green;
 		}
-		&__tab:checked + label {
+		.#{$s}__tab:checked + label {
 			border-bottom: 4px solid $vue_green;
 		}
 
@@ -71,6 +71,7 @@ export default class Underlined extends Vue {}
 		}
 	}
 } //underlined_tabs end
-
-@include underlined_tabs(4);
+.ex1 {
+	@include underlined_tabs(4);
+}
 </style>

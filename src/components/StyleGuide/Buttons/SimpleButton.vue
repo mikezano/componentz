@@ -11,8 +11,8 @@ div
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-@Component({ name: "SimpleButton" })
+import { Component, Vue } from 'vue-property-decorator';
+@Component({ name: 'SimpleButton' })
 export default class SimpleButton extends Vue {}
 </script>
 
@@ -24,7 +24,7 @@ export default class SimpleButton extends Vue {}
 		background-color: $color;
 		color: black;
 		text-align: center;
-		margin: 1rem;
+		margin: 0.5rem;
 		padding: 0 1.5rem;
 		font-size: $size;
 		line-height: $size * 2;

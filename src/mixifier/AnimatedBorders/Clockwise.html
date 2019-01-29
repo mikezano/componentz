@@ -12,7 +12,7 @@
     
     .clockwise::before, .clockwise::after {
       box-sizing: inherit;
-      content: '';
+      content: "";
       position: absolute;
       border: 20px solid transparent;
       width: 0;
@@ -67,48 +67,48 @@
     
     button::before, button::after {
       box-sizing: inherit;
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       height: 100%;
     }
     
-    .draw {
+    .draw.clockwise-border {
       transition: color 0.25s;
     }
     
-    .draw::before, .draw::after {
+    .draw.clockwise-border::before, .draw.clockwise-border::after {
       border: 2px solid transparent;
       width: 0;
       height: 0;
     }
     
-    .draw::before {
+    .draw.clockwise-border::before {
       top: 0;
       left: 0;
     }
     
-    .draw::after {
+    .draw.clockwise-border::after {
       bottom: 0;
       right: 0;
     }
     
-    .draw:hover {
+    .draw.clockwise-border:hover {
       color: cyan;
     }
     
-    .draw:hover::before, .draw:hover::after {
+    .draw.clockwise-border:hover::before, .draw.clockwise-border:hover::after {
       width: 100%;
       height: 100%;
     }
     
-    .draw:hover::before {
+    .draw.clockwise-border:hover::before {
       border-top-color: cyan;
       border-right-color: cyan;
       transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
     }
     
-    .draw:hover::after {
+    .draw.clockwise-border:hover::after {
       border-bottom-color: cyan;
       border-left-color: cyan;
       transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s,     height 0.25s ease-out 0.75s;
@@ -120,7 +120,7 @@
     <div class="clockwise">
       <div class="words">Hello</div>
     </div>
-    <button class="draw"></button>
+    <button class="draw clockwise-border"></button>
   </div>
 
 </div>
