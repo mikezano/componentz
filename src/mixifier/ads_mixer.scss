@@ -420,6 +420,48 @@ $colors: (
 		}
 	}
 } // drop_down end
+@mixin simple-form($bg-color: #eee) {
+	$s: simple-form;
+	&.#{$s} {
+		.#{$s}__fieldset {
+			padding: 1rem;
+			text-align: left;
+			background-color: $bg-color;
+		}
+		.#{$s}__legend {
+			font-weight: bold;
+		}
+		.#{$s}__input,
+		.#{$s}__dropdown {
+			display: block;
+			width: 100%;
+			padding: 0.3rem;
+			margin: 0.2rem auto 0.6rem; //top left&right bottom
+			border: 0.1rem solid $mainD1;
+			box-sizing: border-box;
+		}
+		.#{$s}__label {
+			padding: 0;
+			margin: 0;
+			display: block;
+			font-size: 1rem;
+		}
+		.#{$s}__checkboxes {
+			margin: 0.2rem auto 0.6rem;
+			@include checkbox-group(1);
+		}
+		.#{$s}__footer {
+			display: flex;
+			align-items: center;
+			button {
+				@include simpleButton();
+			}
+			button:first-child {
+				margin-left: 0;
+			}
+		}
+	}
+} //simple-form end
 @mixin classic_grid_layout() {
 	.grid-container {
 		display: grid;
