@@ -2,7 +2,7 @@
 .container
 	.blue.card
 		.card__header 
-			.card__header__indicator  
+			.card__header__indicator
 			.card__header__text Shabby
 		.card__content 
 			| 90's fingerstache franzen cloud bread. Shoreditch meditation
