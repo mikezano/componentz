@@ -1,6 +1,7 @@
 <template lang="pug">
 div.flex
 	.my-example.bottom-border-hover Hover Me
+	.my-example2.bottom-border-hover Hover Me 2
 </template>
 
 <script lang="ts">
@@ -12,12 +13,12 @@ export default class BorderBottomHover extends Vue {}
 
 <style lang="scss" scoped>
 @import "../../../sass/colors";
-$border-width: 20px;
 
-@mixin bottom-border-hover() {
+
+@mixin bottom-border-hover($color : orange, $underline-size: 4px) {
 	$s: bottom-border-hover;
 	&.#{$s} {
-		display:inline;
+		display:inline-block;
 		position: relative;
 		
 		&::before{
@@ -29,12 +30,16 @@ $border-width: 20px;
 		}
 		&:hover::before{
 			cursor:pointer;
-			border-bottom:2px solid orange;
+			border-bottom: $underline-size solid $color;
 			width:100%;
 		}
 	}
 }
 .my-example{
 	@include bottom-border-hover();
+}
+
+.my-example2{
+	@include bottom-border-hover(blue, 8px);
 }
 </style>

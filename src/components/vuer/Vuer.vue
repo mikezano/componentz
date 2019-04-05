@@ -5,11 +5,11 @@
 			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
 				router-link(:to="route" tag="div")
 					.vuer-link
-						icon(name="code" scale="1.6")
+						icon(name="code" scale="1")
 						span See Examples
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
 				.vuer-link
-					icon(name="copy" scale="1.6")
+					icon(name="copy" scale="1")
 					span Copy Code
 
 		.vuer__header
@@ -155,7 +155,7 @@ export default class Vuer extends Vue {
 	border: 1px solid lightgray;
 	position: relative;
 	background-color: hsla(0, 0%, 0%, 0.05);
-	width: 40rem;
+	//width: 40rem;
 
 	&__component {
 		margin: 2rem 0;
@@ -163,11 +163,12 @@ export default class Vuer extends Vue {
 
 	&__header {
 		font-weight: bold;
-		font-size: 2rem;
+		font-size: 1rem;
 	}
 
 	&__scss,
 	&__pug {
+		display:none;
 		padding: 0;
 
 		label {

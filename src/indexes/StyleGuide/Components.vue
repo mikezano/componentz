@@ -5,7 +5,7 @@
 		transition(name="fade" 
 					v-if="$route.params.single_component == null" 
 					mode="out-in")
-			transition-group( name="list" tag="div")
+			transition-group( name="list" tag="div" class="list-group")
 				.list-item(v-for="item in currentSet", :key="item")
 					vuer(:name="item")
 		VuerTransition
@@ -87,6 +87,10 @@ export default class Components extends Vue {
 <style lang="scss" scoped>
 @import '../../sass/fade';
 
+
+.list-group{
+	//border:1px solid orange;
+}
 .list-enter-active {
 	transition: all 0.5s;
 }
