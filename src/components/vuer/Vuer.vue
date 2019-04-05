@@ -1,18 +1,31 @@
 <template lang="pug">
 .vuer(:id="displayName")
 	.vuer__content
-		.vuer__links(v-if="$route.params.single_component == null")
+		.vuer__header
+			.vuer__title
+				| {{displayName | humanize}}
 			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
 				router-link(:to="route" tag="div")
 					.vuer-link
 						icon(name="code" scale="1")
-						span See Examples
+						span Examples
 			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
 				.vuer-link
 					icon(name="copy" scale="1")
-					span Copy Code
+					span Copy
+			
+		//.vuer__links(v-if="$route.params.single_component == null")
+			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
+				router-link(:to="route" tag="div")
+					.vuer-link
+						icon(name="code" scale="1")
+						span Examples
+			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
+				.vuer-link
+					icon(name="copy" scale="1")
+					span Copy
 
-		.vuer__header
+		//.vuer__header
 			| {{displayName | humanize}}
 		.vuer__component
 			component(v-if="component" :is="component.default")
@@ -164,8 +177,13 @@ export default class Vuer extends Vue {
 	&__header {
 		font-weight: bold;
 		font-size: 1rem;
+		display:flex;
+		align-items: center;
 	}
 
+	&__title{
+		margin-right:auto;
+	}
 	&__scss,
 	&__pug {
 		display:none;
