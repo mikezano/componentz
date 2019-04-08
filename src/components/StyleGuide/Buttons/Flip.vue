@@ -13,10 +13,14 @@ export default class Flip extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin flip-btn($width: auto) {
+@mixin flip-btn($width: auto, $color:lightgray, $fontSize: 1rem) {
 	$selector: btn-flip;
 	&.#{$selector} {
 		width: $width;
+		font-size: $fontSize;
+		height:100%;
+		border:1px solid darken($color, 10%);
+		background-color: $color;
 		transition: all 1s ease-in-out;
 		&:hover {
 			transform: rotateX(360deg);
@@ -24,4 +28,4 @@ export default class Flip extends Vue {}
 	}
 } //flip end
 @include flip-btn();
-</style>
+</style> 

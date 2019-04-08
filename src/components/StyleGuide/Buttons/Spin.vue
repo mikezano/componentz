@@ -1,7 +1,7 @@
 <template lang="pug">
 
 button.plus.spin-btn
-	| ⚽
+	| Default
 </template>
 
 <script lang="ts">
@@ -12,12 +12,19 @@ export default class Spin extends Vue {}
 
 <style lang="scss" scoped>
 @import '../../../sass/colors';
-@mixin spin-btn($color, $scale) {
+@mixin spin-btn($color, $scale, $hasBackground: true) {
 	$selector: spin-btn;
 	&.#{$selector} {
-		border: none;
-		background: none;
-		color: $color;
+
+		@if $hasBackground == true{
+			border: 1px solid darken($color, 10%);
+			background: $color;
+		}
+		@else{
+			border: none;
+			background: none;
+		}
+		color: white;
 		transition: transform 0.5s ease-out, color 0.7s ease-out;
 		display: flex;
 		align-items: center;
@@ -31,6 +38,6 @@ export default class Spin extends Vue {}
 	}
 } //spin-btn end
 .plus {
-	@include spin-btn($bs_green, 3.5);
+	@include spin-btn(gray, 3.5);
 }
 </style>

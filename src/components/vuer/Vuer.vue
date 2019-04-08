@@ -4,7 +4,7 @@
 		.vuer__header
 			.vuer__title
 				| {{displayName | humanize}}
-			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
+			button.vuer__code(title="See examples" @click="setTheEl" v-if="doExamplesExist")
 				router-link(:to="route" tag="div")
 					.vuer-link
 						icon(name="code" scale="1")
@@ -13,22 +13,10 @@
 				.vuer-link
 					icon(name="copy" scale="1")
 					span Copy
-			
-		//.vuer__links(v-if="$route.params.single_component == null")
-			button.vuer__examples(title="See examples" @click="setTheEl" v-if="doExamplesExist")
-				router-link(:to="route" tag="div")
-					.vuer-link
-						icon(name="code" scale="1")
-						span Examples
-			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
-				.vuer-link
-					icon(name="copy" scale="1")
-					span Copy
-
-		//.vuer__header
-			| {{displayName | humanize}}
-		.vuer__component
-			component(v-if="component" :is="component.default")
+		.vuer__examples(v-if="component")
+			.default
+				component(:is="component.default")
+			component(:is="componentExamples.default")
 		.vuer__scss
 			label SCSS:
 			pre
@@ -56,6 +44,7 @@ export default class Vuer extends Vue {
 	@Prop() public name!: string;
 
 	public component: any = null;
+	public componentExamples: any = null;
 	public scss: string = '';
 	public pug: string = '';
 	public mixin: string = '';
@@ -78,6 +67,7 @@ export default class Vuer extends Vue {
 
 	public mounted(): void {
 		this.getSources();
+		this.getExampleSources();
 		this.displayName = this.name || this.$route.params.single_component;
 		this.route = `/StyleGuide/${this.$route.params.components}/${
 			this.name
@@ -129,6 +119,11 @@ export default class Vuer extends Vue {
 		this.scss = this.extractCode(source, this.scssRE);
 	}
 
+	public getExampleSources(){
+		if(this.component)
+			this.componentExamples = this.getComponent(this.name + 'Examples');
+	}
+
 	public extractCode(source: string, re: RegExp) {
 		const code = source.match(re);
 		const result = code![0].replace(/\n/g, ' ').trim();
@@ -148,7 +143,7 @@ export default class Vuer extends Vue {
 	top: 1rem;
 	right: 1rem;
 }
-.vuer__examples,
+.vuer__code,
 .vuer__copy {
 	border: none;
 	background: none;
@@ -168,11 +163,19 @@ export default class Vuer extends Vue {
 	border: 1px solid lightgray;
 	position: relative;
 	background-color: hsla(0, 0%, 0%, 0.05);
-	//width: 40rem;
+	width: 30rem;
 
 	&__component {
 		margin: 2rem 0;
 	}
+
+	&__examples{
+		display:flex;
+		align-items:center;
+		justify-content: center;
+		margin-top:20px;
+	}
+
 
 	&__header {
 		font-weight: bold;

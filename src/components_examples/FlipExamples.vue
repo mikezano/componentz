@@ -1,7 +1,6 @@
 <template lang="pug">
 
 .examples
-	button.watch-this.btn.btn-primary.btn-flip Watch this!
 	button.three-sixty.btn.btn-secondary.btn-flip 360!
 	button.flip.btn.btn-danger.btn-flip FLIP!
 </template>
@@ -15,20 +14,18 @@ export default class FlipExamples extends Vue {}
 <style lang="scss" scoped>
 @import 'src/mixifier/ads_mixer.scss';
 
-.watch-this {
-	@include flip-btn(200px);
-}
 .three-sixty {
-	@include flip-btn(100px);
+	@include flip-btn(80px, yellow);
 }
 .flip {
-	@include flip-btn(300px);
+	@include flip-btn(100px, orange, 2rem);
 }
 
 .examples {
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 140px;
+	align-items:center;
+}
+button{
+	margin:0 10px;
 }
 </style>

@@ -1,8 +1,6 @@
 <template lang="pug">
 
 .examples
-	.default.btn-circle
-		| 🤷
 	.fruit.btn-circle
 		| 🍓
 	.vegetable.btn-circle
@@ -19,17 +17,14 @@ export default class CircleZoomExamples extends Vue {}
 
 <style lang="scss" scoped>
 @import 'src/mixifier/ads_mixer.scss';
-.default {
-	@include btn-circle();
-}
 .fruit {
-	@include btn-circle(red, 40px);
+	@include btn-circle(red, 10px);
 }
 .vegetable {
 	@include btn-circle(orange, 20px);
 }
 .face {
-	@include btn-circle(green, 60px);
+	@include btn-circle(green, 30px);
 }
 
 .examples {

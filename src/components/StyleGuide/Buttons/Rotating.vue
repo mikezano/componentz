@@ -1,22 +1,13 @@
 <template lang="pug">
-div
-	.ex1.rotating-btn
-		.rotating-btn__container
-			.rotating-btn__main
-				span Main
-				| 😊
-			.rotating-btn__alt
-				span  Alt
-				| 😮
 
-	.ex2.rotating-btn
-		.rotating-btn__container
-			.rotating-btn__main
-				span Main
-				| 😊
-			.rotating-btn__alt
-				span  Alt
-				| 😮
+.default.rotating-btn
+	.rotating-btn__container
+		.rotating-btn__main
+			span Default
+			| 😊
+		.rotating-btn__alt
+			span  Alt
+			| 😮
 </template>
 
 <script lang="ts">
@@ -35,6 +26,7 @@ export default class Rotating extends Vue {}
 		cursor: pointer;
 		perspective: 500px;
 		color: $fontColor;
+		margin:0 10px;
 
 		.#{$s}__container {
 			height: 100%;
@@ -73,10 +65,8 @@ export default class Rotating extends Vue {}
 
 $primary: map-get($colors, primary);
 $danger: map-get($colors, danger);
-.ex1 {
-	@include rotating-btn(200px, 60px, $primary, white, 1rem);
+.default {
+	@include rotating-btn(100px, 60px, gray, white, 1rem);
 }
-.ex2 {
-	@include rotating-btn(160px, 60px, $danger, white, 2rem);
-}
+
 </style>

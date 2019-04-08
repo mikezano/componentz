@@ -1,24 +1,18 @@
 <template lang="pug">
 .examples
-	.good
-		.rollover
-			.rollover__container
-				.rollover__main GOOD
-				.rollover__sub 
-					| 💚
 
-	.bad
-		.rollover
-			.rollover__container
-				.rollover__main BAD
-				.rollover__sub 
-					| 😈
-	.shrug
-		.rollover
-			.rollover__container
-				.rollover__main Shrug
-				.rollover__sub 
-					| ¯\_(ツ)_/¯
+	.bad.rollover
+		.rollover__container
+			.rollover__main BAD
+			.rollover__sub 
+				| 😈
+	.shrug.rollover
+		.rollover__container
+			.rollover__main Shrug
+			.rollover__sub 
+				| ¯\_(ツ)_/¯
+
+
 
 </template>
 
@@ -36,10 +30,10 @@ export default class RolloverExamples extends Vue {}
 	@include rollover(50px, $bs_blue, white);
 }
 .bad {
-	@include rollover(100px, $bs_red, white);
+	@include rollover(50px, $bs_red, white);
 }
 .shrug {
-	@include rollover(100px, $bs_green, white);
+	@include rollover(60px, $bs_green, white);
 }
 .examples {
 	display: flex;

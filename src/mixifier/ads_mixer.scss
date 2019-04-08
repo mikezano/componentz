@@ -61,10 +61,14 @@ $colors: (
 		}
 	}
 } //cricle-btn end
-@mixin flip-btn($width: auto) {
+@mixin flip-btn($width: auto, $color:lightgray, $fontSize: 1rem) {
 	$selector: btn-flip;
 	&.#{$selector} {
 		width: $width;
+		font-size: $fontSize;
+		height:100%;
+		border:1px solid darken($color, 10%);
+		background-color: $color;
 		transition: all 1s ease-in-out;
 		&:hover {
 			transform: rotateX(360deg);
@@ -74,6 +78,7 @@ $colors: (
 @mixin rollover($size, $backgroundColor, $textColor) {
 	$s: rollover;
 	&.#{$s} {
+		margin:0 .2rem;
 		width: 2 * $size;
 		height: $size;
 		overflow: hidden;
@@ -109,6 +114,7 @@ $colors: (
 		cursor: pointer;
 		perspective: 500px;
 		color: $fontColor;
+		margin:0 10px;
 
 		.#{$s}__container {
 			height: 100%;

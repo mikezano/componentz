@@ -1,15 +1,10 @@
 <template lang="pug">
 .container
-	.ex1.rollover
+	.default.rollover
 		.rollover__container
-			.rollover__main GOOD
-			.rollover__sub 
-				| 💚
-	.ex2.rollover
-		.rollover__container
-			.rollover__main Bad
-			.rollover__sub 
-				| 😈
+			.rollover__main Main
+			.rollover__sub Sub
+
 </template>
 
 <script lang="ts">
@@ -24,6 +19,7 @@ export default class Rollover extends Vue {}
 @mixin rollover($size, $backgroundColor, $textColor) {
 	$s: rollover;
 	&.#{$s} {
+		margin:0 .2rem;
 		width: 2 * $size;
 		height: $size;
 		overflow: hidden;
@@ -55,11 +51,7 @@ export default class Rollover extends Vue {}
 .container {
 	flex-direction: row;
 }
-.ex1 {
-	@include rollover(50px, $bs_blue, white);
-}
-
-.ex2 {
-	@include rollover(50px, $bs_red, white);
+.default {
+	@include rollover(50px, gray, white);
 }
 </style>

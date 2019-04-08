@@ -3,7 +3,6 @@
 	.soccer-ball.spin-btn ⚽
 	button.plus.spin-btn ➕
 	.sun.spin-btn 🌞
-	textarea.hello.spin-btn Hi There
 </template>
 
 <script>
