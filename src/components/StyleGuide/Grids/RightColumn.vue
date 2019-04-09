@@ -1,7 +1,11 @@
 <template lang="pug">
 .grid-container
 	.cell.a A
-	.cell.b B
+	.cell.b 
+		p
+			| Sed luctus magna sem, a pharetra lacus tempus vitae.
+			| Sed mollis fermentum libero eu ornare. Quisque ut sollicitudin
+			| magna. Maecenas a felis et metus molestie gravida a nec nunc. Maecenas
 	.cell.c C
 </template>
 
@@ -18,10 +22,8 @@ export default class RightColumn extends Vue {}
 	.grid-container {
 		display: grid;
 		grid-template-columns: 70% 30%;
-		grid-gap: 2px;
+		grid-gap: .1rem;
 		.cell {
-			height: 50px;
-			line-height: 50px;
 			color: white;
 			border: 1px solid lightgrey;
 			text-align: center;

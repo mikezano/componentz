@@ -215,6 +215,32 @@ $colors: (
 		}
 	}
 } //zoom-btn end
+@mixin businessCard($width: 10rem, $height: 14rem) {
+
+	$s: business-card;
+	&.#{$s} {
+		border:.1rem solid #aaa;
+		border-radius:.4rem;
+		width:$width;
+		height:$height;
+		text-align:center;
+
+		display:flex;
+		flex-direction: column;
+		.#{$s}__profile {
+			height: 100%;
+			background-color:white;
+			border-radius:.4rem .4rem 0 0;
+			overflow:hidden;
+		}
+		.#{$s}__title {
+			font-weight:bold;
+		}
+		.#{$s}__role {
+			font-style:italic;
+		}
+	}
+} //corner-card end
 @mixin corner-card($color, $width) {
 	$gray: hsla(0, 0%, 80%, 1);
 	$el: card;
@@ -294,6 +320,7 @@ $colors: (
 				color: white;
 				font-weight: bold;
 				font-size: $titleSize;
+				line-height: $titleSize;
 				margin-left: $titleSize + ($titleSize/8px);
 				margin-top: 10px;
 				transform: rotate(90deg);
