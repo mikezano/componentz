@@ -1,6 +1,5 @@
 <template lang="pug">
-div
-	button.small-zoom.zoom-btn Small Zoom
+button.default.zoom-btn Default
 </template>
 
 <script lang="ts">
@@ -13,11 +12,12 @@ export default class Zoom extends Vue {}
 @mixin zoom-btn($scale, $textColor: white, $backgroundColor: blue) {
 	$selector: zoom-btn;
 	&.#{$selector} {
+		margin: 0.2rem;
 		$shadow-color: black;
 		box-shadow: 2px 2px 4px $shadow-color;
 		transition: all 0.2s ease-in-out;
 		color: $textColor;
-		border: 3px solid darken($backgroundColor, 10%);
+		border: 1px solid darken($backgroundColor, 10%);
 		background-color: $backgroundColor;
 		&:hover {
 			transform: scale($scale);
@@ -25,7 +25,7 @@ export default class Zoom extends Vue {}
 		}
 	}
 } //zoom-btn end
-.small-zoom {
-	@include zoom-btn(1.1);
+.default {
+	@include zoom-btn(1.1, white, gray);
 }
 </style>

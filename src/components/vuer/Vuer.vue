@@ -15,8 +15,8 @@
 					span Copy
 		.vuer__examples(v-if="component")
 			.default
-				component(:is="component.default")
-			component(:is="componentExamples.default")
+				component(v-if="component" :is="component.default")
+			component(v-if="componentExamples" :is="componentExamples.default")
 		.vuer__scss
 			label SCSS:
 			pre
@@ -66,7 +66,6 @@ export default class Vuer extends Vue {
 	public setFromEl!: (name: string) => any;
 
 	public mounted(): void {
-
 		this.getSources();
 		this.getExampleSources();
 		this.displayName = this.name || this.$route.params.single_component;
@@ -120,8 +119,8 @@ export default class Vuer extends Vue {
 		this.scss = this.extractCode(source, this.scssRE);
 	}
 
-	public getExampleSources(){
-		if(this.component)
+	public getExampleSources() {
+		if (this.component)
 			this.componentExamples = this.getComponent(this.name + 'Examples');
 	}
 
@@ -170,27 +169,26 @@ export default class Vuer extends Vue {
 		margin: 2rem 0;
 	}
 
-	&__examples{
-		display:flex;
-		align-items:center;
+	&__examples {
+		display: flex;
+		align-items: center;
 		justify-content: center;
-		margin-top:20px;
+		margin-top: 20px;
 	}
-
 
 	&__header {
 		font-weight: bold;
 		font-size: 1rem;
-		display:flex;
+		display: flex;
 		align-items: center;
 	}
 
-	&__title{
-		margin-right:auto;
+	&__title {
+		margin-right: auto;
 	}
 	&__scss,
 	&__pug {
-		display:none;
+		display: none;
 		padding: 0;
 
 		label {

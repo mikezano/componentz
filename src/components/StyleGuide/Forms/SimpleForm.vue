@@ -14,18 +14,18 @@ div
 				name="name"
 				placeholder="Enter a last name")
 			.simple-form__footer
-				button.simple-button(@click='showName') OK
+				button.simple-button OK
 				button.simple-button No
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-@Component({ name: "SimpleForm" })
+import { Component, Vue } from 'vue-property-decorator';
+@Component({ name: 'SimpleForm' })
 export default class SimpleForm extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@import "../../../mixifier/ads_mixer";
+@import '../../../mixifier/ads_mixer';
 $mainD1: gray;
 @mixin simple-form($bg-color: #eee) {
 	$s: simple-form;

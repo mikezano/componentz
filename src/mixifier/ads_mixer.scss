@@ -178,17 +178,14 @@ $colors: (
 @mixin spin-btn($color, $scale, $hasBackground: true) {
 	$selector: spin-btn;
 	&.#{$selector} {
-
-
-		@if $hasBackground == true{
+		@if $hasBackground == true {
 			border: 1px solid darken($color, 10%);
 			background: $color;
-		}
-		@else{
+		} @else {
 			border: none;
 			background: none;
 		}
-		margin:1rem;
+		margin: 0.2rem;
 		color: white;
 		transition: transform 0.5s ease-out, color 0.7s ease-out;
 		display: flex;
@@ -205,11 +202,12 @@ $colors: (
 @mixin zoom-btn($scale, $textColor: white, $backgroundColor: blue) {
 	$selector: zoom-btn;
 	&.#{$selector} {
+		margin: 0.2rem;
 		$shadow-color: black;
 		box-shadow: 2px 2px 4px $shadow-color;
 		transition: all 0.2s ease-in-out;
 		color: $textColor;
-		border: 3px solid darken($backgroundColor, 10%);
+		border: 1px solid darken($backgroundColor, 10%);
 		background-color: $backgroundColor;
 		&:hover {
 			transform: scale($scale);

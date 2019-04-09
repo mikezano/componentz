@@ -15,17 +15,14 @@ export default class Spin extends Vue {}
 @mixin spin-btn($color, $scale, $hasBackground: true) {
 	$selector: spin-btn;
 	&.#{$selector} {
-
-
-		@if $hasBackground == true{
+		@if $hasBackground == true {
 			border: 1px solid darken($color, 10%);
 			background: $color;
-		}
-		@else{
+		} @else {
 			border: none;
 			background: none;
 		}
-		margin:1rem;
+		margin: 0.2rem;
 		color: white;
 		transition: transform 0.5s ease-out, color 0.7s ease-out;
 		display: flex;

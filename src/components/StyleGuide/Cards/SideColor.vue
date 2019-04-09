@@ -41,6 +41,7 @@ export default class SideColor extends Vue {}
 				color: white;
 				font-weight: bold;
 				font-size: $titleSize;
+				line-height: $titleSize;
 				margin-left: $titleSize + ($titleSize/8px);
 				margin-top: 10px;
 				transform: rotate(90deg);
@@ -55,23 +56,10 @@ export default class SideColor extends Vue {}
 	}
 } //side-card end
 .fruits {
-	@include side-card(#007bff, 16px, 160px);
+	@include side-card(#007bff, 16px, 300px);
 }
 
 .fruits {
-	.red {
-		color: #cc0000;
-	}
-	.blue {
-		color: #007bff;
-	}
-	.orange {
-		color: #ff8800;
-	}
-	.green {
-		color: #007e33;
-	}
-
 	dl {
 		display: flex;
 		flex-wrap: wrap;

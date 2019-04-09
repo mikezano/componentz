@@ -1,7 +1,7 @@
 <template lang="pug">
 .examples
-    button.small-zoom.zoom-btn Small Zoom
-    button.large-zoom.zoom-btn Large Zoom
+	button.small-zoom.zoom-btn Small Zoom
+	button.large-zoom.zoom-btn Large Zoom
 </template>
 
 <script>
@@ -15,16 +15,15 @@ export default class ZoomExamples extends Vue {}
 @import '../sass/colors';
 
 .small-zoom {
-	@include zoom-btn(1.1);
+	@include zoom-btn(1.1, white, orange);
 }
 
 .large-zoom {
-	@include zoom-btn(2);
+	@include zoom-btn(1.3, white);
 }
 
 .examples {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
 }
 </style>
