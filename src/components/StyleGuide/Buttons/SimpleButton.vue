@@ -1,13 +1,7 @@
 <template lang="pug">
-div
-	button.ex1.simple-button
-		| 🤷
-	button.ex2.simple-button
-		| OK
-	button.ex3.simple-button
-		| Subscribe!
-	button.ex4.simple-button
-		| 🍎 Apple
+button.default.simple-button
+	| Default
+
 </template>
 
 <script lang="ts">
@@ -43,16 +37,8 @@ export default class SimpleButton extends Vue {}
 		}
 	}
 } //cricle-btn end
-.ex1 {
-	@include simpleButton(lightblue, 2rem);
+.default {
+	@include simpleButton(lightblue, 1rem);
 }
-.ex2 {
-	@include simpleButton(red, 1rem);
-}
-.ex3 {
-	@include simpleButton(orange, 0.5rem);
-}
-.ex4 {
-	@include simpleButton(green, 1.5rem);
-}
+
 </style>

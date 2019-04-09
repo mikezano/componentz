@@ -1,8 +1,8 @@
 <div>
 
   <style type="text/css">
-    .ex1.rotating-btn {
-      width: 200px;
+    .default.rotating-btn {
+      width: 100px;
       height: 60px;
       cursor: pointer;
       perspective: 500px;
@@ -10,90 +10,45 @@
       margin: 0 10px;
     }
     
-    .ex1.rotating-btn .rotating-btn__container {
+    .default.rotating-btn .rotating-btn__container {
       height: 100%;
       transform-style: preserve-3d;
       transition: 0.25s;
       position: relative;
-      border: 1px solid blue;
       font-size: 1rem;
     }
     
-    .ex1.rotating-btn .rotating-btn__container:hover {
+    .default.rotating-btn .rotating-btn__container:hover {
       transform: rotateX(-90deg);
     }
     
-    .ex1.rotating-btn .rotating-btn__main,
-    .ex1.rotating-btn .rotating-btn__alt {
+    .default.rotating-btn .rotating-btn__main,
+    .default.rotating-btn .rotating-btn__alt {
       width: 100%;
       position: absolute;
       box-sizing: border-box;
-      border: 3px solid #0071c5;
+      border: 3px solid gray;
       line-height: 57px;
       text-align: center;
-      background-color: #2ca5ff;
+      background-color: #b3b3b3;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     
-    .ex1.rotating-btn .rotating-btn__main {
+    .default.rotating-btn .rotating-btn__main {
       transform: translate3d(0, 0, 30px);
     }
     
-    .ex1.rotating-btn .rotating-btn__alt {
-      transform: rotateX(90deg) translate3d(0, 0, 30px);
-    }
-    
-    .ex2.rotating-btn {
-      width: 160px;
-      height: 60px;
-      cursor: pointer;
-      perspective: 500px;
-      color: white;
-      margin: 0 10px;
-    }
-    
-    .ex2.rotating-btn .rotating-btn__container {
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: 0.25s;
-      position: relative;
-      border: 1px solid blue;
-      font-size: 2rem;
-    }
-    
-    .ex2.rotating-btn .rotating-btn__container:hover {
-      transform: rotateX(-90deg);
-    }
-    
-    .ex2.rotating-btn .rotating-btn__main,
-    .ex2.rotating-btn .rotating-btn__alt {
-      width: 100%;
-      position: absolute;
-      box-sizing: border-box;
-      border: 3px solid #ed1c24;
-      line-height: 57px;
-      text-align: center;
-      background-color: #f47b7f;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .ex2.rotating-btn .rotating-btn__main {
-      transform: translate3d(0, 0, 30px);
-    }
-    
-    .ex2.rotating-btn .rotating-btn__alt {
+    .default.rotating-btn .rotating-btn__alt {
       transform: rotateX(90deg) translate3d(0, 0, 30px);
     }
     
   </style>
   
-  <div class="ex1 rotating-btn">
+  <div class="default rotating-btn">
     <div class="rotating-btn__container">
-      <div class="rotating-btn__main"><span>Main</span>😊</div>
+      <div class="rotating-btn__main"><span>Default</span>😊</div>
       <div class="rotating-btn__alt"><span> Alt</span>😮</div>
     </div>
   </div>

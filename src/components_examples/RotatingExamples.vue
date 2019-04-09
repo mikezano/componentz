@@ -32,7 +32,7 @@ $teal: map-get($colors, "teal");
 $gray: map-get($colors, "gray");
 
 .save {
-	@include rotating-btn(90px, 90px, $teal, white, 1rem);
+	@include rotating-btn(90px, 40px, $teal, white, 1rem);
 }
 .dead-alive {
 	@include rotating-btn(120px, 60px, blue, white, 1rem);

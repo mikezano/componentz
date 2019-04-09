@@ -7,6 +7,7 @@
 					mode="out-in")
 			transition-group( name="list" tag="div" class="list-group")
 				.list-item(v-for="item in currentSet", :key="item")
+					pre {{item}}
 					vuer(:name="item")
 		VuerTransition
 </template>

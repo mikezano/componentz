@@ -16,6 +16,7 @@ export default class Spin extends Vue {}
 	$selector: spin-btn;
 	&.#{$selector} {
 
+
 		@if $hasBackground == true{
 			border: 1px solid darken($color, 10%);
 			background: $color;
@@ -24,6 +25,7 @@ export default class Spin extends Vue {}
 			border: none;
 			background: none;
 		}
+		margin:1rem;
 		color: white;
 		transition: transform 0.5s ease-out, color 0.7s ease-out;
 		display: flex;
@@ -31,13 +33,13 @@ export default class Spin extends Vue {}
 		justify-content: center;
 
 		&:hover {
-			color: lighten($color, 10%);
+			//color: lighten($color, 10%);
 			transform: rotate(360deg) scale($scale);
 			cursor: pointer;
 		}
 	}
 } //spin-btn end
 .plus {
-	@include spin-btn(gray, 3.5);
+	@include spin-btn(gray, 1.5);
 }
 </style>

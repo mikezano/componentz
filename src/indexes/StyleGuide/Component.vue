@@ -30,6 +30,7 @@ export default class Component extends Vue {
 	public isTransitioning: any;
 
 	public mounted() {
+		console.log(this.singleComponent);
 		this.$store.commit('setToEl', this.$el);
 		this.vuerFader = this.$el.querySelectorAll('.vuer__content')[0];
 		if (

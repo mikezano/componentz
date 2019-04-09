@@ -33,7 +33,6 @@ export default class Rotating extends Vue {}
 			transform-style: preserve-3d;
 			transition: 0.25s;
 			position: relative;
-			border: 1px solid blue;
 			font-size: $fontSize;
 		}
 

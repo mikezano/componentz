@@ -66,6 +66,7 @@ export default class Vuer extends Vue {
 	public setFromEl!: (name: string) => any;
 
 	public mounted(): void {
+
 		this.getSources();
 		this.getExampleSources();
 		this.displayName = this.name || this.$route.params.single_component;

@@ -17,17 +17,14 @@ export default class SpinExamples extends Vue {}
 
 .soccer-ball {
 	font-size: 40px;
-	@include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 1.5, false);
 }
 .plus {
 	font-size: 20px;
-	@include spin-btn($bs_green, 6);
+	@include spin-btn($bs_green, 2, false);
 }
 .sun {
-	@include spin-btn($bs_green, 4);
-}
-.hello {
-	@include spin-btn($bs_green, 1.5);
+	@include spin-btn($bs_green, 2.5, false);
 }
 
 .examples {

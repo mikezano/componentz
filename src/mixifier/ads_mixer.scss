@@ -121,7 +121,6 @@ $colors: (
 			transform-style: preserve-3d;
 			transition: 0.25s;
 			position: relative;
-			border: 1px solid blue;
 			font-size: $fontSize;
 		}
 
@@ -176,19 +175,28 @@ $colors: (
 		}
 	}
 } //cricle-btn end
-@mixin spin-btn($color, $scale) {
+@mixin spin-btn($color, $scale, $hasBackground: true) {
 	$selector: spin-btn;
 	&.#{$selector} {
-		border: none;
-		background: none;
-		color: $color;
+
+
+		@if $hasBackground == true{
+			border: 1px solid darken($color, 10%);
+			background: $color;
+		}
+		@else{
+			border: none;
+			background: none;
+		}
+		margin:1rem;
+		color: white;
 		transition: transform 0.5s ease-out, color 0.7s ease-out;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
 		&:hover {
-			color: lighten($color, 10%);
+			//color: lighten($color, 10%);
 			transform: rotate(360deg) scale($scale);
 			cursor: pointer;
 		}
