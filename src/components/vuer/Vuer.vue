@@ -4,12 +4,11 @@
 		.vuer__header
 			.vuer__title
 				| {{displayName | humanize}}
-			button.vuer__code(title="See examples" @click="setTheEl" v-if="doExamplesExist")
-				router-link(:to="route" tag="div")
-					.vuer-link
-						icon(name="code" scale="1")
-						span Examples
-			button.vuer__copy(title="Copy SCSS+PUG" @click="getSCSSPUG")
+			button.vuer__code(title="See code" @click="toggleCode")
+				.vuer-link
+					icon(name="code" scale="1")
+					span Code
+			button.vuer__copy(title="Copy Code" @click="getSCSSPUG")
 				.vuer-link
 					icon(name="copy" scale="1")
 					span Copy
@@ -17,14 +16,15 @@
 			.default
 				component(v-if="component" :is="component.default")
 			component(v-if="componentExamples" :is="componentExamples.default")
-		.vuer__scss
-			label SCSS:
-			pre
-				code.language-css(v-html="scss" contenteditable="true")
-		.vuer__pug
-			label PUG:
-			pre
-				code.language-js(v-html="pug"  contenteditable="true")
+		div(v-show="isCodeVisible")
+			.vuer__scss
+				label SCSS:
+				pre
+					code.language-css(v-html="scss" contenteditable="true")
+			.vuer__pug
+				label PUG:
+				pre
+					code.language-js(v-html="pug"  contenteditable="true")
 </template>
 
 <script lang="ts">
@@ -51,6 +51,7 @@ export default class Vuer extends Vue {
 	public route: string = '';
 	public displayName: string = '';
 	public doExamplesExist: boolean = false;
+	public isCodeVisible:boolean = false;
 
 	public pugRE: RegExp = new RegExp(
 		'(?<=<template lang="pug">).*?(?=</template>)',
@@ -77,6 +78,9 @@ export default class Vuer extends Vue {
 			this.getComponent(this.displayName + 'Examples') != null;
 	}
 
+	public toggleCode():void{
+		this.isCodeVisible = !this.isCodeVisible;
+	}
 	public setTheEl() {
 		this.$store.commit('toggleIsTransitioning'); // true
 		this.$store.commit('setFromEl', this.$el);
@@ -188,7 +192,6 @@ export default class Vuer extends Vue {
 	}
 	&__scss,
 	&__pug {
-		display: none;
 		padding: 0;
 
 		label {
