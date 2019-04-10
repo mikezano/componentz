@@ -19,7 +19,7 @@ import { mapGetters } from 'vuex';
 import ComponentCarousel from '@/components/ComponentCarousel.vue';
 @Component({
 	computed: {
-		...mapGetters(['getComponent', 'getFiles', 'getHtmlSingleFile']),
+		...mapGetters(['getComponent', 'getHtmlSingleFile']),
 	},
 	components: {
 		// Player,

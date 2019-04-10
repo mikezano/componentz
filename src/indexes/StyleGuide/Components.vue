@@ -23,7 +23,7 @@ const files = require.context(`../../components/StyleGuide/`, true, /\.vue$/);
 
 @Component({
 	computed: {
-		...mapGetters(['getComponent', 'getFiles', 'getComponents']),
+		...mapGetters(['getComponent', 'getComponents']),
 		...mapState(['scrollPosition']),
 		...mapMutations(['setScrollPosition', 'setComponents']),
 	},

@@ -83,6 +83,8 @@ function buildRegistry() {
 	return hash;
 }
 
+const componentHash = buildRegistry();
+
 export default {
 	components,
 	componentsHtml,
@@ -90,4 +92,5 @@ export default {
 	get,
 	buildRegistry,
 	buildHtmlSingleFiles,
+	componentHash,
 };

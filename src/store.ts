@@ -15,11 +15,11 @@ export default new Vuex.Store({
 		isTransitioning: false,
 		scrollPosition: 0,
 		components: [],
+		componentHash: registry.componentHash
 	},
 	getters: {
 		getFiles: (state: any, getters) => () => {
-			const result = state.check.buildRegistry();
-			return result;
+			return state.componentHash;
 		},
 		getComponent: (state: any, getters) => (name: string) => {
 			const result = state.check.get(name);
