@@ -3,26 +3,29 @@ import Vuex from 'vuex';
 import registry from './store/registry';
 import { debug } from 'util';
 
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     counter: 2,
-    check: registry,
+    //check: registry,
     isSingleComponentRoute: false,
     fromEl: null,
     toEl: null,
     isTransitioning: false,
-    scrollPosition: 0,
-    components: registry.components,
-    componentsHash: registry.componentsHash,
+	scrollPosition: 0,
+	components: [],
+    vueComponents: registry.vueComponents,
+	componentsHash: registry.componentsHash,
+	componentsHtmlFileHash: registry.componentsHtmlFileHash
   },
   getters: {
     getFiles: (state: any, getters) => () => {
       return state.componentsHash;
     },
     getComponent: (state: any, getters) => (name: string) => {
-      for (const c of state.components) {
+      for (const c of state.vueComponents) {
         if (!c.default.options) {
           continue;
         }
@@ -33,8 +36,8 @@ export default new Vuex.Store({
       return null;
     },
     getHtmlSingleFile: (state: any, getters) => (name: string) => {
-      const result = state.check.singleFileHash.get(name);
-      return result;
+
+	  return state.componentsHtmlFileHash.get(name);
     },
     getScrollPosition: (state, getters) => () => {
       return state.scrollPosition;
@@ -58,6 +61,7 @@ export default new Vuex.Store({
       state.isTransitioning = !state.isTransitioning;
     },
     setComponents: (state, components: string[]) => {
+
       state.components = components;
     },
   },

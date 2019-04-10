@@ -1,45 +1,36 @@
 import { debug } from 'util';
 
-const ctx = require.context('../../src/', true, /.*.vue$/);
-const ctxHtml = require.context('!!raw-loader!../../src/', true, /.*.html$/);
-const ctxraw = require.context('!!raw-loader!../../src/', true, /.*.vue$/);
+//All the context objects will help in retrieving the files
+const vueComponentsContext =		require.context('../../src/', true, /.*.vue$/);
+const styleGuideComponentsContext = require.context(`../components/StyleGuide/`, true, /\.vue$/);
+const mixifierHtmlFilesContext =	require.context(`../mixifier/`, true, /\.html$/);
+const rawHtmlFilesContext =			require.context('!!raw-loader!../../src/', true, /.*.html$/);
+const rawVueFilesContext =			require.context('!!raw-loader!../../src/', true, /.*.vue$/);
 
-interface Simple {
-  source: string;
+//Hashes to hold the actual information from the contexts' above
+const vueComponents: any = vueComponentsContext.keys().map(vueComponentsContext);
+const rawHtmlFiles: any = rawHtmlFilesContext.keys().map(rawHtmlFilesContext);
+const rawVueFiles = rawVueFilesContext.keys().map(rawVueFilesContext);
+
+
+const componentsHtmlFileHash = new Map<string, string>();
+
+
+
+for (let i = 0; i < vueComponents.length; i++) {
+  vueComponents[i].source = rawVueFiles[i];
 }
-const components: any = ctx.keys().map(ctx);
-const componentsSource = ctxraw.keys().map(ctxraw);
 
-const componentsHtml: any = ctxHtml.keys().map(ctxHtml);
-const files = require.context(`../components/StyleGuide/`, true, /\.vue$/);
 
-const htmlFiles = require.context(`../mixifier/`, true, /\.html$/);
-for (let i = 0; i < components.length; i++) {
-  components[i].source = componentsSource[i];
-}
-const componentsHtmlHash = new Map<string, string>();
-
-htmlFiles.keys().forEach((key: string, index: number) => {
+mixifierHtmlFilesContext.keys().forEach((key: string, index: number) => {
   const path = key.replace(/(\.\/|\.html)/g, '');
   const file = path.substr(path.indexOf('/') + 1, path.length);
-
-  componentsHtmlHash.set(file, componentsHtml[index]);
+  componentsHtmlFileHash.set(file, rawHtmlFiles[index]);
 });
 
-function get(name: string) {
-  for (const c of components) {
-    if (!c.default.options) {
-      continue;
-    }
-    if (c.default.options.name === name) {
-      return c;
-    }
-  }
-  return null;
-}
 
 function getHtmlSingleFile(name: string) {
-  for (const c of componentsHtml) {
+  for (const c of rawHtmlFiles) {
     if (c.name === name) {
       return c;
     }
@@ -49,7 +40,7 @@ function getHtmlSingleFile(name: string) {
 function buildHtmlSingleFiles() {
   const hash = new Map<string, string[]>();
   // Loading file names from a folder
-  htmlFiles.keys().forEach((key: string, index: number) => {
+  mixifierHtmlFilesContext.keys().forEach((key: string, index: number) => {
     const path = key.replace(/(\.\/|\.html)/g, '');
     const folder = path.substr(0, path.indexOf('/'));
     const file = path.substr(path.indexOf('/') + 1, path.length);
@@ -66,7 +57,7 @@ function buildHtmlSingleFiles() {
 function buildRegistry() {
   const hash = new Map<string, string[]>();
   // Loading file names from a folder
-  files.keys().forEach((key: string) => {
+  styleGuideComponentsContext.keys().forEach((key: string) => {
     const path = key.replace(/(\.\/|\.vue)/g, '');
     const folder = path.substr(0, path.indexOf('/'));
     const file = path.substr(path.indexOf('/') + 1, path.length);
@@ -85,11 +76,12 @@ function buildRegistry() {
 const componentsHash = buildRegistry();
 console.log('Component Hash', componentsHash);
 
+
+
 export default {
-  components,
-  componentsHtml,
-  componentsHtmlHash,
-  get,
+  vueComponents,
+  rawHtmlFiles,
+  componentsHtmlFileHash,
   buildRegistry,
   buildHtmlSingleFiles,
   componentsHash,
