@@ -1,0 +1,10 @@
+.grow-enter-active, .grow-leave-active{
+	transition: height .5s ease-in-out;
+	overflow:hidden;
+}
+.grow-enter, .grow-leave-to{
+	height:0;
+}
+.grow-enter-to, .grow-leave{
+	height:100%;
+}

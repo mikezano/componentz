@@ -17,10 +17,12 @@
 					:to="`/StyleGuide/${item.type}`"
 					tag="li"
 					@click.native="openSubMenu(item)"
-					v-for="item in menuItems") {{item.type}}
-					ul.side-menu__sub-section-list(v-if="item.isOpen")
-						li.side-menu__sub-section-item(
-							v-for="x in getComponentsByType(item.type)") {{x}}
+					v-for="item in menuItems") 
+					span.side-menu__section-item {{item.type}}
+					transition(name="grow" v-on:after-enter="afterEnter")
+						ul.side-menu__sub-section-list(v-if="item.isOpen")
+							li.side-menu__sub-section-item(
+								v-for="x in getComponentsByType(item.type)") &#183; {{x}}
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -51,7 +53,8 @@ export default class SideMenu extends Vue {
 	public getComponentsByType!: (type: string) => string[];
 	public componentTypes: string[] = [];
 	public components: string[] = [];
-	public menuItems: { type: string; isOpen: boolean }[] = [];
+	public menuItems: { type: string, isOpen: boolean }[] = [];
+	public currentMenuItem: {type:string, isOpen:boolean } = {type:'', isOpen:false};
 
 	public close() {
 		//this.$emit('closeMenu');
@@ -66,12 +69,26 @@ export default class SideMenu extends Vue {
 	}
 
 	public openSubMenu(item: { type: string; isOpen: boolean }): void {
+		this.currentMenuItem = item;
 		item.isOpen = true;
+	}
+
+	public enter():void{
+		alert('enter');
+	}
+	public afterEnter():void{
+		this.menuItems.forEach(mi=>{
+			if(mi.type == this.currentMenuItem.type) return;
+			mi.isOpen = false
+		});
 	}
 }
 </script>
 
 <style lang="scss">
+
+@import '../sass/grow';
+
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 
@@ -159,6 +176,9 @@ $base2: hsla(211, 28%, 29%, 1);
 		margin: 10px 0;
 		font-weight: bold;
 		margin-left: 10px;
+	}
+	&__section-item:hover{
+		font-weight:bold;
 	}
 	p {
 		font-weight: bold;
