@@ -51,7 +51,7 @@ export default class Vuer extends Vue {
 	public route: string = '';
 	public displayName: string = '';
 	public doExamplesExist: boolean = false;
-	public isCodeVisible:boolean = false;
+	public isCodeVisible: boolean = false;
 
 	public pugRE: RegExp = new RegExp(
 		'(?<=<template lang="pug">).*?(?=</template>)',
@@ -78,7 +78,7 @@ export default class Vuer extends Vue {
 			this.getComponent(this.displayName + 'Examples') != null;
 	}
 
-	public toggleCode():void{
+	public toggleCode(): void {
 		this.isCodeVisible = !this.isCodeVisible;
 	}
 	public setTheEl() {

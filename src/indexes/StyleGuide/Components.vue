@@ -23,7 +23,7 @@ const files = require.context(`../../components/StyleGuide/`, true, /\.vue$/);
 
 @Component({
 	computed: {
-		...mapGetters(['getComponent', 'getComponents']),
+		...mapGetters(['getComponent', 'getComponents', 'getComponentsByType']),
 		...mapState(['scrollPosition']),
 		...mapMutations(['setScrollPosition', 'setComponents']),
 	},
@@ -43,6 +43,7 @@ export default class Components extends Vue {
 	public nextRoute: string = '';
 	public currentSet: any = null;
 	public hash: Map<string, string[]> = new Map<string, string[]>();
+	public getComponentsByType!: (type: string) => Map<string, string[]>;
 
 	public routeChanged(route: any, old: any) {
 		this.setCurrentComponents();
@@ -56,8 +57,9 @@ export default class Components extends Vue {
 		if (this.$route.params.single_component == null) {
 			// window.scrollTo(0, 0);
 		}
-		this.currentSet = this.hash.get(this.components);
-		this.$store.commit('setComponents', this.currentSet);
+		//this.currentSet = this.hash.get(this.components);
+		this.currentSet = this.getComponentsByType(this.components);
+		this.$store.commit('setCurrentComponents', this.currentSet);
 	}
 
 	public beforeMount() {
@@ -87,8 +89,7 @@ export default class Components extends Vue {
 <style lang="scss" scoped>
 @import '../../sass/fade';
 
-
-.list-group{
+.list-group {
 	//border:1px solid orange;
 }
 .list-enter-active {

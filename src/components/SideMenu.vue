@@ -13,16 +13,14 @@
 			.divider
 			.side-menu__section-header Components
 			ul.side-menu__section-list
-				router-link(to="/StyleGuide/DropDowns" tag="li") Drop Downs
-				router-link(to="/StyleGuide/Buttons" tag="li") Buttons
-				router-link(to="/StyleGuide/Tabs" tag="li") Tabs
-				router-link(to="/StyleGuide/Cards" tag="li") Cards
-				router-link(to="/StyleGuide/Intros" tag="li") Intros
-				router-link(to="/StyleGuide/Errors" tag="li") Errors
-				router-link(to="/StyleGuide/Grids" tag="li") Grids
-				router-link(to="/StyleGuide/AnimatedBorders" tag="li") Animate Boder
-				router-link(to="/StyleGuide/Checkboxes" tag="li") Checkboxes
-				router-link(to="/StyleGuide/Forms" tag="li") Forms
+				router-link(
+					:to="`/StyleGuide/${item.type}`"
+					tag="li"
+					@click="openSubMenu(item)"
+					v-for="item in menuItems") {{item.type}}
+					ul.side-menu__sub-section-list(v-if="item.isOpen")
+						li.side-menu__sub-section-item(
+							v-for="x in getComponentsByType(componentType)") {{x}}
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -36,10 +34,40 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-@Component
+import { mapGetters, mapState } from 'vuex';
+@Component({
+	computed: {
+		...mapGetters([
+			'getCurrentComponents',
+			'getComponentTypes',
+			'getComponentsByType',
+		]),
+		...mapState(['currentComponents']),
+	},
+})
 export default class SideMenu extends Vue {
+	public getCurrentComponents!: () => string[];
+	public getComponentTypes!: () => string[];
+	public getComponentsByType!: () => string[];
+	public componentTypes: string[] = [];
+	public components: string[] = [];
+	public menuItems: { type: string; isOpen: boolean }[] = [];
+
 	public close() {
 		this.$emit('closeMenu');
+	}
+
+	public mounted(): void {
+		this.components = this.getCurrentComponents();
+		this.componentTypes = this.getComponentTypes();
+		this.menuItems = this.componentTypes.map(ct => {
+			return { type: ct, isOpen: false };
+		});
+	}
+
+	public openSubMenu(item: { type: string; isOpen: boolean }): void {
+		alert('h');
+		item.isOpen = true;
 	}
 }
 </script>

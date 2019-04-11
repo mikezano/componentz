@@ -11,22 +11,22 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapGetters, mapState } from 'vuex';
 @Component({
 	computed: {
-		...mapGetters(['getComponents']),
-		...mapState(['components']),
+		...mapGetters(['getCurrentComponents']),
+		...mapState(['currentComponents']),
 	},
 	watch: {
-		components: 'componentsChanged',
+		currentComponents: 'currentComponentsChanged',
 	},
 })
 export default class SideSubMenu extends Vue {
 	public ids: any[] = [];
-	public getComponents!: () => string[];
+	public getCurrentComponents!: () => string[];
 
 	public mounted() {
-		const components = this.getComponents();
+		const components = this.getCurrentComponents();
 		this.ids = components.map((x: string) => ({ name: x, id: '#' + x }));
 	}
-	public componentsChanged(newComponents: string[]) {
+	public currentComponentsChanged(newComponents: string[]) {
 		this.ids = newComponents.map((x: string) => ({ name: x, id: '#' + x }));
 	}
 
@@ -48,7 +48,7 @@ export default class SideSubMenu extends Vue {
 			return;
 		}
 		const difference = element!.getBoundingClientRect().top;
-		const perTick = difference / duration * 10;
+		const perTick = (difference / duration) * 10;
 		setTimeout(() => {
 			window.scrollTo(0, window.pageYOffset + perTick);
 			this.smoothScrollTo(element, duration - 10);
