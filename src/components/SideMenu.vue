@@ -16,11 +16,11 @@
 				router-link(
 					:to="`/StyleGuide/${item.type}`"
 					tag="li"
-					@click="openSubMenu(item)"
+					@click.native="openSubMenu(item)"
 					v-for="item in menuItems") {{item.type}}
 					ul.side-menu__sub-section-list(v-if="item.isOpen")
 						li.side-menu__sub-section-item(
-							v-for="x in getComponentsByType(componentType)") {{x}}
+							v-for="x in getComponentsByType(item.type)") {{x}}
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -48,13 +48,13 @@ import { mapGetters, mapState } from 'vuex';
 export default class SideMenu extends Vue {
 	public getCurrentComponents!: () => string[];
 	public getComponentTypes!: () => string[];
-	public getComponentsByType!: () => string[];
+	public getComponentsByType!: (type: string) => string[];
 	public componentTypes: string[] = [];
 	public components: string[] = [];
 	public menuItems: { type: string; isOpen: boolean }[] = [];
 
 	public close() {
-		this.$emit('closeMenu');
+		//this.$emit('closeMenu');
 	}
 
 	public mounted(): void {
@@ -66,7 +66,6 @@ export default class SideMenu extends Vue {
 	}
 
 	public openSubMenu(item: { type: string; isOpen: boolean }): void {
-		alert('h');
 		item.isOpen = true;
 	}
 }

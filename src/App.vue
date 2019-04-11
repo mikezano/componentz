@@ -27,7 +27,7 @@ import SideSubMenu from '@/components/SideSubMenu.vue';
 export default class App extends Vue {
 	public static COMPONENTS: string = 'Components';
 	public static SINGLE_COMPONENT: string = 'Single Component';
-	public isShowingSideMenu: boolean = false;
+	public isShowingSideMenu: boolean = true;
 	public app: HTMLElement | null = null;
 
 	public mounted(): void {
