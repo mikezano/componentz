@@ -26,7 +26,7 @@
 							v-for="x in getComponentsByType(item.type)") &#183; {{x}}
 					transition-group(name="list2", tag="ul" class="side-menu__sub-section-list" )
 						li.side-menu__sub-section-item(
-							v-if="item.isOpen"
+							v-show="item.isOpen"
 							v-for="x in getComponentsByType(item.type)" :key="x") &#183; {{x}}
 			.divider
 			.side-menu__section-header How To
@@ -82,7 +82,7 @@ export default class SideMenu extends Vue {
 		// element[0].style.height = totalHeight + "px";
 
 		this.currentMenuItem = item;
-		item.isOpen = true;
+		item.isOpen = !item.isOpen;
 	}
 
 	public enter():void{
@@ -113,15 +113,20 @@ $base2: hsla(211, 28%, 29%, 1);
 
 .list2-item {
   display: inline-block;
-  margin-right: 10px;
+
 }
 .list2-enter-active, .list2-leave-active {
-  transition: all 1s;
+  transition: all .2s;
 }
 .list2-enter, .list2-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
-
-  transform: translateX(30px);
+  height:0;
+  padding:0;
+  //transform: translateX(-30px);
+}
+.list2-enter-to, .list2-leave{
+	height:21px;
+	padding:5px 0;
 }
 
 .close-icon {
@@ -213,9 +218,6 @@ $base2: hsla(211, 28%, 29%, 1);
 		font-weight:bold;
 	}
 
-	&__sub-section-list{
-
-	}
 	p {
 		font-weight: bold;
 	}
@@ -241,5 +243,3 @@ $base2: hsla(211, 28%, 29%, 1);
 	}
 }
 </style>
-
-
