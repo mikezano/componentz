@@ -19,10 +19,11 @@
 					@click.native="openSubMenu(item)"
 					v-for="item in menuItems") 
 					span.side-menu__section-item {{item.type}}
-					transition(name="grow" v-on:after-enter="afterEnter")
-						ul.side-menu__sub-section-list(v-if="item.isOpen")
-							li.side-menu__sub-section-item(
-								v-for="x in getComponentsByType(item.type)") &#183; {{x}}
+					transition(v-on:before-enter="beforeEnter")
+						div.before-height(v-if="item.isOpen")
+							ul.side-menu__sub-section-list
+								li.side-menu__sub-section-item(
+									v-for="x in getComponentsByType(item.type)") &#183; {{x}}
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -53,8 +54,11 @@ export default class SideMenu extends Vue {
 	public getComponentsByType!: (type: string) => string[];
 	public componentTypes: string[] = [];
 	public components: string[] = [];
-	public menuItems: { type: string, isOpen: boolean }[] = [];
-	public currentMenuItem: {type:string, isOpen:boolean } = {type:'', isOpen:false};
+	public menuItems: { type: string; isOpen: boolean }[] = [];
+	public currentMenuItem: { type: string; isOpen: boolean } = {
+		type: '',
+		isOpen: false,
+	};
 
 	public close() {
 		//this.$emit('closeMenu');
@@ -73,20 +77,25 @@ export default class SideMenu extends Vue {
 		item.isOpen = true;
 	}
 
-	public enter():void{
+	public enter(): void {
 		alert('enter');
 	}
-	public afterEnter():void{
-		this.menuItems.forEach(mi=>{
-			if(mi.type == this.currentMenuItem.type) return;
-			mi.isOpen = false
+	public afterEnter(): void {
+		this.menuItems.forEach(mi => {
+			if (mi.type == this.currentMenuItem.type) return;
+			mi.isOpen = false;
 		});
+	}
+	public beforeEnter(el: HTMLElement): void {
+		// el.style.height = '100px';
+		// el.style.overflow = 'hidden';
+		// el.style.transition = 'all 1s ease-in';
+		el.classList.add('after-height');
 	}
 }
 </script>
 
 <style lang="scss">
-
 @import '../sass/grow';
 
 $base1: hsla(153, 50%, 48%, 1);
@@ -177,8 +186,8 @@ $base2: hsla(211, 28%, 29%, 1);
 		font-weight: bold;
 		margin-left: 10px;
 	}
-	&__section-item:hover{
-		font-weight:bold;
+	&__section-item:hover {
+		font-weight: bold;
 	}
 	p {
 		font-weight: bold;
@@ -203,6 +212,16 @@ $base2: hsla(211, 28%, 29%, 1);
 			cursor: pointer;
 		}
 	}
+}
+
+.before-height {
+	height: 0;
+	overflow: hidden;
+	transition: all 1s ease-in-out;
+}
+
+.after-height {
+	height: 100px;
 }
 </style>
 
