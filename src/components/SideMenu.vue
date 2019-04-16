@@ -19,10 +19,15 @@
 					@click.native="openSubMenu(item)"
 					v-for="item in menuItems") 
 					span.side-menu__section-item {{item.type}}
-					transition(name="grow" v-on:after-enter="afterEnter")
-						ul.side-menu__sub-section-list(v-if="item.isOpen")
-							li.side-menu__sub-section-item(
-								v-for="x in getComponentsByType(item.type)") &#183; {{x}}
+					// div
+					// 	transition(name="grow" v-on:after-enter="afterEnter" v-on:before-enter="beforeEnter")
+					//ul.side-menu__sub-section-list( :ref="item.type")
+						li.side-menu__sub-section-item(
+							v-for="x in getComponentsByType(item.type)") &#183; {{x}}
+					transition-group(name="list2", tag="ul" class="side-menu__sub-section-list" )
+						li.side-menu__sub-section-item(
+							v-if="item.isOpen"
+							v-for="x in getComponentsByType(item.type)" :key="x") &#183; {{x}}
 			.divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
@@ -69,6 +74,13 @@ export default class SideMenu extends Vue {
 	}
 
 	public openSubMenu(item: { type: string; isOpen: boolean }): void {
+		// debugger;
+		// const height = 32;
+		// const element: HTMLElement[]  = this.$refs[item.type] as HTMLElement[];
+		// const childrenCount = element[0].childElementCount;
+		// const totalHeight = height * childrenCount;
+		// element[0].style.height = totalHeight + "px";
+
 		this.currentMenuItem = item;
 		item.isOpen = true;
 	}
@@ -77,10 +89,17 @@ export default class SideMenu extends Vue {
 		alert('enter');
 	}
 	public afterEnter():void{
+
+
+
 		this.menuItems.forEach(mi=>{
 			if(mi.type == this.currentMenuItem.type) return;
 			mi.isOpen = false
 		});
+	}
+
+	public beforeEnter(e:any):void{
+		debugger;
 	}
 }
 </script>
@@ -91,6 +110,19 @@ export default class SideMenu extends Vue {
 
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
+
+.list2-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list2-enter-active, .list2-leave-active {
+  transition: all 1s;
+}
+.list2-enter, .list2-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+
+  transform: translateX(30px);
+}
 
 .close-icon {
 	position: absolute;
@@ -179,6 +211,10 @@ $base2: hsla(211, 28%, 29%, 1);
 	}
 	&__section-item:hover{
 		font-weight:bold;
+	}
+
+	&__sub-section-list{
+
 	}
 	p {
 		font-weight: bold;
