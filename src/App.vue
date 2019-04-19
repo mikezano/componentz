@@ -68,6 +68,9 @@ html {
 	overflow-y: scroll;
 }
 
+:root{
+	font-size:14px;
+}
 #app {
 	font-family: 'Titillium Web', sans-serif;
 	-webkit-font-smoothing: antialiased;

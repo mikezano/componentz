@@ -10,7 +10,7 @@
 			.side-menu__section-header Usage
 			ul.side-menu__section-list
 				router-link(to="/how_to_use" tag="li") How to use
-			.divider
+			.side-menu__divider
 			.side-menu__section-header Components
 			ul.side-menu__section-list
 				router-link(
@@ -19,20 +19,15 @@
 					@click.native="openSubMenu(item)"
 					v-for="item in menuItems") 
 					span.side-menu__section-item {{item.type}}
-					// div
-					// 	transition(name="grow" v-on:after-enter="afterEnter" v-on:before-enter="beforeEnter")
-					//ul.side-menu__sub-section-list( :ref="item.type")
-						li.side-menu__sub-section-item(
-							v-for="x in getComponentsByType(item.type)") &#183; {{x}}
 					transition-group(name="list2", tag="ul" class="side-menu__sub-section-list" )
 						li.side-menu__sub-section-item(
 							v-show="item.isOpen"
 							v-for="x in getComponentsByType(item.type)" :key="x") &#183; {{x}}
-			.divider
+			.side-menu__divider
 			.side-menu__section-header How To
 			ul.side-menu__section-list
 				router-link(to="/StyleGuide/Gridlayouts" tag="li") CSS Grid
-			.divider
+			.side-menu__divider
 			.side-menu__section-header Naming
 			ul.side-menu__section-list
 				router-link(to="/bem", tag="li") B.E.M
@@ -90,8 +85,6 @@ export default class SideMenu extends Vue {
 	}
 	public afterEnter():void{
 
-
-
 		this.menuItems.forEach(mi=>{
 			if(mi.type == this.currentMenuItem.type) return;
 			mi.isOpen = false
@@ -111,22 +104,18 @@ export default class SideMenu extends Vue {
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 
-.list2-item {
-  display: inline-block;
 
-}
 .list2-enter-active, .list2-leave-active {
   transition: all .2s;
 }
 .list2-enter, .list2-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;
   height:0;
-  padding:0;
-  //transform: translateX(-30px);
+
 }
 .list2-enter-to, .list2-leave{
 	height:21px;
-	padding:5px 0;
+	//padding:5px 0;
 }
 
 .close-icon {
@@ -183,6 +172,7 @@ $base2: hsla(211, 28%, 29%, 1);
 	background-size: 40px 60px;
 	color: white;
 	box-shadow: 2px 2px 20px gray;
+
 	&__header {
 		background: linear-gradient(to right, $base1, $base2);
 		padding: 2rem 0;
@@ -217,24 +207,22 @@ $base2: hsla(211, 28%, 29%, 1);
 	&__section-item:hover{
 		font-weight:bold;
 	}
-
-	p {
-		font-weight: bold;
+	&__sub-section-item{
+		padding:0;
 	}
-	.divider {
+	&__divider {
 		border-top: 1px solid #555;
 		margin: 10px;
 	}
-	ul {
+	&__section-list, &__sub-section-list {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
 		padding-left: 10px;
 		text-align: left;
 	}
-	li {
-		padding: 5px 0;
-		font-size: 14px;
+	&__section-item, &__sub-section-item {
+		font-size: 1rem;
 		color: #aaa;
 		&:hover {
 			color: white;
