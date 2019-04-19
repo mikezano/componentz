@@ -1,7 +1,6 @@
 <template lang="pug">
 	.side-menu
 		.side-menu__close(@click="close")
-			//icon(name="close" class="close-icon")
 		.side-menu__header
 			img(src="./../assets/logo.png")
 			router-link(to="/StyleGuide" tag="p") Style Guide
@@ -11,14 +10,15 @@
 			ul.side-menu__section-list
 				router-link(to="/how_to_use" tag="li") How to use
 			.side-menu__divider
+
 			.side-menu__section-header Components
 			ul.side-menu__section-list
 				router-link(
 					:to="`/StyleGuide/${item.type}`"
 					tag="li"
 					@click.native="openSubMenu(item)"
-					v-for="item in menuItems") 
-					span.side-menu__section-item {{item.type}}
+					v-for="item in componentsMap") 
+					.side-menu__section-item {{item.key}}
 					transition-group(name="list2", tag="ul" class="side-menu__sub-section-list" )
 						li.side-menu__sub-section-item(
 							v-show="item.isOpen"
@@ -43,6 +43,7 @@ import { mapGetters, mapState } from 'vuex';
 			'getCurrentComponents',
 			'getComponentTypes',
 			'getComponentsByType',
+			'getComponentsMap'
 		]),
 		...mapState(['currentComponents']),
 	},
@@ -51,9 +52,11 @@ export default class SideMenu extends Vue {
 	public getCurrentComponents!: () => string[];
 	public getComponentTypes!: () => string[];
 	public getComponentsByType!: (type: string) => string[];
+	public getComponentsMap!:()=> any;
 	public componentTypes: string[] = [];
 	public components: string[] = [];
-	public menuItems: { type: string, isOpen: boolean }[] = [];
+	public componentsMap: any = null;
+	public menuItems: { item: string, subItems:string[], isOpen: boolean }[] = [];
 	public currentMenuItem: {type:string, isOpen:boolean } = {type:'', isOpen:false};
 
 	public close() {
@@ -63,9 +66,19 @@ export default class SideMenu extends Vue {
 	public mounted(): void {
 		this.components = this.getCurrentComponents();
 		this.componentTypes = this.getComponentTypes();
-		this.menuItems = this.componentTypes.map(ct => {
-			return { type: ct, isOpen: false };
-		});
+		this.componentsMap = this.getComponentsMap();
+		debugger;
+		for(var key in this.componentsMap){
+			debugger;
+			this.menuItems.push({
+				item: key, 
+				subItems: this.componentsMap[key],
+				isOpen: false
+			})
+		}
+		// this.menuItems = this.componentTypes.map(ct => {
+		// 	return { type: ct, isOpen: false };
+		// });
 	}
 
 	public beforeRouteLeave(to:any, from:any, next:any):void{
@@ -78,22 +91,21 @@ export default class SideMenu extends Vue {
 
 		this.currentMenuItem = item;
 		item.isOpen = !item.isOpen;
+
+		setTimeout(()=>{
+			this.afterEnter();
+		}, 500);
+
 	}
 
-	public enter():void{
-		alert('enter');
-	}
 	public afterEnter():void{
 
 		this.menuItems.forEach(mi=>{
 			if(mi.type == this.currentMenuItem.type) return;
-			mi.isOpen = false
+			mi.isOpen = false;
 		});
 	}
 
-	public beforeEnter(e:any):void{
-		debugger;
-	}
 }
 </script>
 
@@ -203,6 +215,9 @@ $base2: hsla(211, 28%, 29%, 1);
 		margin: 10px 0;
 		font-weight: bold;
 		margin-left: 10px;
+	}
+	&__section-item{
+		margin-top:.5rem;
 	}
 	&__section-item:hover{
 		font-weight:bold;

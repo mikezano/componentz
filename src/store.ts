@@ -45,6 +45,9 @@ export default new Vuex.Store({
 		getComponentsByType: (state, getters) => (type: string) => {
 			return state.componentsMap.get(type);
 		},
+		getComponentsMap: (state, getters) =>() =>{
+			return state.componentsMap;
+		}
 	},
 	mutations: {
 		setFromEl: (state, el) => {
