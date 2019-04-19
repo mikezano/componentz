@@ -73,13 +73,13 @@ export default class SideMenu extends Vue {
 		});
 	}
 
+	public beforeRouteLeave(to:any, from:any, next:any):void{
+		setTimeout(()=>{
+			next();
+		}, 1000);
+	}
+
 	public openSubMenu(item: { type: string; isOpen: boolean }): void {
-		// debugger;
-		// const height = 32;
-		// const element: HTMLElement[]  = this.$refs[item.type] as HTMLElement[];
-		// const childrenCount = element[0].childElementCount;
-		// const totalHeight = height * childrenCount;
-		// element[0].style.height = totalHeight + "px";
 
 		this.currentMenuItem = item;
 		item.isOpen = !item.isOpen;

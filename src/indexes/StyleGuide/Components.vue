@@ -93,7 +93,7 @@ export default class Components extends Vue {
 	//border:1px solid orange;
 }
 .list-enter-active {
-	transition: all 0.5s;
+	transition: all 0.5s 0.5s;
 }
 .list-enter {
 	opacity: 0;
