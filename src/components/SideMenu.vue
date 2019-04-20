@@ -14,24 +14,17 @@
 			.side-menu__section-header Components
 			ul.side-menu__section-list
 				router-link(
-					:to="`/StyleGuide/${item.type}`"
+					:to="`/StyleGuide/${item.category}`"
 					tag="li"
 					@click.native="openSubMenu(item)"
-					v-for="item in componentsMap") 
-					.side-menu__section-item {{item.key}}
+					v-for="item in menuItems") 
+					.side-menu__section-item(
+						:class="{'side-menu__section-item--is-open': item.isOpen}") 
+							| {{item.category}}
 					transition-group(name="list2", tag="ul" class="side-menu__sub-section-list" )
 						li.side-menu__sub-section-item(
 							v-show="item.isOpen"
-							v-for="x in getComponentsByType(item.type)" :key="x") &#183; {{x}}
-			.side-menu__divider
-			.side-menu__section-header How To
-			ul.side-menu__section-list
-				router-link(to="/StyleGuide/Gridlayouts" tag="li") CSS Grid
-			.side-menu__divider
-			.side-menu__section-header Naming
-			ul.side-menu__section-list
-				router-link(to="/bem", tag="li") B.E.M
-				router-link(to="/test" tag="li") Test
+							v-for="x in item.subCategories" :key="x") &#183; {{x}}
 </template>
 
 <script lang="ts">
@@ -39,94 +32,75 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { mapGetters, mapState } from 'vuex';
 @Component({
 	computed: {
-		...mapGetters([
-			'getCurrentComponents',
-			'getComponentTypes',
-			'getComponentsByType',
-			'getComponentsMap'
-		]),
-		...mapState(['currentComponents']),
+		...mapGetters(['getComponentsMap']),
 	},
 })
 export default class SideMenu extends Vue {
-	public getCurrentComponents!: () => string[];
-	public getComponentTypes!: () => string[];
-	public getComponentsByType!: (type: string) => string[];
-	public getComponentsMap!:()=> any;
-	public componentTypes: string[] = [];
-	public components: string[] = [];
+	public getComponentsMap!: () => any;
 	public componentsMap: any = null;
-	public menuItems: { item: string, subItems:string[], isOpen: boolean }[] = [];
-	public currentMenuItem: {type:string, isOpen:boolean } = {type:'', isOpen:false};
+	public menuItems: {
+		category: string;
+		subCategories: string[];
+		isOpen: boolean;
+	}[] = [];
+	public currentMenuItem: { category: string; isOpen: boolean } = {
+		category: '',
+		isOpen: false,
+	};
 
 	public close() {
 		//this.$emit('closeMenu');
 	}
 
 	public mounted(): void {
-		this.components = this.getCurrentComponents();
-		this.componentTypes = this.getComponentTypes();
 		this.componentsMap = this.getComponentsMap();
-		debugger;
-		for(var key in this.componentsMap){
-			debugger;
-			this.menuItems.push({
-				item: key, 
-				subItems: this.componentsMap[key],
-				isOpen: false
-			})
-		}
-		// this.menuItems = this.componentTypes.map(ct => {
-		// 	return { type: ct, isOpen: false };
-		// });
+
+		this.componentsMap.forEach(
+			(componentNames: string[], componentsType: string) => {
+				this.menuItems.push({
+					category: componentsType,
+					subCategories: componentNames,
+					isOpen: false,
+				});
+			},
+		);
 	}
 
-	public beforeRouteLeave(to:any, from:any, next:any):void{
-		setTimeout(()=>{
-			next();
-		}, 1000);
-	}
-
-	public openSubMenu(item: { type: string; isOpen: boolean }): void {
-
+	public openSubMenu(item: { category: string; isOpen: boolean }): void {
 		this.currentMenuItem = item;
 		item.isOpen = !item.isOpen;
 
-		setTimeout(()=>{
-			this.afterEnter();
+		setTimeout(() => {
+			this.closePreviousMenuItem();
 		}, 500);
-
 	}
 
-	public afterEnter():void{
-
-		this.menuItems.forEach(mi=>{
-			if(mi.type == this.currentMenuItem.type) return;
+	public closePreviousMenuItem(): void {
+		this.menuItems.forEach(mi => {
+			if (mi.category == this.currentMenuItem.category) return;
 			mi.isOpen = false;
 		});
 	}
-
 }
 </script>
 
 <style lang="scss">
-
 @import '../sass/grow';
 
 $base1: hsla(153, 50%, 48%, 1);
 $base2: hsla(211, 28%, 29%, 1);
 
-
-.list2-enter-active, .list2-leave-active {
-  transition: all .2s;
+.list2-enter-active,
+.list2-leave-active {
+	transition: all 0.2s;
 }
 .list2-enter, .list2-leave-to /* .list-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  height:0;
-
+	opacity: 0;
+	height: 0;
 }
-.list2-enter-to, .list2-leave{
-	height:21px;
+.list2-enter-to,
+.list2-leave {
+	height: 21px;
 	//padding:5px 0;
 }
 
@@ -216,27 +190,33 @@ $base2: hsla(211, 28%, 29%, 1);
 		font-weight: bold;
 		margin-left: 10px;
 	}
-	&__section-item{
-		margin-top:.5rem;
+	&__section-item {
+		margin-top: 0.5rem;
 	}
-	&__section-item:hover{
-		font-weight:bold;
+	&__section-item:hover {
+		font-weight: bold;
 	}
-	&__sub-section-item{
-		padding:0;
+	&__section-item--is-open {
+		text-decoration: underline;
+		font-weight: bold;
+	}
+	&__sub-section-item {
+		padding: 0;
 	}
 	&__divider {
 		border-top: 1px solid #555;
 		margin: 10px;
 	}
-	&__section-list, &__sub-section-list {
+	&__section-list,
+	&__sub-section-list {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
 		padding-left: 10px;
 		text-align: left;
 	}
-	&__section-item, &__sub-section-item {
+	&__section-item,
+	&__sub-section-item {
 		font-size: 1rem;
 		color: #aaa;
 		&:hover {
