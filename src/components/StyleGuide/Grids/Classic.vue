@@ -30,7 +30,7 @@ export default class Classic extends Vue {}
 			color: white;
 			text-align: center;
 			padding: 10px;
-			//background-color: hsla(153, 50%, 48%, 1);
+
 			&.a,
 			&.e {
 				grid-column: 1/4;
@@ -42,19 +42,19 @@ export default class Classic extends Vue {}
 			}
 
 			&.a {
-				background-color: map-get($colors, 'blue');
+				background-color: map-get($colors, 'z-blue');
 			}
 			&.b {
-				background-color: map-get($colors, 'yellow');
+				background-color: map-get($colors, 'z-yellow');
 			}
 			&.c {
-				background-color: map-get($colors, 'red');
+				background-color: map-get($colors, 'z-red');
 			}
 			&.d {
-				background-color: map-get($colors, 'orange');
+				background-color: map-get($colors, 'z-orange');
 			}
 			&.e {
-				background-color: map-get($colors, 'vue-green');
+				background-color: map-get($colors, 'z-green');
 			}
 		}
 	}
