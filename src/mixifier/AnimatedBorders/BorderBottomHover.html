@@ -2,14 +2,15 @@
 
   <style type="text/css">
     .my-example.bottom-border-hover {
-      display: inline-block;
       position: relative;
+      border-bottom: 4px solid white;
+      margin: 0 1rem;
     }
     
     .my-example.bottom-border-hover::before {
       content: '';
       position: absolute;
-      transition: width 0.5s ease-in-out;
+      transition: width 0.25s ease-in-out;
       width: 0;
       height: 100%;
     }
@@ -20,30 +21,8 @@
       width: 100%;
     }
     
-    .my-example2.bottom-border-hover {
-      display: inline-block;
-      position: relative;
-    }
-    
-    .my-example2.bottom-border-hover::before {
-      content: '';
-      position: absolute;
-      transition: width 0.5s ease-in-out;
-      width: 0;
-      height: 100%;
-    }
-    
-    .my-example2.bottom-border-hover:hover::before {
-      cursor: pointer;
-      border-bottom: 8px solid blue;
-      width: 100%;
-    }
-    
   </style>
   
-  <div class="flex">
-    <div class="my-example bottom-border-hover">Hover Me</div>
-    <div class="my-example2 bottom-border-hover">Hover Me 2</div>
-  </div>
+  <div class="my-example bottom-border-hover">Hover Me</div>
 
 </div>

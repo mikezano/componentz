@@ -31,8 +31,35 @@ $colors: (
 	'danger': #ed1c24,
 	'light': #f8f9fa,
 	'dark': #343a40,
+	'z-red': #d11141,
+	'z-blue': #00aedb,
+	'z-orange': #f37735,
+	'z-green': #00b159,
+	'z-yellow': #ffc425,
 );
-@mixin btn-circle($color: #ccc, $size: 20px) {
+// metro ui / / https: // www.color-hex.com/color-palette/700
+@mixin bottom-border-hover($color: orange, $underline-size: 4px) {
+	$s: bottom-border-hover;
+	&.#{$s} {
+		position: relative;
+		border-bottom: $underline-size solid white;
+		margin: 0 1rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			transition: width 0.25s ease-in-out;
+			width: 0;
+			height: 100%;
+		}
+		&:hover::before {
+			cursor: pointer;
+			border-bottom: $underline-size solid $color;
+			width: 100%;
+		}
+	}
+} // bottom-border-hover end
+@mixin btn-circle($color: #ccc, $size: 20px) {
 	$selector: btn-circle;
 	&.#{$selector} {
 		border: 1px solid darken($color, 20%);
@@ -510,7 +537,7 @@ $colors: (
 			color: white;
 			text-align: center;
 			padding: 10px;
-			//background-color: hsla(153, 50%, 48%, 1);
+
 			&.a,
 			&.e {
 				grid-column: 1/4;
@@ -522,19 +549,19 @@ $colors: (
 			}
 
 			&.a {
-				background-color: map-get($colors, 'blue');
+				background-color: map-get($colors, 'z-blue');
 			}
 			&.b {
-				background-color: map-get($colors, 'yellow');
+				background-color: map-get($colors, 'z-yellow');
 			}
 			&.c {
-				background-color: map-get($colors, 'red');
+				background-color: map-get($colors, 'z-red');
 			}
 			&.d {
-				background-color: map-get($colors, 'orange');
+				background-color: map-get($colors, 'z-orange');
 			}
 			&.e {
-				background-color: map-get($colors, 'vue-green');
+				background-color: map-get($colors, 'z-green');
 			}
 		}
 	}

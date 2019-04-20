@@ -4,12 +4,10 @@
     .grid-container {
       display: grid;
       grid-template-columns: 70% 30%;
-      grid-gap: 2px;
+      grid-gap: .1rem;
     }
     
     .grid-container .cell {
-      height: 50px;
-      line-height: 50px;
       color: white;
       border: 1px solid lightgrey;
       text-align: center;
@@ -33,7 +31,13 @@
   
   <div class="grid-container">
     <div class="cell a">A</div>
-    <div class="cell b">B</div>
+    <div class="cell b"> 
+      <p>
+        Sed luctus magna sem, a pharetra lacus tempus vitae.
+        Sed mollis fermentum libero eu ornare. Quisque ut sollicitudin
+        magna. Maecenas a felis et metus molestie gravida a nec nunc. Maecenas
+      </p>
+    </div>
     <div class="cell c">C</div>
   </div>
 
