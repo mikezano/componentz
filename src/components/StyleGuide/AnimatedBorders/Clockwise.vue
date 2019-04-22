@@ -98,7 +98,7 @@ button {
 		&::before,
 		&::after {
 			// Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
-			border: 2px solid transparent;
+			border: 1px solid transparent;
 			width: 0;
 			height: 0;
 		}
