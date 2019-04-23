@@ -2,13 +2,13 @@
 .container
 	.checkbox-group
 		.checkbox
-			input#one.checkbox__button(type='radio' name='test', value='one')
+			input#one.checkbox__button(type='radio' name='square-box', value='one')
 			label.checkbox__label(for='one') One
 		.checkbox
-			input#two.checkbox__button(type='radio' name='test', value='two')
+			input#two.checkbox__button(type='radio' name='square-box', value='two')
 			label.checkbox__label(for='two') Two
 		.checkbox
-			input#three.checkbox__button(type='radio' name='test', value='three')
+			input#three.checkbox__button(type='radio' name='square-box', value='three')
 			label.checkbox__label(for='three') Three
 </template>
 
