@@ -15,12 +15,12 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component({ name: 'SquareBox' })
-export default class SquareBox extends Vue {}
+@Component({ name: 'RoundBox' })
+export default class RoundBox extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin checkbox() {
+@mixin checkbox($isRound: false) {
 	.checkbox {
 		position: relative;
 		line-height: 1.2rem;
@@ -38,6 +38,9 @@ export default class SquareBox extends Vue {}
 			position: absolute;
 			width: 1rem;
 			height: 1rem;
+			@if $isRound == true {
+				border-radius: 50%;
+			}
 			background-color: white;
 			left: 0;
 			border: 0.1rem solid lightgray;
@@ -49,14 +52,11 @@ export default class SquareBox extends Vue {}
 			content: '';
 			position: absolute;
 			left: 0.4rem;
-			top: 0.5rem;
-			background: black;
-			width: 0.1rem;
-			height: 0.1rem;
-			box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,
-				0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,
-				0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
-			transform: rotate(45deg);
+			top: 0.4rem;
+			background: #666;
+			width: 0.4rem;
+			height: 0.4rem;
+			border-radius: 50%;
 		}
 	}
 } // checkbox end
@@ -64,7 +64,7 @@ export default class SquareBox extends Vue {}
 	.checkbox-group {
 		display: flex;
 		transform: scale($scale);
-		@include checkbox();
+		@include checkbox(true);
 	}
 } // checkbox-group end
 

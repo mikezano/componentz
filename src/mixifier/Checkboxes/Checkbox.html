@@ -1,53 +1,60 @@
 <div>
 
   <style type="text/css">
-    .default .checkbox {
+    .checkbox-group {
+      display: flex;
+      transform: scale(1);
+    }
+    
+    .checkbox-group .checkbox {
       position: relative;
       line-height: 1.2rem;
     }
     
-    .default .checkbox .checkbox__button {
+    .checkbox-group .checkbox__button {
       opacity: 0;
       cursor: pointer;
       margin: 0;
     }
     
-    .default .checkbox .checkbox__label {
+    .checkbox-group .checkbox__label {
       cursor: pointer;
       padding: 0 0.7rem 0 0.6rem;
     }
     
-    .default .checkbox .checkbox__label:before {
+    .checkbox-group .checkbox__label:before {
       content: '';
       position: absolute;
       width: 1rem;
       height: 1rem;
+      border-radius: 50%;
       background-color: white;
       left: 0;
       border: 0.1rem solid lightgray;
     }
     
-    .default .checkbox .checkbox__button:hover + .checkbox__label:before {
+    .checkbox-group .checkbox__button:hover + .checkbox__label:before {
       background-color: whitesmoke;
     }
     
-    .default .checkbox .checkbox__button:checked + .checkbox__label:after {
+    .checkbox-group .checkbox__button:checked + .checkbox__label:after {
       content: '';
       position: absolute;
       left: 0.4rem;
+      top: 0.4rem;
       background: #666;
-      top: 0.5rem;
-      width: 0.1rem;
-      height: 0.1rem;
-      box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,     0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,     0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
-      transform: rotate(45deg);
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
     }
     
   </style>
   
-  <div class="default checkbox">
-    <input class="checkbox__button" id="default-one" type="radio" name="default" value="Default"/>
-    <label class="checkbox__label" for="default-one">Default</label>
+  <div class="container">
+    <div class="checkbox">
+      <input class="checkbox__button" id="one" type="radio" name="test" value="one"/>
+      <label class="checkbox__label" for="one">One</label>
+    </div>
   </div>
 
 </div>
