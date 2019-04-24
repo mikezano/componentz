@@ -362,19 +362,21 @@ $colors: (
 	}
 } //side-card end
 @mixin checkbox($isRound: false, $usesCheck: false) {
-	.checkbox {
+
+	$el: checkbox;
+	&.#{$el} {
 		position: relative;
 		line-height: 1.2rem;
-		&__button {
+		.#{$el}__button {
 			opacity: 0;
 			cursor: pointer;
 			margin: 0;
 		}
-		&__label {
+		.#{$el}__label {
 			cursor: pointer;
 			padding: 0 0.7rem 0 0.6rem;
 		}
-		&__label:before {
+		.#{$el}__label:before {
 			content: '';
 			position: absolute;
 			width: 1rem;
@@ -386,10 +388,10 @@ $colors: (
 			left: 0;
 			border: 0.1rem solid lightgray;
 		}
-		&__button:hover + .checkbox__label:before {
+		.#{$el}__button:hover + .checkbox__label:before {
 			background-color: whitesmoke;
 		}
-		&__button:checked + .checkbox__label:after {
+		.#{$el}__button:checked + .checkbox__label:after {
 			content: '';
 			position: absolute;
 			left: 0.4rem;

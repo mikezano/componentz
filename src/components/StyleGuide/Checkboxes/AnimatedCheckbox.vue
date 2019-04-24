@@ -1,32 +1,36 @@
 <template lang="pug">
-.default.checkbox
-	input#default.checkbox__button(type='radio' name='default', value='Default')
-	label.checkbox__label(for='default') Default
+.default.animated-checkbox
+	input#animated.animated-checkbox__input(type='radio' name='animated', value='Animated')
+	label.animated-checkbox__label(for='animated') Animated
 </template>
 
 
 <script>
 import { Component, Vue } from 'vue-property-decorator';
-@Component({ name: 'Checkbox' })
-export default class Checkbox extends Vue {}
+@Component({ name: 'AnimatedCheckbox' })
+export default class AnimatedCheckbox extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin checkbox($isRound: false, $usesCheck: false) {
+@mixin animated-checkbox($isRound: false, $usesCheck: false) {
 
-	$el: checkbox;
+	$el: animated-checkbox;
 	&.#{$el} {
-		position: relative;
-		line-height: 1.2rem;
-		.#{$el}__button {
-			opacity: 0;
+		position:relative;
+		display: flex;
+		align-items:center;
+
+		.#{$el}__input, .#{$el}__label{
 			cursor: pointer;
+		}
+
+		.#{$el}__input {
 			margin: 0;
 		}
 		.#{$el}__label {
-			cursor: pointer;
-			padding: 0 0.7rem 0 0.6rem;
+			padding: 0 0.6rem;
 		}
+
 		.#{$el}__label:before {
 			content: '';
 			position: absolute;
@@ -39,10 +43,24 @@ export default class Checkbox extends Vue {}
 			left: 0;
 			border: 0.1rem solid lightgray;
 		}
-		.#{$el}__button:hover + .checkbox__label:before {
+
+		 .#{$el}__label::after{
+			content: '';
+			position: absolute;
+			left: 0.4rem;
+			top: 0.5rem;
+			width: 0.1rem;
+			height: 0.1rem;
+
+			transform: scale(0) rotate(45deg);;
+
+			transition: all 0.5s ease-in-out;
+		}
+
+		.#{$el}__input:hover + .#{$el}__label:before {
 			background-color: whitesmoke;
 		}
-		.#{$el}__button:checked + .checkbox__label:after {
+		.#{$el}__input:checked + .#{$el}__label::after {
 			content: '';
 			position: absolute;
 			left: 0.4rem;
@@ -55,7 +73,7 @@ export default class Checkbox extends Vue {}
 				box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,
 					0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,
 					0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
-				transform: rotate(45deg);
+				transform: scale(1) rotate(45deg);
 			} @else {
 				top: 0.4rem;
 				width: 0.4rem;
@@ -66,6 +84,6 @@ export default class Checkbox extends Vue {}
 } // checkbox end
 
 .default {
-	@include checkbox(false, true);
+	@include animated-checkbox(false, true);
 }
 </style>

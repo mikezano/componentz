@@ -1,23 +1,23 @@
 <div>
 
   <style type="text/css">
-    .default .checkbox {
+    .default.checkbox {
       position: relative;
       line-height: 1.2rem;
     }
     
-    .default .checkbox__button {
+    .default.checkbox .checkbox__button {
       opacity: 0;
       cursor: pointer;
       margin: 0;
     }
     
-    .default .checkbox__label {
+    .default.checkbox .checkbox__label {
       cursor: pointer;
       padding: 0 0.7rem 0 0.6rem;
     }
     
-    .default .checkbox__label:before {
+    .default.checkbox .checkbox__label:before {
       content: '';
       position: absolute;
       width: 1rem;
@@ -27,11 +27,11 @@
       border: 0.1rem solid lightgray;
     }
     
-    .default .checkbox__button:hover + .checkbox__label:before {
+    .default.checkbox .checkbox__button:hover + .checkbox__label:before {
       background-color: whitesmoke;
     }
     
-    .default .checkbox__button:checked + .checkbox__label:after {
+    .default.checkbox .checkbox__button:checked + .checkbox__label:after {
       content: '';
       position: absolute;
       left: 0.4rem;
