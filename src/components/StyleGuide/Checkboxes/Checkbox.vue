@@ -1,8 +1,7 @@
 <template lang="pug">
-.container
-	.checkbox
-		input#one.checkbox__button(type='radio' name='test', value='one')
-		label.checkbox__label(for='one') One
+.default.checkbox
+	input#default.checkbox__button(type='radio' name='default', value='Default')
+	label.checkbox__label(for='default') Default
 </template>
 
 
@@ -13,7 +12,7 @@ export default class Checkbox extends Vue {}
 </script>
 
 <style lang="scss" scoped>
-@mixin checkbox($isRound: false) {
+@mixin checkbox($isRound: false, $usesCheck: false) {
 	.checkbox {
 		position: relative;
 		line-height: 1.2rem;
@@ -45,21 +44,26 @@ export default class Checkbox extends Vue {}
 			content: '';
 			position: absolute;
 			left: 0.4rem;
-			top: 0.4rem;
 			background: #666;
-			width: 0.4rem;
-			height: 0.4rem;
-			border-radius: 50%;
+
+			@if $usesCheck == true {
+				top: 0.5rem;
+				width: 0.1rem;
+				height: 0.1rem;
+				box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,
+					0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,
+					0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
+				transform: rotate(45deg);
+			} @else {
+				top: 0.4rem;
+				width: 0.4rem;
+				height: 0.4rem;
+			}
 		}
 	}
 } // checkbox end
-@mixin checkbox-group($scale: 1) {
-	.checkbox-group {
-		display: flex;
-		transform: scale($scale);
-		@include checkbox(true);
-	}
-} // checkbox-group end
 
-@include checkbox-group(1);
+.default {
+	@include checkbox(false, true);
+}
 </style>
