@@ -16,6 +16,7 @@ export default class AnimatedCheckbox extends Vue {}
 	$el: animated-checkbox;
 	&.#{$el} {
 		position:relative;
+		line-height:1.2rem;
 		display: flex;
 		align-items:center;
 
@@ -51,7 +52,6 @@ export default class AnimatedCheckbox extends Vue {}
 			transform: rotate(45deg) scale(0);
 			transition: all 0.2s ease-in-out;
 		}
-
 
 		.#{$el}__input:hover + .#{$el}__label:before {
 			background-color: whitesmoke;
