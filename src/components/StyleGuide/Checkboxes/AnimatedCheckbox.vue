@@ -4,7 +4,6 @@
 	label.animated-checkbox__label(for='animated') Animated
 </template>
 
-
 <script>
 import { Component, Vue } from 'vue-property-decorator';
 @Component({ name: 'AnimatedCheckbox' })
@@ -36,9 +35,6 @@ export default class AnimatedCheckbox extends Vue {}
 			position: absolute;
 			width: 1rem;
 			height: 1rem;
-			@if $isRound == true {
-				border-radius: 50%;
-			}
 			background-color: white;
 			left: 0;
 			border: 0.1rem solid lightgray;
@@ -52,33 +48,37 @@ export default class AnimatedCheckbox extends Vue {}
 			width: 0.1rem;
 			height: 0.1rem;
 
-			transform: scale(0) rotate(45deg);;
-
-			transition: all 0.5s ease-in-out;
+			transform: rotate(45deg) scale(0);
+			transition: all 0.2s ease-in-out;
 		}
+
 
 		.#{$el}__input:hover + .#{$el}__label:before {
 			background-color: whitesmoke;
 		}
+
+		.#{$el}__input:checked + .#{$el}__label:before {
+			animation: boom .3s ease-in-out;
+		}
+
+@keyframes boom {
+	0%{transform: scale(1);}
+	50%{transform: scale(1.2); background-color: lightblue;}
+	100%{transform: scale(1);}
+
+}
 		.#{$el}__input:checked + .#{$el}__label::after {
 			content: '';
 			position: absolute;
-			left: 0.4rem;
+			left: 0.2rem;
 			background: #666;
-
-			@if $usesCheck == true {
-				top: 0.5rem;
-				width: 0.1rem;
-				height: 0.1rem;
-				box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,
-					0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,
-					0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
-				transform: scale(1) rotate(45deg);
-			} @else {
-				top: 0.4rem;
-				width: 0.4rem;
-				height: 0.4rem;
-			}
+			top: 0.5rem;
+			width: 0.1rem;
+			height: 0.1rem;
+			box-shadow: 0.1rem 0 0 black, 0.2rem 0 0 black,
+				0.2rem -0.1rem 0 black, 0.2rem -0.2rem 0 black,
+				0.2rem -0.3rem 0 black, 0.2rem -0.4rem 0 black;
+			transform:  rotate(45deg) scale(1.5);
 		}
 	}
 } // checkbox end
