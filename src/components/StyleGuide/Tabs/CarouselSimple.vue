@@ -55,6 +55,10 @@ export default class CarouselSimple extends Vue {}
 			width: 100px;
 		}
 	}
+
+	a[id='link1']:target ~ .carousel__display .carousel__component {
+		transform: translateX(-20px);
+	}
 } //underlined_tabs end
 .default {
 	@include carousel();
