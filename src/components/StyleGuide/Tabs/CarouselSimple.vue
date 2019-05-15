@@ -32,35 +32,43 @@ export default class CarouselSimple extends Vue {}
 	flex-direction: row;
 }
 
-@mixin carousel($tabCount: 2) {
+@mixin carousel-simple($sections: 3, $width: 100px) {
 	$s: carousel;
 	&.#{$s} {
-		border: 1px solid black;
 		.#{$s}__links {
 			height: 2rem;
 		}
+
+		.#{$s}__link {
+			text-decoration: none;
+			margin: 0 0.4rem;
+		}
 		.#{$s}__display {
-			width: 100px;
+			width: $width;
 			height: 100px;
 			overflow: hidden;
 			background-color: gray;
 		}
 		.#{$s}__container {
-			width: 300px;
+			width: ($width * $sections);
 			display: flex;
 			height: 100%;
 		}
 		.#{$s}__component {
-			background: linear-gradient(blue, orange);
-			width: 100px;
+			width: $width;
+			transition: all 0.2s ease-in-out;
+			padding: 0.4rem;
 		}
 	}
 
-	a[id='link1']:target ~ .carousel__display .carousel__component {
-		transform: translateX(-20px);
+	@for $i from 1 through $sections {
+		a[id='link#{$i}']:target ~ .carousel__display .carousel__component {
+			transform: translateX(-1 * (($i - 1) * $width));
+		}
 	}
-} //underlined_tabs end
+} //carousel-simple end
+
 .default {
-	@include carousel();
+	@include carousel-simple(3, 200px);
 }
 </style>
